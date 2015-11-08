@@ -1,5 +1,7 @@
 ; Org-mode settings by Tommy
 
+(setq org-agenda-confirm-kill nil)
+
 ; org-mode crypt append system path
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
@@ -20,10 +22,10 @@
 ; (defface phone-number-lock-face '((t (:foreground "FF0000"))) t)
 ; (defface language-lock-face '((t (:foreground "00FF00"))) t)
 ; (defface emacs-vim-lock-face '((t (:foreground "9900FF"))) t)
-; 
+
 ; (global-hi-lock-mode 1)
 ; (setq hi-lock-file-patterns-policy #'(lambda (dummy) t))
-; 
+
 ; (defun bigboss-highlight ()
 ;   (interactive)
 ;   (highlight-regexp "0[0-9]\\{2\\}-[0-9]\\{8\\}" 'phone-number-lock-face)
