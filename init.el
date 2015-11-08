@@ -133,6 +133,7 @@ before layers configuration."
    )
   ;; User initialization goes here
   (setq solarized-scale-org-headlines nil)
+  (setq solarized-use-variable-pitch nil)
   )
 
 (defun dotspacemacs/config ()
@@ -148,7 +149,6 @@ layers configuration."
   (require 'init-orgTommy)
   (require 'init-auctex)
 
-  (setq magit-push-always-verify nil)
+  (setq magit-push-always-verify nil) ; magit 每次push不再询问
+  (org-agenda nil " ") ; 启动后显示org agenda
 )
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
