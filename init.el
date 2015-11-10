@@ -15,14 +15,14 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
+     auto-completion
+     bbdb
+     emacs-lisp
+     git
      latex
      markdown
      org
-     ;; syntax-checking
-     git
      osx
-     bbdb
-     auto-completion
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(org-bullets)
