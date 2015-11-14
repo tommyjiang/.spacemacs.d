@@ -149,5 +149,6 @@ layers configuration."
   (require 'init-auctex)
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
+  (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
   (org-agenda nil " ") ; 启动后显示org agenda
 )

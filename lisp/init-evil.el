@@ -10,9 +10,9 @@
 (define-key evil-normal-state-map (kbd "RET") 'org-return)
 
 ; 将 jj 映射为 ESC
-(define-key evil-insert-state-map "j" #'cofi/maybe-exit)
- 
-(evil-define-command cofi/maybe-exit ()
+(define-key evil-insert-state-map "j" #'tommy/maybe-exit)
+
+(evil-define-command tommy/maybe-exit ()
   :repeat change
   (interactive)
   (let ((modified (buffer-modified-p)))
