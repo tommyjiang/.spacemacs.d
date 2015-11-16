@@ -12,12 +12,12 @@
 ;(setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d %A>" . "<%Y-%m-%d %A %H:%M>"))
 ; Set org deadline faces
-; (setq org-agenda-deadline-faces
-;   '((1.0  . org-level-1)
-;     (0.75 . org-level-2)
-;     (0.5  . org-level-3)
-;     (0.25 . org-level-4)
-;     (0.0  . org-level-4)))
+(setq org-agenda-deadline-faces
+  '((1.0  . org-level-1)
+    (0.75 . org-level-2)
+    (0.5  . org-level-3)
+    (0.25 . org-level-4)
+    (0.0  . org-level-4)))
 
 ; (defface phone-number-lock-face '((t (:foreground "FF0000"))) t)
 ; (defface language-lock-face '((t (:foreground "00FF00"))) t)

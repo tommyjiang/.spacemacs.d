@@ -83,14 +83,14 @@
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "blue" :weight bold)
-              ("DONE" :foreground "green" :weight bold)
-              ("WAITING" :foreground "orange" :weight bold)
-              ("HOLD" :foreground "magenta" :weight bold)
-              ("CANCELLED" :foreground "green" :weight bold)
-              ("MEETING" :foreground "green" :weight bold)
-              ("PHONE" :foreground "green" :weight bold))))
+      (quote (("TODO" :foreground "#dc322f" :weight bold)
+              ("NEXT" :foreground "#268db2" :weight bold)
+              ("DONE" :foreground "#2aa198" :weight bold)
+              ("WAITING" :foreground "#cb4b16" :weight bold)
+              ("HOLD" :foreground "#d33682" :weight bold)
+              ("CANCELLED" :foreground "2aa198" :weight bold)
+              ("MEETING" :foreground "2aa198" :weight bold)
+              ("PHONE" :foreground "2aa198" :weight bold))))
 
 ; Fast Selection
 (setq org-use-fast-todo-selection t)
