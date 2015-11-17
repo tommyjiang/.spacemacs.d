@@ -3,6 +3,9 @@
 (setq calendar-longitude 116.3)
 (setq calendar-location-time "Beijing, China")
 
+; 设定每周一为新一周起始日期
+(setq calendar-week-start-day 1)
+
 ; 计算周数
 (setq calendar-intermonth-text
       '(propertize
