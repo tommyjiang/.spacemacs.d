@@ -3,8 +3,7 @@
 ; (evil-set-initial-state 'inferior-ess-mode 'emacs)
 ; (evil-set-initial-state 'ess-watch-mode 'emacs)
 (evil-set-initial-state 'text-mode 'insert)
-(evil-set-initial-state 'magit-popup-mode 'emacs)
-(evil-set-initial-state 'magit-popup-sequence-mode 'emacs)
+(evil-set-initial-state 'magit-status-mode 'emacs)
 
 ; Org mode 中回车的设置
 (define-key evil-normal-state-map (kbd "RET") 'org-return)
