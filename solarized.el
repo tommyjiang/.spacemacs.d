@@ -84,7 +84,7 @@ Also affects `linum-mode' background."
   :type 'number
   :group 'solarized)
 
-(defcustom solarized-height-plus-1 1.1
+(defcustom solarized-height-plus-1 1.0
   "Font size +1."
   :type 'number
   :group 'solarized)
