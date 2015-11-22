@@ -79,7 +79,7 @@ Also affects `linum-mode' background."
   :type 'boolean
   :group 'solarized)
 
-(defcustom solarized-height-minus-1 0.8
+(defcustom solarized-height-minus-1 1.0
   "Font size -1."
   :type 'number
   :group 'solarized)
@@ -89,17 +89,17 @@ Also affects `linum-mode' background."
   :type 'number
   :group 'solarized)
 
-(defcustom solarized-height-plus-2 1.15
+(defcustom solarized-height-plus-2 1.0
   "Font size +2."
   :type 'number
   :group 'solarized)
 
-(defcustom solarized-height-plus-3 1.2
+(defcustom solarized-height-plus-3 1.0
   "Font size +3."
   :type 'number
   :group 'solarized)
 
-(defcustom solarized-height-plus-4 1.3
+(defcustom solarized-height-plus-4 1.0
   "Font size +4."
   :type 'number
   :group 'solarized)
@@ -1480,7 +1480,7 @@ customize the resulting theme."
      ;   ((,class (:inherit org-agenda-date :inverse-video t :weight bold
      ;                      :underline unspecified :overline nil :box unspecified
      ;                      :foreground ,blue :background ,base03))))
-     `(org-agenda-done ((,class (:foreground ,base01 :slant italic))))
+     `(org-agenda-done ((,class (:foreground ,base01))))
      `(org-archived ((,class (:foreground ,base01 :weight normal))))
      `(org-block ((,class (:foreground ,base01))))
      `(org-block-begin-line ((,class (:foreground ,base01 :slant italic))))
