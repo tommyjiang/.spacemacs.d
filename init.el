@@ -60,6 +60,8 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(solarized-light
                          solarized-dark
+                         spacemacs-light
+                         spacemacs-dark
                          monokai)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -150,5 +152,5 @@ layers configuration."
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
-  (org-agenda nil " ") ; 启动后显示org agenda
+  (org-agenda nil " ") ; 启动后显示 org agenda
 )
