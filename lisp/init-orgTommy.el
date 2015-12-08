@@ -8,9 +8,6 @@
 ; Display agenda when starting Emacs
 (add-hook 'after-init-hook (lambda () (org-agenda nil " ")))
 
-; Set org mode time stamp format
-;(setq-default org-display-custom-times t)
-(setq org-time-stamp-custom-formats '("<%Y-%m-%d %A>" . "<%Y-%m-%d %A %H:%M>"))
 ; Set org deadline faces
 (setq org-agenda-deadline-faces
   '((1.0  . org-level-1)
@@ -18,22 +15,6 @@
     (0.5  . org-level-3)
     (0.25 . org-level-4)
     (0.0  . org-level-4)))
-
-; (defface phone-number-lock-face '((t (:foreground "FF0000"))) t)
-; (defface language-lock-face '((t (:foreground "00FF00"))) t)
-; (defface emacs-vim-lock-face '((t (:foreground "9900FF"))) t)
-
-; (global-hi-lock-mode 1)
-; (setq hi-lock-file-patterns-policy #'(lambda (dummy) t))
-
-; (defun bigboss-highlight ()
-;   (interactive)
-;   (highlight-regexp "0[0-9]\\{2\\}-[0-9]\\{8\\}" 'phone-number-lock-face)
-;   (highlight-regexp "Lisp\\|Scheme" 'language-lock-face)
-;   (highlight-regexp "神之编辑器\\|编辑器之神" 'emacs-vim-lock-face)
-; )
-; 
-; (add-hook 'org-mode-hook 'bigboss-highlight)
 
 ; Set anniversary/holiday faces in org agenda
 (defface anniversary-lock-face '((t (:foreground "#9900FF" :bold t))) t)
@@ -111,7 +92,7 @@
       (format " W%02d" iso-week)
         ""))
     (chinese-dayname '("星期日" "星期一" "星期二" "星期三" "星期四" "星期五" "星期六")))
-    (format "%4d年%d月%d日 第%2d周 %s"
+    (format "%4d年%02d月%02d日 第%2d周 %s"
       year month day iso-week (nth day-of-week chinese-dayname))))
 
 ; Look ahead for 5 days
