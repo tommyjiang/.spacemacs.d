@@ -92,7 +92,7 @@
       (format " W%02d" iso-week)
         ""))
     (chinese-dayname '("星期日" "星期一" "星期二" "星期三" "星期四" "星期五" "星期六")))
-    (format "%4d年%02d月%02d日 第%2d周 %s"
+    (format "%4d年%02d月%02d日 第%02d周 %s"
       year month day iso-week (nth day-of-week chinese-dayname))))
 
 ; Look ahead for 5 days
