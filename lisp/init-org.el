@@ -1539,9 +1539,9 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-table-export-default-format "orgtbl-to-csv")
 
-(setq org-link-frame-setup (quote ((vm . vm-visit-folder)
-                                   (gnus . org-gnus-no-new-news)
-                                   (file . find-file))))
+; (setq org-link-frame-setup (quote ((vm . vm-visit-folder)
+;                                   (gnus . org-gnus-no-new-news)
+;                                   (file . find-file))))
 
 ; Use the current window for C-c ' source editing
 (setq org-src-window-setup 'current-window)
@@ -1723,7 +1723,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-agenda-persistent-filter t)
 
-(setq org-link-mailto-program (quote (compose-mail "%a" "%s")))
+; (setq org-link-mailto-program (quote (compose-mail "%a" "%s")))
 
 ;(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 ;(require 'smex)

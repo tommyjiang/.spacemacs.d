@@ -128,7 +128,7 @@ There is a short poem for remembering,
 (defconst cal-china-x-chinese-holidays
   '((holiday-fixed 1 1 "元旦")
     (holiday-lunar 12 23 "小年" 0)
-    (holiday-lunar 12 30 "除夕" 0)
+    ; (holiday-lunar 12 30 "除夕" 0)
     (holiday-lunar 1 1 "春节" 0)
     (holiday-lunar 1 5 "破五" 0)
     (holiday-lunar 1 15 "元宵节" 0)
