@@ -6,7 +6,8 @@
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
   charset
-  (font-spec :family "Heiti SC")))
+  (font-spec :family "Hiragino Sans GB W3")))
+
 
 ; 启动后全屏
 (toggle-frame-maximized)
