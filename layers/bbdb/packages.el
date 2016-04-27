@@ -15,7 +15,6 @@
 (setq bbdb-packages
     '(
       ;; package names go here
-      bbdb
       (bbdb :location elpa)
       ))
 

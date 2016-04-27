@@ -438,13 +438,12 @@ A prefix arg forces clock in of the default task."
 (setq org-agenda-log-mode-items (quote (closed state)))
 
 ; Tags with fast selection keys
-(setq org-tag-alist (quote (("工作" . ?g)
-                            ("家庭" . ?j)
-                            ("读书" . ?d)
+(setq org-tag-alist (quote (("生产" . ?s)
+                            ("科技" . ?k)
+                            ("其他" . ?q)
                             ("CANCELLED" . ?c)
                             ("WAITING" . ?w)
-                            ("HOLD" . ?h)
-                            ("FLAGGED" . ??))))
+                            ("HOLD" . ?o))))
 
 ; Allow setting single tags without the menu
 (setq org-fast-tag-selection-single-key (quote expert))
