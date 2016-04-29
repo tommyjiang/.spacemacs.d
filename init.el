@@ -18,7 +18,7 @@
      auto-completion
      bbdb
      emacs-lisp
-     ess
+     ;ess
      git
      ; javascript
      latex
