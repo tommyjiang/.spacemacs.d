@@ -77,7 +77,7 @@ before layers configuration."
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -158,6 +158,7 @@ layers configuration."
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
+  (spaceline-compile)
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
 (custom-set-variables
