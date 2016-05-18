@@ -27,8 +27,13 @@
      osx
      ; python
      )
-   ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(org-bullets google-translate)
+  ;; A list of packages and/or extensions that will not be install and loaded.
+  dotspacemacs-excluded-packages
+  '(
+    org-bullets
+    google-translate
+    auctex-latexmk
+    leuven-theme)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
@@ -156,17 +161,14 @@ layers configuration."
   (require 'init-orgTommy)
   (require 'init-auctex)
 
+  (setq package-archives '(("gnu"   . "http://elpa.zilongshanren.com/gnu/")
+                           ("melpa" . "http://elpa.zilongshanren.com/melpa/")
+                           ("org"   . "http://elpa.zilongshanren.com/org/")))
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
   (spaceline-compile)
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
