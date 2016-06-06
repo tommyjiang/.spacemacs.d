@@ -17,6 +17,16 @@
      ;; --------------------------------------------------------
      auto-completion
      bbdb
+     (elfeed :variables
+             elfeed-feeds '(("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
+                            ("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
+                            ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
+                            ("http://rss.cnki.net/kns/rss.aspx?Journal=DGJS&Virtual=knavi" 电工技术学报)
+                            ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
+                            ("http://ieeexplore.ieee.org/rss/TOC5165411.XML" TSG)
+                            ("http://ieeexplore.ieee.org/rss/TOC5165391.XML" TSE)
+                            ("http://ieeexplore.ieee.org/rss/TOC60.XML" TEC)
+                            ))
      emacs-lisp
      ;ess
      git
@@ -165,9 +175,6 @@ layers configuration."
   (require 'init-orgTommy)
   (require 'init-auctex)
 
-;   (setq package-archives '(("gnu"   . "http://elpa.zilongshanren.com/gnu/")
-;                            ("melpa" . "http://elpa.zilongshanren.com/melpa/")
-;                            ("org"   . "http://elpa.zilongshanren.com/org/")))
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
   (spaceline-compile)
