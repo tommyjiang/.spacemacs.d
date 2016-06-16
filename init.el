@@ -17,18 +17,9 @@
      ;; --------------------------------------------------------
      auto-completion
      bbdb
-     (elfeed :variables
-             elfeed-feeds '(("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
-                            ("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
-                            ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
-                            ("http://rss.cnki.net/kns/rss.aspx?Journal=DGJS&Virtual=knavi" 电工技术学报)
-                            ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
-                            ("http://ieeexplore.ieee.org/rss/TOC5165411.XML" TSG)
-                            ("http://ieeexplore.ieee.org/rss/TOC5165391.XML" TSE)
-                            ("http://ieeexplore.ieee.org/rss/TOC60.XML" TEC)
-                            ))
+     elfeed
      emacs-lisp
-     ;ess
+     ; ess
      git
      ; javascript
      latex
@@ -36,6 +27,7 @@
      org
      osx
      ; python
+     spell-checking
      )
   ;; A list of packages and/or extensions that will not be install and loaded.
   dotspacemacs-excluded-packages
@@ -156,11 +148,11 @@ before layers configuration."
   ;; User initialization goes here
   (setq solarized-scale-org-headlines nil)
   (setq solarized-use-variable-pitch nil)
-  ;(setq configuration-layer--elpa-archives
-  ;'(("melpai-cn" . "http://elpa.zilongshanren.com/melpa/")
-  ;  ("org-cn"   . "http://elpa.zilongshanren.com/org/")
-  ;  ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
   )
+
+(defun dotspacemacs/user-init ()
+  (setq ispell-program-name "/usr/local/bin/aspell")
+)
 
 (defun dotspacemacs/user-config ()
   "Configuration function.
@@ -174,6 +166,24 @@ layers configuration."
   (require 'init-org)
   (require 'init-orgTommy)
   (require 'init-auctex)
+
+  (setq elfeed-feeds '(("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DGJS&Virtual=knavi" 电工技术学报)
+                      ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
+                      ("http://ieeexplore.ieee.org/rss/TOC5165411.XML" TSG)
+                      ("http://ieeexplore.ieee.org/rss/TOC5165391.XML" TSE)
+                      ("http://ieeexplore.ieee.org/rss/TOC60.XML" TEC)
+                      ("http://rss.iwgc.cn/rss/6950-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 中国气象爱好者)
+                      ("http://rss.iwgc.cn/rss/345-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 菠菜)
+                      ("http://rss.iwgc.cn/rss/45-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 豆瓣阅读)
+                      ("http://rss.iwgc.cn/rss/173-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 简书)
+                      ("http://rss.iwgc.cn/rss/298-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 知乎日报)
+                      ("http://rss.iwgc.cn/rss/175-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 杜绍斐)
+                      ("http://rss.iwgc.cn/rss/386-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 连岳)
+                      ("http://rss.iwgc.cn/rss/5124-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 优雅本垒打)
+                      ))
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线

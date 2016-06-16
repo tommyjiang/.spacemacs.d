@@ -1,4 +1,4 @@
-; 设置bbdb 路径
+; 设置 bbdb 路径
 (setq bbdb-file "~/org/bbdb")
 
 ; bbdb 初始窗口大小
