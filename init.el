@@ -29,6 +29,7 @@
      ; python
      spell-checking
      )
+  dotspacemacs-additional-packages '(youdao-dictionary)
   ;; A list of packages and/or extensions that will not be install and loaded.
   dotspacemacs-excluded-packages
   '(
@@ -172,8 +173,8 @@ layers configuration."
                       ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
                       ("http://rss.cnki.net/kns/rss.aspx?Journal=DGJS&Virtual=knavi" 电工技术学报)
                       ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
-                      ("http://ieeexplore.ieee.org/rss/TOC5165411.XML" TSG)
-                      ("http://ieeexplore.ieee.org/rss/TOC5165391.XML" TSE)
+                      ; ("http://ieeexplore.ieee.org/rss/TOC5165411.XML" TSG)
+                      ; ("http://ieeexplore.ieee.org/rss/TOC5165391.XML" TSE)
                       ("http://ieeexplore.ieee.org/rss/TOC60.XML" TEC)
                       ("http://rss.iwgc.cn/rss/6950-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 中国气象爱好者)
                       ("http://rss.iwgc.cn/rss/345-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 菠菜)
@@ -202,3 +203,11 @@ layers configuration."
  '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
  '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Notes.org" "~/org/Refile.org" "~/org/Work.org"))))

@@ -136,7 +136,7 @@ There is a short poem for remembering,
     (holiday-solar-term "清明" "清明节")
     (holiday-fixed 5 1 "劳动节")
     (holiday-lunar 5 5 "端午节" 0)
-    (holiday-lunar 5 20 "唐飞生日" 0)
+    ;(holiday-lunar 5 20 "唐飞生日" 0)
     (holiday-lunar 8 15 "中秋节" 0)
     (holiday-lunar 9 9 "重阳节" 0)
     (holiday-fixed 10 1 "国庆节"))

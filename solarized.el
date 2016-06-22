@@ -266,7 +266,7 @@ customize the resulting theme."
 ;;;;; basic coloring
      `(default ((,class (:foreground ,base0 :background ,base03))))
      `(shadow ((,class (:foreground ,base01))))
-     `(match ((,class (:background ,base02 :foreground ,base1 :weight bold))))
+     `(match ((,class (:foreground ,orange :weight bold))))
      `(cursor ((,class (:foreground ,base03 :background ,base0
                                     :inverse-video t))))
      `(escape-glyph ((,class (:foreground ,violet))))
@@ -1585,7 +1585,7 @@ customize the resulting theme."
                           :foreground ,base01 :weight unspecified
                           :underline t :overline nil :box nil))))
      `(org-agenda-date-today
-       ((,class (:inherit org-agenda-date :weight bold
+       ((,class (:inherit org-agenda-date :weight bold :foreground ,blue
                           :underline unspecified :overline nil :box nil))))
      `(org-agenda-done ((,class (:foreground ,base01 :slant italic))))
      `(org-archived ((,class (:foreground ,base01 :weight normal))))
