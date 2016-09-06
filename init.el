@@ -26,10 +26,11 @@
      markdown
      org
      osx
-     ; python
+     python
      spell-checking
+     syntax-checking
      )
-  dotspacemacs-additional-packages '(youdao-dictionary)
+   dotspacemacs-additional-packages '(youdao-dictionary)
   ;; A list of packages and/or extensions that will not be install and loaded.
   dotspacemacs-excluded-packages
   '(
@@ -172,23 +173,30 @@ layers configuration."
                       ("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
                       ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
                       ("http://rss.cnki.net/kns/rss.aspx?Journal=DGJS&Virtual=knavi" 电工技术学报)
+
                       ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
                       ; ("http://ieeexplore.ieee.org/rss/TOC5165411.XML" TSG)
                       ; ("http://ieeexplore.ieee.org/rss/TOC5165391.XML" TSE)
                       ("http://ieeexplore.ieee.org/rss/TOC60.XML" TEC)
+
                       ("http://rss.iwgc.cn/rss/6950-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 中国气象爱好者)
                       ("http://rss.iwgc.cn/rss/345-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 菠菜)
                       ("http://rss.iwgc.cn/rss/45-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 豆瓣阅读)
                       ("http://rss.iwgc.cn/rss/173-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 简书)
                       ("http://rss.iwgc.cn/rss/298-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 知乎日报)
-                      ("http://rss.iwgc.cn/rss/175-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 杜绍斐)
-                      ("http://rss.iwgc.cn/rss/386-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 连岳)
                       ("http://rss.iwgc.cn/rss/5124-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 优雅本垒打)
+                      ("http://rss.iwgc.cn/rss/6910-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 李越)
+                      ("http://rss.iwgc.cn/rss/99-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联生活周刊)
+                      ("http://rss.iwgc.cn/rss/7175-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联节气)
+                      ("http://rss.iwgc.cn/rss/4214-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 新生大学)
+
+                      ("http://onehd.herokuapp.com/" 韩寒·一个)
+                      ; ("http://rss.cnki.net/kns/rss.aspx?Journal=MZXS&Virtual=knavi" 名作欣赏)
                       ))
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
-  (spaceline-compile)
+  (spaceline-compile) ; 更新 spaceline 设置
   (org-agenda nil " ") ; 启动后显示 org agenda
 
 )
@@ -210,4 +218,5 @@ layers configuration."
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Notes.org" "~/org/Refile.org" "~/org/Work.org"))))
+    ("~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Notes.org" "~/org/Refile.org" "~/org/Work.org")))
+ '(paradox-github-token t))
