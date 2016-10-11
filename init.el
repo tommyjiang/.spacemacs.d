@@ -182,21 +182,26 @@ layers configuration."
                       ("http://rss.iwgc.cn/rss/6950-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 中国气象爱好者)
                       ("http://rss.iwgc.cn/rss/345-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 菠菜)
                       ("http://rss.iwgc.cn/rss/45-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 豆瓣阅读)
-                      ("http://rss.iwgc.cn/rss/173-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 简书)
                       ("http://rss.iwgc.cn/rss/298-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 知乎日报)
                       ("http://rss.iwgc.cn/rss/5124-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 优雅本垒打)
                       ("http://rss.iwgc.cn/rss/6910-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 李越)
                       ("http://rss.iwgc.cn/rss/99-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联生活周刊)
                       ("http://rss.iwgc.cn/rss/7175-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联节气)
                       ("http://rss.iwgc.cn/rss/4214-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 新生大学)
+                      ("http://rss.iwgc.cn/rss/4217-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 雅君)
 
                       ("http://onehd.herokuapp.com/" 韩寒·一个)
-                      ; ("http://rss.cnki.net/kns/rss.aspx?Journal=MZXS&Virtual=knavi" 名作欣赏)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DSZZ&Virtual=knavi" 读书)
                       ))
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
   (spaceline-compile) ; 更新 spaceline 设置
+
+  (require 'org-crypt)
+  (setq org-crypt-key nil)
+  (setq epa-file-select-keys nil)
+  (add-to-list 'exec-path "/usr/local/opt/gnupg/libexec/gpgbin")
   (org-agenda nil " ") ; 启动后显示 org agenda
 
 )
@@ -216,7 +221,11 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(menu-bar-mode nil)
  '(org-agenda-files
    (quote
     ("~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Notes.org" "~/org/Refile.org" "~/org/Work.org")))
- '(paradox-github-token t))
+ '(paradox-github-token t)
+ '(tool-bar-mode nil))
