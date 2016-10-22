@@ -35,6 +35,8 @@
   dotspacemacs-excluded-packages
   '(
     org-bullets
+    persp-mode
+    evil-unimpaired
     google-translate
     auctex-latexmk
     leuven-theme)
