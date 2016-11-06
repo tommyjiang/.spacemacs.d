@@ -6,7 +6,6 @@
   (setq-default
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/.emacs.d/layers" "~/.spacemacs.d/layers")
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -204,6 +203,7 @@ layers configuration."
   (setq org-crypt-key nil)
   (setq epa-file-select-keys nil)
   (add-to-list 'exec-path "/usr/local/opt/gnupg/libexec/gpgbin")
+  (setq debug-on-error t)
   (org-agenda nil " ") ; 启动后显示 org agenda
 
 )
