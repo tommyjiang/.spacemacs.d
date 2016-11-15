@@ -25,11 +25,11 @@
      markdown
      org
      osx
-     python
+     ; python
      spell-checking
      syntax-checking
      )
-   dotspacemacs-additional-packages '(youdao-dictionary)
+  ; dotspacemacs-additional-packages '(youdao-dictionary)
   ;; A list of packages and/or extensions that will not be install and loaded.
   dotspacemacs-excluded-packages
   '(

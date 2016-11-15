@@ -1591,8 +1591,8 @@ customize the resulting theme."
      `(org-archived ((,class (:foreground ,base01 :weight normal))))
      `(org-block ((,class (:foreground ,base01))))
      `(org-block-begin-line ((,class (:foreground ,base01 :slant italic))))
-     `(org-checkbox ((,class (:background ,base03 :foreground ,base0
-                                          :box (:line-width 1 :style released-button)))))
+     `(org-checkbox ((,class (:background ,base03 :foreground ,base0))))
+     ;                                    :box (:line-width 1 :style released-button)))))
      `(org-code ((,class (:foreground ,base01))))
      `(org-date ((,class (:foreground ,blue :underline t))))
      `(org-done ((,class (:weight bold :foreground ,green))))
