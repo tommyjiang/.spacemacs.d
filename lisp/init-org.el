@@ -2,13 +2,14 @@
 
 ; Org Indent Mode
 (setq org-startup-indented t)
-(add-hook 'org-mode-hook 
-(lambda () (setq truncate-lines nil)))
+(add-hook 'org-mode-hook
+  (lambda () (setq truncate-lines nil)))
 
 ;; Standard key bindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-cg" 'org-mac-grab-link)
 
 ; Agenda Setup
 (setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
