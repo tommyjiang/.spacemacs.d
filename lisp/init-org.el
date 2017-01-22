@@ -1559,14 +1559,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (global-auto-revert-mode t)
 
-(require 'org-crypt)
+; (require 'org-crypt)
 ; Encrypt all entries before saving
-(org-crypt-use-before-save-magic)
-(setq org-tags-exclude-from-inheritance (quote ("crypt")))
-; ; GPG key to use for encryption
-; (setq org-crypt-key "F0B66B40")
+; (org-crypt-use-before-save-magic)
+; (setq org-tags-exclude-from-inheritance (quote ("crypt")))
 
-(setq org-crypt-disable-auto-save nil)
+; (setq org-crypt-disable-auto-save nil)
 
 (setq org-use-speed-commands t)
 (setq org-speed-commands-user (quote (("0" . ignore)

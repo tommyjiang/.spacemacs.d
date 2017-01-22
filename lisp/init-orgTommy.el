@@ -2,6 +2,8 @@
 
 (setq org-agenda-confirm-kill nil)
 
+(setq org-agenda-time-leading-zero t)
+
 ; org-mode crypt append system path
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
