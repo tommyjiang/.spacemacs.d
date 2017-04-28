@@ -16,7 +16,7 @@
                 (setq TeX-save-query nil)
                 (imenu-add-menubar-index)
                 (setq TeX-command-default "LaTeX")
-                (setq TeX-master "master")
+                ; (setq TeX-master "master")
                 (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)))
 
 ; Mint 命令

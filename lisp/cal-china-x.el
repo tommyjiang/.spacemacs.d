@@ -127,8 +127,6 @@ There is a short poem for remembering,
 
 (defconst cal-china-x-chinese-holidays
   '((holiday-fixed 1 1 "元旦")
-    (holiday-lunar 12 23 "小年" 0)
-    ; (holiday-lunar 12 30 "除夕" 0)
     (holiday-lunar 1 1 "春节" 0)
     (holiday-lunar 1 5 "破五" 0)
     (holiday-lunar 1 15 "元宵节" 0)
@@ -136,9 +134,15 @@ There is a short poem for remembering,
     (holiday-solar-term "清明" "清明节")
     (holiday-fixed 5 1 "劳动节")
     (holiday-lunar 5 5 "端午节" 0)
+    (holiday-lunar 7 7 "七夕" 0)
+    (holiday-lunar 7 15 "中元节" 0)
     (holiday-lunar 8 15 "中秋节" 0)
     (holiday-lunar 9 9 "重阳节" 0)
-    (holiday-fixed 10 1 "国庆节"))
+    (holiday-fixed 10 1 "国庆节")
+    (holiday-lunar 12 8 "腊八" 0)
+    (holiday-lunar 12 23 "小年" 0)
+    (holiday-lunar 12 30 "除夕" 0)
+    )
   "Pre-defined Chinese public holidays.
 You can add this to your `calendar-holidays'.")
 
