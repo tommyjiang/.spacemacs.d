@@ -47,7 +47,7 @@
 (setq org-deadline-warning-days 30)
 
 ; Deadline headers
-(setq org-agenda-deadline-leaders '("今天截止:" "还有 %2d 天:" "%2d 天以前:"))
+(setq org-agenda-deadline-leaders '("今天截止:" "还有 %02d 天:" "%2d 天以前:"))
 (setq org-agenda-scheduled-leaders '("已安排:" "计划已过期 %d 天:"))
 
 ; Birthday display format
@@ -103,9 +103,7 @@
 ; Org Agenda faces
 (custom-set-faces
   '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))) t)
-  ;'(org-scheduled-today ((t (:foreground "00FF00"))) t)
   '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))) t)
-  ;'(org-agenda-date ((t (:foreground "#4B5CC4"))) t)
   )
 
 ; replace \emsp in org clock report

@@ -171,11 +171,12 @@ layers configuration."
   (require 'init-orgTommy)
   (require 'init-auctex)
 
-  (setq elfeed-feeds '(("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
-                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
-                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
+  (setq elfeed-feeds '(
+                      ;("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
+                      ;("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
+                      ;("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
 
-                      ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
+                      ;("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
 
                       ("http://rss.iwgc.cn/rss/6950-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 中国气象爱好者)
                       ("http://rss.iwgc.cn/rss/345-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 菠菜)
@@ -185,9 +186,6 @@ layers configuration."
                       ("http://rss.iwgc.cn/rss/99-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联生活周刊)
                       ("http://rss.iwgc.cn/rss/7175-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联节气)
                       ("http://rss.iwgc.cn/rss/4217-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 雅君)
-
-                      ("http://onehd.herokuapp.com/" 韩寒·一个)
-                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DSZZ&Virtual=knavi" 读书)
                       ))
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
@@ -226,6 +224,6 @@ layers configuration."
     ("~/org/Agenda.org" "~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Notes.org" "~/org/Python.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Watching.org" "~/org/Work.org")))
  '(package-selected-packages
    (quote
-    (diminish winum fuzzy f log4e async evil avy packed simple-httpd auto-complete org hydra alert iedit auctex request markdown-mode with-editor highlight bind-key smartparens flycheck projectile elfeed company yasnippet bind-map helm magit-popup git-commit helm-core magit flyspell-correct-helm flyspell-correct auto-dictionary ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-plus-contrib org-mac-link org-download open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump company-statistics company-auctex column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (s diminish winum fuzzy f log4e async evil avy packed simple-httpd auto-complete org hydra alert iedit auctex request markdown-mode with-editor highlight bind-key smartparens flycheck projectile elfeed company yasnippet bind-map helm magit-popup git-commit helm-core magit flyspell-correct-helm flyspell-correct auto-dictionary ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-plus-contrib org-mac-link org-download open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump company-statistics company-auctex column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(paradox-github-token t)
  '(tool-bar-mode nil))
