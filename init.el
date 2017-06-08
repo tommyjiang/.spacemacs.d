@@ -18,9 +18,7 @@
      bbdb
      elfeed
      emacs-lisp
-     ; ess
      git
-     ; javascript
      latex
      markdown
      org
