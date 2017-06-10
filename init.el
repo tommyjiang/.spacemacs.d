@@ -170,20 +170,11 @@ layers configuration."
   (require 'init-auctex)
 
   (setq elfeed-feeds '(
-                      ;("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
-                      ;("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
-                      ;("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=ZGDC&Virtual=knavi" 电机工程学报)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DLXT&Virtual=knavi" 电力系统自动化)
+                      ("http://rss.cnki.net/kns/rss.aspx?Journal=DWJS&Virtual=knavi" 电网技术)
 
-                      ;("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
-
-                      ("http://rss.iwgc.cn/rss/6950-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 中国气象爱好者)
-                      ("http://rss.iwgc.cn/rss/345-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 菠菜)
-                      ("http://rss.iwgc.cn/rss/45-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 豆瓣阅读)
-                      ("http://rss.iwgc.cn/rss/298-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 知乎日报)
-                      ("http://rss.iwgc.cn/rss/6910-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 李越)
-                      ("http://rss.iwgc.cn/rss/99-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联生活周刊)
-                      ("http://rss.iwgc.cn/rss/7175-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 三联节气)
-                      ("http://rss.iwgc.cn/rss/4217-7d67d7d1d9312d5a3c3ee78c0fe7b6544108" 雅君)
+                      ("http://ieeexplore.ieee.org/rss/TOC59.XML" TPWRS)
                       ))
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
