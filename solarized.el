@@ -134,122 +134,122 @@ Alpha should be a float between 0 and 1."
 
 ;;; Setup Start
 (defmacro solarized-with-color-variables (variant &rest body)
-  (declare (indent 0))
+  (declare (indent defun))
   `(let* ((class '((class color) (min-colors 89)))
-         (variant ,variant)
-         (s-base03    "#002b36")
-         (s-base02    "#073642")
-         ;; emphasized content
-         (s-base01    "#586e75")
-         ;; primary content
-         (s-base00    "#657b83")
-         (s-base0     "#839496")
-         ;; comments
-         (s-base1     "#93a1a1")
-         ;; background highlight light
-         (s-base2     "#eee8d5")
-         ;; background light
-         (s-base3     "#fdf6e3")
+          (variant ,variant)
+          (s-base03    "#002b36")
+          (s-base02    "#073642")
+          ;; emphasized content
+          (s-base01    "#586e75")
+          ;; primary content
+          (s-base00    "#657b83")
+          (s-base0     "#839496")
+          ;; comments
+          (s-base1     "#93a1a1")
+          ;; background highlight light
+          (s-base2     "#eee8d5")
+          ;; background light
+          (s-base3     "#fdf6e3")
 
-         ;; Solarized accented colors
-         (yellow    "#b58900")
-         (orange    "#cb4b16")
-         (red       "#dc322f")
-         (magenta   "#d33682")
-         (violet    "#6c71c4")
-         (blue      "#268bd2")
-         (cyan      "#2aa198")
-         (green     "#859900")
+          ;; Solarized accented colors
+          (yellow    "#b58900")
+          (orange    "#cb4b16")
+          (red       "#dc322f")
+          (magenta   "#d33682")
+          (violet    "#6c71c4")
+          (blue      "#268bd2")
+          (cyan      "#2aa198")
+          (green     "#859900")
 
-         ;; Darker and lighter accented colors
-         ;; Only use these in exceptional circumstances!
-         (yellow-d  "#7B6000")
-         (yellow-l  "#DEB542")
-         (orange-d  "#8B2C02")
-         (orange-l  "#F2804F")
-         (red-d     "#990A1B")
-         (red-l     "#FF6E64")
-         (magenta-d "#93115C")
-         (magenta-l "#F771AC")
-         (violet-d  "#3F4D91")
-         (violet-l  "#9EA0E5")
-         (blue-d    "#00629D")
-         (blue-l    "#69B7F0")
-         (cyan-d    "#00736F")
-         (cyan-l    "#69CABF")
-         (green-d   "#546E00")
-         (green-l   "#B4C342")
+          ;; Darker and lighter accented colors
+          ;; Only use these in exceptional circumstances!
+          (yellow-d  "#7B6000")
+          (yellow-l  "#DEB542")
+          (orange-d  "#8B2C02")
+          (orange-l  "#F2804F")
+          (red-d     "#990A1B")
+          (red-l     "#FF6E64")
+          (magenta-d "#93115C")
+          (magenta-l "#F771AC")
+          (violet-d  "#3F4D91")
+          (violet-l  "#9EA0E5")
+          (blue-d    "#00629D")
+          (blue-l    "#69B7F0")
+          (cyan-d    "#00736F")
+          (cyan-l    "#69CABF")
+          (green-d   "#546E00")
+          (green-l   "#B4C342")
 
-         ;; Solarized palette names, use these instead of -fg -bg...
-         (base0 (if (eq variant 'light) s-base00 s-base0))
-         (base00 (if (eq variant 'light) s-base0 s-base00))
-         (base1 (if (eq variant 'light) s-base01 s-base1))
-         (base01 (if (eq variant 'light) s-base1 s-base01))
-         (base2 (if (eq variant 'light) s-base02 s-base2))
-         (base02 (if (eq variant 'light) s-base2 s-base02))
-         (base3 (if (eq variant 'light) s-base03 s-base3))
-         (base03 (if (eq variant 'light) s-base3 s-base03))
+          ;; Solarized palette names, use these instead of -fg -bg...
+          (base0 (if (eq variant 'light) s-base00 s-base0))
+          (base00 (if (eq variant 'light) s-base0 s-base00))
+          (base1 (if (eq variant 'light) s-base01 s-base1))
+          (base01 (if (eq variant 'light) s-base1 s-base01))
+          (base2 (if (eq variant 'light) s-base02 s-base2))
+          (base02 (if (eq variant 'light) s-base2 s-base02))
+          (base3 (if (eq variant 'light) s-base03 s-base3))
+          (base03 (if (eq variant 'light) s-base3 s-base03))
 
-         ;; Line drawing color
-         ;;
-         ;; NOTE only use this for very thin lines that are hard to see using base02, in low
-         ;; color displayes base02 might be used instead
-         (s-line (if (eq variant 'light) "#cccec4" "#284b54"))
+          ;; Line drawing color
+          ;;
+          ;; NOTE only use this for very thin lines that are hard to see using base02, in low
+          ;; color displayes base02 might be used instead
+          (s-line (if (eq variant 'light) "#cccec4" "#284b54"))
 
-         ;; Light/Dark adaptive higher/lower contrast accented colors
-         ;;
-         ;; NOTE Only use these in exceptional cirmumstances!
-         (yellow-hc (if (eq variant 'light) yellow-d yellow-l))
-         (yellow-lc (if (eq variant 'light) yellow-l yellow-d))
-         (orange-hc (if (eq variant 'light) orange-d orange-l))
-         (orange-lc (if (eq variant 'light) orange-l orange-d))
-         (red-hc (if (eq variant 'light) red-d red-l))
-         (red-lc (if (eq variant 'light) red-l red-d))
-         (magenta-hc (if (eq variant 'light) magenta-d magenta-l))
-         (magenta-lc (if (eq variant 'light) magenta-l magenta-d))
-         (violet-hc (if (eq variant 'light) violet-d violet-l))
-         (violet-lc (if (eq variant 'light) violet-l violet-d))
-         (blue-hc (if (eq variant 'light) blue-d blue-l))
-         (blue-lc (if (eq variant 'light) blue-l blue-d))
-         (cyan-hc (if (eq variant 'light) cyan-d cyan-l))
-         (cyan-lc (if (eq variant 'light) cyan-l cyan-d))
-         (green-hc (if (eq variant 'light) green-d green-l))
-         (green-lc (if (eq variant 'light) green-l green-d))
+          ;; Light/Dark adaptive higher/lower contrast accented colors
+          ;;
+          ;; NOTE Only use these in exceptional cirmumstances!
+          (yellow-hc (if (eq variant 'light) yellow-d yellow-l))
+          (yellow-lc (if (eq variant 'light) yellow-l yellow-d))
+          (orange-hc (if (eq variant 'light) orange-d orange-l))
+          (orange-lc (if (eq variant 'light) orange-l orange-d))
+          (red-hc (if (eq variant 'light) red-d red-l))
+          (red-lc (if (eq variant 'light) red-l red-d))
+          (magenta-hc (if (eq variant 'light) magenta-d magenta-l))
+          (magenta-lc (if (eq variant 'light) magenta-l magenta-d))
+          (violet-hc (if (eq variant 'light) violet-d violet-l))
+          (violet-lc (if (eq variant 'light) violet-l violet-d))
+          (blue-hc (if (eq variant 'light) blue-d blue-l))
+          (blue-lc (if (eq variant 'light) blue-l blue-d))
+          (cyan-hc (if (eq variant 'light) cyan-d cyan-l))
+          (cyan-lc (if (eq variant 'light) cyan-l cyan-d))
+          (green-hc (if (eq variant 'light) green-d green-l))
+          (green-lc (if (eq variant 'light) green-l green-d))
 
-         ;; customize based face properties
-         (s-maybe-bold (if solarized-use-less-bold
-                           'unspecified 'bold))
-         (s-maybe-italic (if solarized-use-more-italic
-                             'italic 'normal))
-         (s-variable-pitch (if solarized-use-variable-pitch
-                               'variable-pitch 'default))
-         (s-fringe-bg (if solarized-distinct-fringe-background
-                          base02 base03))
-         (s-fringe-fg base01)
+          ;; customize based face properties
+          (s-maybe-bold (if solarized-use-less-bold
+                            'unspecified 'bold))
+          (s-maybe-italic (if solarized-use-more-italic
+                              'italic 'normal))
+          (s-variable-pitch (if solarized-use-variable-pitch
+                                'variable-pitch 'default))
+          (s-fringe-bg (if solarized-distinct-fringe-background
+                           base02 base03))
+          (s-fringe-fg base01)
 
-         (s-header-line-fg (if solarized-high-contrast-mode-line
-                               base1 base0))
-         (s-header-line-bg (if solarized-high-contrast-mode-line
-                               base02 base03))
-         (s-header-line-underline (if solarized-high-contrast-mode-line
-                                      nil base02))
+          (s-header-line-fg (if solarized-high-contrast-mode-line
+                                base1 base0))
+          (s-header-line-bg (if solarized-high-contrast-mode-line
+                                base02 base03))
+          (s-header-line-underline (if solarized-high-contrast-mode-line
+                                       nil base02))
 
-         (s-mode-line-fg (if solarized-high-contrast-mode-line
-                             base03 base0))
-         (s-mode-line-bg (if solarized-high-contrast-mode-line
-                             base0 base02))
-         (s-mode-line-underline (if solarized-high-contrast-mode-line
-                                    nil s-line))
+          (s-mode-line-fg (if solarized-high-contrast-mode-line
+                              base03 base0))
+          (s-mode-line-bg (if solarized-high-contrast-mode-line
+                              base0 base02))
+          (s-mode-line-underline (if solarized-high-contrast-mode-line
+                                     nil s-line))
 
-         (s-mode-line-buffer-id-fg (if solarized-high-contrast-mode-line
-                                       'unspecified base1))
-         (s-mode-line-inactive-fg (if solarized-high-contrast-mode-line
-                                      base0 base01))
-         (s-mode-line-inactive-bg (if solarized-high-contrast-mode-line
-                                      base02 base03))
-         (s-mode-line-inactive-bc (if solarized-high-contrast-mode-line
-                                      base02 base02))
-         )
+          (s-mode-line-buffer-id-fg (if solarized-high-contrast-mode-line
+                                        'unspecified base1))
+          (s-mode-line-inactive-fg (if solarized-high-contrast-mode-line
+                                       base0 base01))
+          (s-mode-line-inactive-bg (if solarized-high-contrast-mode-line
+                                       base02 base03))
+          (s-mode-line-inactive-bc (if solarized-high-contrast-mode-line
+                                       base02 base02))
+          )
      ,@body))
 
 (defun create-solarized-theme (variant theme-name &optional childtheme)
@@ -266,7 +266,7 @@ customize the resulting theme."
 ;;;;; basic coloring
      `(default ((,class (:foreground ,base0 :background ,base03))))
      `(shadow ((,class (:foreground ,base01))))
-     `(match ((,class (:foreground ,orange :weight bold))))
+     `(match ((,class (:foreground ,base1 :weight bold))))
      `(cursor ((,class (:foreground ,base03 :background ,base0
                                     :inverse-video t))))
      `(escape-glyph ((,class (:foreground ,violet))))
@@ -553,6 +553,7 @@ customize the resulting theme."
      `(cider-deprecated-face ((t (:background ,yellow))))
      `(cider-instrumented-face ((t (:box (:color ,red-l :line-width -1)))))
      `(cider-traced-face ((t (:box (:color ,cyan :line-width -1)))))
+     `(cider-fringe-good-face ((t (:foreground ,green-l))))
 ;;;;; cider-repl-mode
      `(cider-repl-err-output-face ((t (:inherit ,font-lock-warning-face :underline nil))))
 ;;;;; cider-test-mode
@@ -783,7 +784,7 @@ customize the resulting theme."
      `(fic-face ((,class (:background ,base03 :foreground ,orange
                                       :weight normal :slant italic))))
      `(font-lock-fic-face ((,class (:background ,base03 :foreground ,orange
-                                      :weight normal :slant italic))))
+                                                :weight normal :slant italic))))
 ;;;;; fixmee
      `(fixmee-notice-face ((,class (:background nil :foreground ,base1
                                                 :underline nil :slant italic :weight bold))))
@@ -866,21 +867,23 @@ customize the resulting theme."
      `(erc-prompt-face ((,class (:foreground ,orange :background ,base03 :weight bold))))
      `(erc-timestamp-face ((,class (:foreground ,green))))
      `(erc-underline-face ((t (:underline t))))
+;;;;; eros
+     `(eros-result-overlay-face ((t (:background unspecified))))
 ;;;;; git-commit
      `(git-commit-comment-action  ((,class (:foreground ,base0  :weight bold))))
      `(git-commit-comment-branch  ((,class (:foreground ,blue   :weight bold))))
      `(git-commit-comment-heading ((,class (:foreground ,yellow :weight bold))))
 ;;;;; git-gutter
      `(git-gutter:added
-         ((,class (:weight normal
-                           :foreground ,(if solarized-emphasize-indicators
-                                            green s-fringe-fg)
+       ((,class (:weight normal
+                         :foreground ,(if solarized-emphasize-indicators
+                                          green s-fringe-fg)
                          :background ,s-fringe-bg
                          ))))
      `(git-gutter:deleted
-         ((,class (:weight normal
-                           :foreground ,(if solarized-emphasize-indicators
-                                            red s-fringe-fg)
+       ((,class (:weight normal
+                         :foreground ,(if solarized-emphasize-indicators
+                                          red s-fringe-fg)
                          :background ,s-fringe-bg
                          ))))
      `(git-gutter:modified
@@ -921,7 +924,8 @@ customize the resulting theme."
      `(go-direx-header ((,class (:foreground ,blue))))
      `(go-direx-label ((,class (:foreground ,green))))
      `(go-direx-package ((,class (:foreground ,base1 :weight bold))))
-
+;;;;;; go-guru
+     `(go-guru-hl-identifier-face ((,class (:foreground ,magenta))))
 ;;;;;; go-mode
      `(go-coverage-0 ((,class (:foreground ,orange))))
      `(go-coverage-1 ((,class (:foreground ,(solarized-color-blend blue yellow (/ 2.0 6))))))
@@ -1060,11 +1064,11 @@ customize the resulting theme."
      `(hi-yellow ((,class (:foreground ,(solarized-color-blend yellow base1 0.5)
                                        :background,(solarized-color-blend yellow base03 0.15)))))
      `(hi-pink ((,class (:foreground ,(solarized-color-blend magenta base1 0.5)
-                                       :background,(solarized-color-blend magenta base03 0.15)))))
+                                     :background,(solarized-color-blend magenta base03 0.15)))))
      `(hi-green ((,class (:foreground ,(solarized-color-blend green base1 0.5)
-                                       :background,(solarized-color-blend green base03 0.15)))))
+                                      :background,(solarized-color-blend green base03 0.15)))))
      `(hi-blue ((,class (:foreground ,(solarized-color-blend blue base1 0.5)
-                                       :background,(solarized-color-blend blue base03 0.15)))))
+                                     :background,(solarized-color-blend blue base03 0.15)))))
      `(hi-black-b ((,class (:foreground ,base1
                                         :background ,base03
                                         :weight bold))))
@@ -1072,8 +1076,8 @@ customize the resulting theme."
                                    :foreground ,(solarized-color-blend cyan base1 0.7)
                                    :background ,(solarized-color-blend cyan base03 0.2)))))
      `(hi-green-b ((,class (:weight bold
-                           :foreground ,(solarized-color-blend green base1 0.7)
-                           :background ,(solarized-color-blend green base03 0.2)))))
+                                    :foreground ,(solarized-color-blend green base1 0.7)
+                                    :background ,(solarized-color-blend green base03 0.2)))))
      `(hi-red-b ((,class (:weight bold
                                   :foreground ,(solarized-color-blend red base1 0.7)
                                   :background ,(solarized-color-blend red base03 0.2)))))
@@ -1188,6 +1192,20 @@ customize the resulting theme."
      `(js2-private-function-call ((,class (:foreground ,yellow))))
      `(js2-private-member ((,class (:foreground ,blue))))
      `(js2-warning ((,class (:underline ,orange))))
+;;;;; js3-mode colors
+     `(js3-error ((,class (:foreground ,red))))
+     `(js3-external-variable ((,class (:foreground ,orange))))
+     `(js3-function-param ((,class (:foreground ,green))))
+     `(js3-instance-member ((,class (:foreground ,magenta))))
+     `(js3-jsdoc-html-tag-delimiter ((,class (:foreground ,cyan))))
+     `(js3-jsdoc-html-tag-name ((,class (:foreground ,orange))))
+     `(js3-jsdoc-tag ((,class (:foreground ,cyan))))
+     `(js3-jsdoc-type ((,class (:foreground ,blue))))
+     `(js3-jsdoc-value ((,class (:foreground ,violet))))
+     `(js3-magic-paren ((,class (:underline t))))
+     `(js3-private-function-call ((,class (:foreground ,yellow))))
+     `(js3-private-member ((,class (:foreground ,blue))))
+     `(js3-warning ((,class (:underline ,orange))))
 ;;;;; jedi
      `(jedi:highlight-function-argument ((,class (:inherit bold))))
 ;;;;; kite
@@ -1219,7 +1237,7 @@ customize the resulting theme."
      `(kite-attribute-prefix-face ((,class (:inherit kite-name-face))))
      `(kite-attribute-value-delimiter-face ((,class (:inherit kite-delimiter-face))))
      `(kite-attribute-value-face ((,class (:inherit kite-delimited-data-face))))
-     `(kite-boolean ((,class (:inherit nxml-char-ref-number))))
+     `(kite-boolean ((,class (:inherit font-lock-constant-face))))
      `(kite-cdata-section-CDATA-face ((,class (:inherit kite-name-face))))
      `(kite-cdata-section-content-face ((,class (:inherit kite-text-face))))
      `(kite-cdata-section-delimiter-face ((,class (:inherit kite-delimiter-face))))
@@ -1239,8 +1257,8 @@ customize the resulting theme."
      `(kite-entity-ref-name-face ((,class (:inherit kite-ref-face))))
      `(kite-hash-face ((,class (:inherit kite-name-face))))
      `(kite-link-face ((,class (:inherit change-log-file))))
-     `(kite-loading ((,class (:inherit font-lock-comment))))
-     `(kite-log-debug ((,class (:inherit font-lock-comment))))
+     `(kite-loading ((,class (:inherit font-lock-comment-face))))
+     `(kite-log-debug ((,class (:inherit font-lock-comment-face))))
      `(kite-log-error ((,class (:inherit error))))
      `(kite-log-log ((,class (:inherit default))))
      `(kite-log-warning ((,class (:inherit warning))))
@@ -1250,9 +1268,9 @@ customize the resulting theme."
      `(kite-namespace-attribute-value-delimiter-face ((,class (:inherit kite-attribute-value-delimiter-face))))
      `(kite-namespace-attribute-value-face ((,class (:inherit kite-attribute-value-face))))
      `(kite-namespace-attribute-xmlns-face ((,class (:inherit kite-name-face))))
-     `(kite-null ((,class (:inherit nxml-char-ref-number))))
-     `(kite-number ((,class (:inherit nxml-char-ref-number))))
-     `(kite-object ((,class (:inherit font-lock-variable-name))))
+     `(kite-null ((,class (:inherit font-lock-constant-face))))
+     `(kite-number ((,class (:inherit font-lock-constant-face))))
+     `(kite-object ((,class (:inherit font-lock-variable-name-face))))
      `(kite-processing-instruction-content-face ((,class (:inherit kite-delimited-data-face))))
      `(kite-processing-instruction-delimiter-face ((,class (:inherit kite-delimiter-face))))
      `(kite-processing-instruction-target-face ((,class (:inherit kite-name-face))))
@@ -1260,7 +1278,7 @@ customize the resulting theme."
      `(kite-prolog-literal-content-face ((,class (:inherit kite-delimited-data-face))))
      `(kite-prolog-literal-delimiter-face ((,class (:inherit kite-delimiter-face))))
      `(kite-property-name ((,class (:inherit default))))
-     `(kite-quote ((,class (:inherit font-lock-keyword))))
+     `(kite-quote ((,class (:inherit font-lock-keyword-face))))
      `(kite-stack-column-number ((,class (:inherit kite-number))))
      `(kite-stack-error-message ((,class (:inherit default))))
      `(kite-stack-error-type ((,class (:inherit error))))
@@ -1268,11 +1286,11 @@ customize the resulting theme."
      `(kite-stack-function-name ((,class (:inherit font-lock-function-name-face))))
      `(kite-stack-line-number ((,class (:inherit kite-number))))
      `(kite-stack-pseudo-file-name ((,class (:inherit default))))
-     `(kite-string ((,class (:inherit font-lock-string))))
+     `(kite-string ((,class (:inherit font-lock-string-face))))
      `(kite-table-head ((,class (:inherit highlight))))
      `(kite-tag-delimiter-face ((,class (:inherit kite-delimiter-face))))
      `(kite-tag-slash-face ((,class (:inherit kite-name-face))))
-     `(kite-undefined ((,class (:inherit nxml-char-ref-number))))
+     `(kite-undefined ((,class (:inherit font-lock-constant-face))))
 ;;;;; ledger-mode
      `(ledger-font-payee-uncleared-face ((t (:foreground ,red))))
      `(ledger-font-payee-cleared-face ((t (:foreground ,green :weight normal))))
@@ -1291,7 +1309,8 @@ customize the resulting theme."
      `(ledger-font-reconciler-pending-face ((t (:foreground ,yellow :weight normal))))
      `(ledger-font-report-clickable-face ((t (:foreground ,yellow :weight normal))))
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,s-fringe-fg :background ,s-fringe-bg))))
+     `(linum ((,class (:weight normal :underline nil :foreground ,s-fringe-fg :background ,s-fringe-bg))))
+     `(linum-relative-current-face ((,class (:inherit linum))))
 ;;;;; lusty-explorer
      `(lusty-directory-face ((,class (:inherit dired-directory))))
      `(lusty-file-face ((,class nil)))
@@ -1303,28 +1322,28 @@ customize the resulting theme."
      `(magit-section-heading             ((t (:foreground ,yellow :weight bold))))
      `(magit-section-heading-selection   ((t (:foreground ,orange :weight bold))))
      `(magit-diff-file-heading           ((t (:weight bold))))
-     `(magit-diff-file-heading-highlight ((t (:background ,base02 :weight bold))))
+     `(magit-diff-file-heading-highlight ((t (:background ,base02))))
      `(magit-diff-file-heading-selection ((t (:background ,base02
-                                              :foreground ,orange :weight bold))))
+                                                          :foreground ,orange))))
      `(magit-diff-hunk-heading
        ((t (:background ,(solarized-color-blend yellow base03 0.1)))))
      `(magit-diff-hunk-heading-highlight
        ((t (:background ,(solarized-color-blend yellow base02 0.1)))))
      `(magit-diff-hunk-heading-selection
        ((t (:background ,(solarized-color-blend yellow base02 0.1)
-            :foreground ,orange
-            :weight bold))))
+                        :foreground ,orange
+                        :weight bold))))
      `(magit-diff-lines-heading          ((t (:background ,orange
-                                              :foreground ,base3))))
+                                                          :foreground ,base3))))
      `(magit-diff-context-highlight      ((t (:background ,base02))))
      `(magit-diffstat-added              ((t (:foreground ,green))))
      `(magit-diffstat-removed            ((t (:foreground ,red))))
 ;;;;;; popup
-     `(magit-popup-heading             ((t (:foreground ,base1 :weight normal))))
-     `(magit-popup-key                 ((t (:foreground ,base1 :weight bold))))
-     `(magit-popup-argument            ((t (:foreground ,base1 :weight bold))))
-     `(magit-popup-disabled-argument   ((t (:foreground ,base01 :weight normal))))
-     `(magit-popup-option-value        ((t (:foreground ,base1 :weight bold))))
+     `(magit-popup-heading             ((t (:foreground ,yellow  :weight bold))))
+     `(magit-popup-key                 ((t (:foreground ,base1   :weight bold))))
+     `(magit-popup-argument            ((t (:foreground ,cyan    :weight bold))))
+     `(magit-popup-disabled-argument   ((t (:foreground ,base01  :weight normal))))
+     `(magit-popup-option-value        ((t (:foreground ,cyan    :weight bold))))
 ;;;;;; process
      `(magit-process-ok    ((t (:foreground ,green :weight bold))))
      `(magit-process-ng    ((t (:foreground ,red   :weight bold))))
@@ -1383,6 +1402,8 @@ customize the resulting theme."
 ;;;;; markdown-mode
      `(markdown-blockquote-face ((,class (:inherit font-lock-doc-face))))
      `(markdown-bold-face ((,class (:inherit bold))))
+     `(markdown-code-face ((,class (:inherit fixed-pitch :foreground ,base01
+                                             :background unspecified))))
      `(markdown-comment-face ((,class (:foreground ,base01 :strike-through t))))
      `(markdown-footnote-face ((,class (:inherit default))))
      `(markdown-header-delimiter-face ((,class (:foreground ,base01))))
@@ -1569,6 +1590,17 @@ customize the resulting theme."
      `(neo-dir-link-face ((,class (:foreground ,blue))))
      `(neo-file-link-face ((,class (:foreground ,base0))))
      `(neo-expand-btn-face ((,class (:foreground ,base01))))
+;;;;; notmuch
+     `(notmuch-message-summary-face ((,class (:inherit highlight))))
+     `(notmuch-search-date ((,class (:inherit default))))
+     `(notmuch-search-count ((,class (:inherit default))))
+     `(notmuch-search-subject ((,class (:inherit default))))
+     `(notmuch-search-matching-authors ((,class (:inherit default))))
+     `(notmuch-search-non-matching-authors ((,class (:inherit shadow))))
+     `(notmuch-tag-face ((,class (:foreground ,yellow))))
+     `(notmuch-search-flagged-face ((,class (:foreground ,blue))))
+     `(notmuch-search-unread-face ((,class (:weight bold))))
+
 ;;;;; org-mode
      `(org-agenda-structure
        ((,class (:slant normal :inverse-video nil
@@ -1577,22 +1609,22 @@ customize the resulting theme."
      `(org-agenda-calendar-event ((,class (:foreground ,base1))))
      `(org-agenda-calendar-sexp ((,class (:foreground ,base0))))
      `(org-agenda-date
-       ((,class (:foreground ,base01 :weight normal
-                             :box nil
+       ((,class (:foreground ,base01 :background ,base03 :weight normal
+                             :box (:line-width 2 :color ,base03)
                              :inverse-video nil :overline nil :slant normal :height 1.0))))
      `(org-agenda-date-weekend
        ((,class (:inherit org-agenda-date :inverse-video nil :background unspecified
                           :foreground ,base01 :weight unspecified
                           :underline t :overline nil :box nil))))
      `(org-agenda-date-today
-       ((,class (:inherit org-agenda-date :weight bold :foreground ,blue
-                          :underline unspecified :overline nil :box nil))))
+       ((,class (:inherit org-agenda-date :inverse-video t :weight bold
+                          :underline unspecified :overline nil :box nil
+                          :foreground ,blue :background ,base03))))
      `(org-agenda-done ((,class (:foreground ,base01 :slant italic))))
      `(org-archived ((,class (:foreground ,base01 :weight normal))))
      `(org-block ((,class (:foreground ,base01))))
-     `(org-block-begin-line ((,class (:foreground ,base01 :slant italic))))
-     `(org-checkbox ((,class (:background ,base03 :foreground ,base0))))
-     ;                                    :box (:line-width 1 :style released-button)))))
+     `(org-checkbox ((,class (:background ,base03 :foreground ,base0
+                                          :box (:line-width 1 :style released-button)))))
      `(org-code ((,class (:foreground ,base01))))
      `(org-date ((,class (:foreground ,blue :underline t))))
      `(org-done ((,class (:weight bold :foreground ,green))))
@@ -1600,27 +1632,28 @@ customize the resulting theme."
      `(org-formula ((,class (:foreground ,yellow))))
      `(org-headline-done ((,class (:foreground ,green))))
      `(org-hide ((,class (:foreground ,base03))))
-     `(org-level-1 ((,class (:inherit ,s-variable-pitch :foreground ,red
-                             ,@(when solarized-scale-org-headlines
-                                 (list :height solarized-height-plus-4))))))
+     `(org-level-1 ((,class (:inherit ,s-variable-pitch :foreground ,orange
+                                      ,@(when solarized-scale-org-headlines
+                                          (list :height solarized-height-plus-4))))))
      `(org-level-2 ((,class (:inherit ,s-variable-pitch :foreground ,green
-                             ,@(when solarized-scale-org-headlines
-                                 (list :height solarized-height-plus-3))))))
-     `(org-level-3 ((,class (:inherit ,s-variable-pitch :foreground ,orange
-                             ,@(when solarized-scale-org-headlines
-                                 (list :height solarized-height-plus-2))))))
-     `(org-level-4 ((,class (:inherit ,s-variable-pitch :foreground ,blue
-                             ,@(when solarized-scale-org-headlines
-                                 (list :height solarized-height-plus-1))))))
+                                      ,@(when solarized-scale-org-headlines
+                                          (list :height solarized-height-plus-3))))))
+     `(org-level-3 ((,class (:inherit ,s-variable-pitch :foreground ,blue
+                                      ,@(when solarized-scale-org-headlines
+                                          (list :height solarized-height-plus-2))))))
+     `(org-level-4 ((,class (:inherit ,s-variable-pitch :foreground ,yellow
+                                      ,@(when solarized-scale-org-headlines
+                                          (list :height solarized-height-plus-1))))))
      `(org-level-5 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,yellow))))
-     `(org-level-6 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,magenta))))
-     `(org-level-7 ((,class (:inherit ,s-variable-pitch
                                       :foreground ,cyan))))
+     `(org-level-6 ((,class (:inherit ,s-variable-pitch
+                                      :foreground ,green))))
+     `(org-level-7 ((,class (:inherit ,s-variable-pitch
+                                      :foreground ,red))))
      `(org-level-8 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,violet))))
+                                      :foreground ,blue))))
      `(org-link ((,class (:foreground ,yellow :underline t))))
+     `(org-meta-line ((,class (:foreground ,base01 :slant italic))))
      `(org-sexp-date ((,class (:foreground ,violet))))
      `(org-scheduled ((,class (:foreground ,green))))
      `(org-scheduled-previously ((,class (:foreground ,cyan))))
@@ -1645,7 +1678,7 @@ customize the resulting theme."
      ;; latest additions
      `(org-agenda-dimmed-todo-face ((,class (:foreground ,base01))))
      `(org-agenda-restriction-lock ((,class (:background ,yellow))))
-     `(org-clock-overlay ((,class (:background ,yellow))))
+     `(org-clock-overlay ((,class (:background ,base02))))
      `(org-column ((,class (:background ,base02 :strike-through nil
                                         :underline nil :slant normal :weight normal :inherit default))))
      `(org-column-title ((,class (:background ,base02 :underline t :weight bold))))
@@ -1692,16 +1725,16 @@ customize the resulting theme."
 ;;;;; powerline
      `(powerline-active1 ((,class ,(if solarized-high-contrast-mode-line
                                        `(:background ,base00 :foreground ,base03)
-                                       `(:background ,base03 :foreground ,base00)))))
+                                     `(:background ,base03 :foreground ,base00)))))
      `(powerline-active2 ((,class ,(if solarized-high-contrast-mode-line
                                        `(:background ,base01 :foreground ,base03)
-                                       `(:background ,base02 :foreground ,base00)))))
+                                     `(:background ,base02 :foreground ,base00)))))
      `(powerline-inactive1 ((,class ,(if solarized-high-contrast-mode-line
                                          `(:background ,base03 :foreground ,base1)
-                                         `(:background ,base02 :foreground ,base01)))))
+                                       `(:background ,base02 :foreground ,base01)))))
      `(powerline-inactive2 ((,class ,(if solarized-high-contrast-mode-line
                                          `(:background ,base02 :foreground ,base1)
-                                         `(:background ,base03 :foreground ,base01)))))
+                                       `(:background ,base03 :foreground ,base01)))))
 ;;;;; rainbow-blocks
      `(rainbow-blocks-depth-1-face ((,class (:foreground ,cyan))))
      `(rainbow-blocks-depth-2-face ((,class (:foreground ,yellow))))
@@ -2142,7 +2175,7 @@ customize the resulting theme."
 ;;;;; nrepl-client
      `(nrepl-message-colors
        '(,red ,orange ,yellow ,green-d ,green-l
-                      ,blue-d ,cyan ,magenta ,violet))
+              ,blue-d ,cyan ,magenta ,violet))
 ;;;;; highlight-changes
      `(highlight-changes-colors '(,magenta ,violet))
 ;;;;; highlight-symbol
@@ -2168,6 +2201,7 @@ customize the resulting theme."
      `(term-default-fg-color ,base0) ;; @deprecated24.3
      `(term-default-bg-color ,base03) ;; @deprecated24.3
 ;;;;; vc
+     `(vc-annotate-background-mode nil)
      `(vc-annotate-color-map
        '((20 . ,red)
          (40 . ,(solarized-color-blend yellow red (/ 2.0 4)))
@@ -2205,9 +2239,9 @@ customize the resulting theme."
      `(xterm-color-names-bright [,base03 ,orange ,base01 ,base00
                                          ,base0 ,violet ,base1 ,base3]))
 ;;; Setup End
-     (when childtheme
-       (funcall childtheme))
-     ) ; END custom-theme-set-variables
+    (when childtheme
+      (funcall childtheme))
+    ) ; END custom-theme-set-variables
   )    ; END defun create-solarized-theme
 
 ;;; Footer
