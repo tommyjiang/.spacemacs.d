@@ -1615,11 +1615,11 @@ customize the resulting theme."
      `(org-agenda-date-weekend
        ((,class (:inherit org-agenda-date :inverse-video nil :background unspecified
                           :foreground ,base01 :weight unspecified
-                          :underline t :overline nil :box nil))))
+                          :underline nil :overline nil :box nil))))
      `(org-agenda-date-today
-       ((,class (:inherit org-agenda-date :inverse-video t :weight bold
+       ((,class (:inherit org-agenda-date :inverse-video nil :weight bold
                           :underline unspecified :overline nil :box nil
-                          :foreground ,blue :background ,base03))))
+                          :foreground ,blue))))
      `(org-agenda-done ((,class (:foreground ,base01 :slant italic))))
      `(org-archived ((,class (:foreground ,base01 :weight normal))))
      `(org-block ((,class (:foreground ,base01))))
