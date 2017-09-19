@@ -29,9 +29,9 @@
   (highlight-regexp "纪念日:.*" "anniversary-lock-face")
   (highlight-regexp "节日.*" "holiday-lock-face")
   (highlight-regexp ".*\([0-9]+\/[0-9]+\):.*" "event-duration-lock-face")
-)
+  )
 
-(add-hook 'org-finalize-agenda-hook 'tommy-set-org-agenda-faces)
+(add-hook 'org-agenda-finalize-hook 'tommy-set-org-agenda-faces)
 
 ; Set org mode time stamp formats
 (setq org-time-stamp-formats '("<%Y-%m-%d %A>" . "<%Y-%m-%d %A %H:%M>"))
