@@ -175,6 +175,7 @@ layers configuration."
   (require 'init-org)
   (require 'init-orgTommy)
   (require 'init-auctex)
+  (require 'helm-bookmark)
 
   (setq magit-push-always-verify nil) ; magit 每次push不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
