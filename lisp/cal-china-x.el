@@ -138,6 +138,7 @@ There is a short poem for remembering,
     (holiday-lunar 7 15 "中元节" 0)
     (holiday-lunar 8 15 "中秋节" 0)
     (holiday-lunar 9 9 "重阳节" 0)
+    (holiday-fixed 9 10 "教师节")
     (holiday-fixed 10 1 "国庆节")
     (holiday-lunar 12 8 "腊八" 0)
     (holiday-lunar 12 23 "小年" 0)
