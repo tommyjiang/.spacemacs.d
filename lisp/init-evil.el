@@ -1,7 +1,5 @@
 ; 设置一些 mode 中使用 emacs mode
 (evil-set-initial-state 'calendar-mode 'emacs)
-; (evil-set-initial-state 'inferior-ess-mode 'emacs)
-; (evil-set-initial-state 'ess-watch-mode 'emacs)
 (evil-set-initial-state 'text-mode 'insert)
 (evil-set-initial-state 'magit-status-mode 'emacs)
 
