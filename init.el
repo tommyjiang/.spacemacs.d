@@ -199,9 +199,9 @@ layers configuration."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))) t)
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))) t)
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

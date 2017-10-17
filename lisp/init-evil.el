@@ -1,9 +1,10 @@
 ; 设置一些 mode 中使用 emacs mode
 (evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'text-mode 'insert)
+(add-hook 'git-commit-mode-hook 'evil-insert-state)
 (evil-set-initial-state 'magit-status-mode 'emacs)
 
-; Org capture 自动转为 insert state 
+; Org capture 自动转为 insert state
 (add-hook 'org-capture-mode-hook 'evil-insert-state) ; org capture
 
 ; Org mode 中回车的设置
