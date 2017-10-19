@@ -22,13 +22,13 @@
 ; Mint 命令
 (add-hook 'LaTeX-mode-hook
   (lambda ()
-    (add-to-list 'TeX-command-list 
+    (add-to-list 'TeX-command-list
       '("Mint" "%`xelatex -shell-escape %(mode)%' %t" TeX-run-TeX nil t))))
 
 ; latex 命令
 (add-hook 'LaTeX-mode-hook
   (lambda ()
-    (add-to-list 'TeX-command-list 
+    (add-to-list 'TeX-command-list
       '("mk" "latexmk -pdf -xelatex %(mode)%' %t" TeX-run-TeX nil t))))
 
 ; 双向搜索
@@ -36,7 +36,7 @@
 (setq TeX-source-correlate-method-active 'synctex)
 (setq TeX-source-correlate-start-server t)
 (setq TeX-view-program-selection '((output-pdf "Skim")))
-(setq TeX-view-program-list 
+(setq TeX-view-program-list
     '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n %o")))
 (server-start)
 
