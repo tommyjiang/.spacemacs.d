@@ -212,7 +212,7 @@ layers configuration."
  '(menu-bar-mode nil)
  '(org-agenda-files
    (quote
-    ("~/org/Agenda.org" "~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/ML.org" "~/org/Notes.org" "~/org/Python.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Watching.org" "~/org/Work.org")))
+    ("~/org/Agenda.org" "~/org/Data.org" "~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Watching.org" "~/org/Work.org")))
  '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
    (quote
