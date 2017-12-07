@@ -1610,7 +1610,7 @@ customize the resulting theme."
      `(org-agenda-calendar-sexp ((,class (:foreground ,base0))))
      `(org-agenda-date
        ((,class (:foreground ,base01 :background ,base03 :weight normal
-                             :box (:line-width 2 :color ,base03)
+                             :box nil
                              :inverse-video nil :overline nil :slant normal :height 1.0))))
      `(org-agenda-date-weekend
        ((,class (:inherit org-agenda-date :inverse-video nil :background unspecified
