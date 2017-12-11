@@ -18,17 +18,13 @@
      auto-completion
      bbdb
      emacs-lisp
+     (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/tommyfeed.org"))
      fasd
      git
-     ; (ipython-notebook :variables
-     ;                   ein:jupyter-default-server-command "/usr/local/bin/jupyter"
-     ;                   ein:jupyter-default-notebook-directory "~/Documents/Python Projects"
-     ;                   ein:jupyter-server-args (list "--no-browser"))
      latex
      markdown
      org
      osx
-     ; python
      spell-checking
      syntax-checking
      )
@@ -210,7 +206,6 @@ layers configuration."
  '(org-agenda-files
    (quote
     ("~/org/Agenda.org" "~/org/Data.org" "~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Watching.org" "~/org/Work.org")))
- '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
    (quote
     (fasd popwin web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data gmail-message-mode ham-mode html-to-markdown flymd edit-server vmd-mode theme-changer sunshine rase osx-location ledger-mode flycheck-ledger goto-chg org-plus-contrib org-mime ein skewer-mode websocket js2-mode persp-mode org-bullets google-translate define-word org-trello dash-functional request-deferred deferred org-category-capture powerline undo-tree s diminish winum fuzzy f log4e async evil avy packed simple-httpd auto-complete org hydra alert iedit auctex request markdown-mode with-editor highlight bind-key smartparens flycheck projectile elfeed company yasnippet bind-map helm magit-popup git-commit helm-core magit flyspell-correct-helm flyspell-correct auto-dictionary ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mac-link org-download open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump company-statistics company-auctex column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
@@ -231,10 +226,9 @@ This function is called at the very end of Spacemacs initialization."
  '(org-agenda-files
    (quote
     ("~/org/Agenda.org" "~/org/Data.org" "~/org/Diary.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Life.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Watching.org" "~/org/Work.org")))
- '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
    (quote
-    (symon string-inflection password-generator spinner gntp org-brain monokai-theme impatient-mode parent-mode helm-purpose window-purpose imenu-list gitignore-mode pos-tip pkg-info epl flx evil-org evil-lion anzu editorconfig dash popup fasd popwin web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data gmail-message-mode ham-mode html-to-markdown flymd edit-server vmd-mode theme-changer sunshine rase osx-location ledger-mode flycheck-ledger goto-chg org-plus-contrib org-mime ein skewer-mode websocket js2-mode persp-mode org-bullets google-translate define-word org-trello dash-functional request-deferred deferred org-category-capture powerline undo-tree s diminish winum fuzzy f log4e async evil avy packed simple-httpd auto-complete org hydra alert iedit auctex request markdown-mode with-editor highlight bind-key smartparens flycheck projectile elfeed company yasnippet bind-map helm magit-popup git-commit helm-core magit flyspell-correct-helm flyspell-correct auto-dictionary ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mac-link org-download open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump company-statistics company-auctex column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (org-brain fasd popwin web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data gmail-message-mode ham-mode html-to-markdown flymd edit-server vmd-mode theme-changer sunshine rase osx-location ledger-mode flycheck-ledger goto-chg org-plus-contrib org-mime ein skewer-mode websocket js2-mode persp-mode org-bullets google-translate define-word org-trello dash-functional request-deferred deferred org-category-capture powerline undo-tree s diminish winum fuzzy f log4e async evil avy packed simple-httpd auto-complete org hydra alert iedit auctex request markdown-mode with-editor highlight bind-key smartparens flycheck projectile elfeed company yasnippet bind-map helm magit-popup git-commit helm-core magit flyspell-correct-helm flyspell-correct auto-dictionary ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mac-link org-download open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint launchctl info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump company-statistics company-auctex column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -243,7 +237,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))) t)
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))) t)
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
 )

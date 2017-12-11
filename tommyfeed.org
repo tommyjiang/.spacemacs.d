@@ -1,0 +1,5 @@
+* Blogs                                                              :elfeed:
+** Editor                                                           :editor:
+*** Emacs                                                           :emacs:
+**** [[http://planet.emacsen.org/atom.xml][Planet Emacsen]]
+**** [[https://github.com/railwaycat/homebrew-emacsmacport/releases.atom][Emacs port releases]]
