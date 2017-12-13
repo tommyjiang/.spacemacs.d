@@ -2,4 +2,9 @@
 ** Editor                                                           :editor:
 *** Emacs                                                           :emacs:
 **** [[http://planet.emacsen.org/atom.xml][Planet Emacsen]]
-**** [[https://github.com/railwaycat/homebrew-emacsmacport/releases.atom][Emacs port releases]]
+**** [[https://github.com/railwaycat/homebrew-emacsmacport/releases.atom][Emacs port]]
+** Geek                                                               :geek:
+*** [[http://www.ruanyifeng.com/blog/atom.xml][阮一峰博客]]
+** Game                                                               :game:
+*** [[https://github.com/HearthSim/HSTracker/releases.atom][HSTracker]]
+*** [[http://feed43.com/7464425312130006.xml][HSReplay Article]]
