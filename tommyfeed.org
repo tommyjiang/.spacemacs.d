@@ -1,4 +1,4 @@
-* Blogs                                                              :elfeed:
+* Feeds                                                              :elfeed:
 ** Editor                                                           :editor:
 *** Emacs                                                           :emacs:
 **** [[http://planet.emacsen.org/atom.xml][Planet Emacsen]]
@@ -8,3 +8,13 @@
 ** Game                                                               :game:
 *** [[https://github.com/HearthSim/HSTracker/releases.atom][HSTracker]]
 *** [[http://feed43.com/7464425312130006.xml][HSReplay Article]]
+** Books                                                             :books:
+*** [[https://feed43.com/7621403232482647.xml][多读书，读好书]]
+** Blog                                                               :blog:
+*** Party                                                           :party:
+**** [[https://feed43.com/6050302227821176.xml][文三娃]]
+** AI                                                                   :AI:
+*** [[https://rss.lilydjwg.me/zhihuzhuanlan/xiaoleimlnote][晓雷机器学习笔记]]                                                :zhihu:
+** Entertainment                                             :entertainment:
+*** [[https://www.zhihu.com/rss][知乎日报]]                                                        :zhihu:
+
