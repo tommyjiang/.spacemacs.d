@@ -81,7 +81,7 @@
 ; Todo Keywords
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"))))
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "#dc322f" :weight bold)
@@ -89,9 +89,7 @@
               ("DONE" :foreground "#2aa198" :weight bold)
               ("WAITING" :foreground "#cb4b16" :weight bold)
               ("HOLD" :foreground "#d33682" :weight bold)
-              ("CANCELLED" :foreground "#2aa198" :weight bold)
-              ("MEETING" :foreground "#2aa198" :weight bold)
-              ("PHONE" :foreground "#2aa198" :weight bold))))
+              ("CANCELLED" :foreground "#2aa198" :weight bold))))
 
 ; Fast Selection
 (setq org-use-fast-todo-selection t)
