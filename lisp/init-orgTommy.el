@@ -19,8 +19,8 @@
     (0.0  . org-level-4)))
 
 ; Set anniversary/holiday faces in org agenda
-(defface anniversary-lock-face '((t (:foreground "#9900FF" :bold t))) t)
-(defface holiday-lock-face '((t (:foreground "#FF2121" :bold t))) t)
+(defface anniversary-lock-face '((t (:foreground "#9900FF" :bold t :slant normal))) t)
+(defface holiday-lock-face '((t (:foreground "#FF2121" :bold t :slant normal))) t)
 (defface event-duration-lock-face '((t (:foreground "#D33682"))) t)
 
 (defun tommy-set-org-agenda-faces ()
