@@ -119,8 +119,8 @@
                "* TODO %?\n%T\n")
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%T\n" :clock-in t :clock-resume t)
-              ("j" "Journal" entry (file+olp+datetree+prompt "~/org/Diary.org")
-               "* %?\n%T\n" :clock-in t :clock-resume t)
+              ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
+               "* %?\n%T\n" :clock-in t :clock-resume t :time-prompt t)
               ("h" "Habit" entry (file "~/git/org/Refile.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
