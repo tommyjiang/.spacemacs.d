@@ -10,17 +10,14 @@
 *** [[https://github.com/HearthSim/HSTracker/releases.atom][HSTracker]]
 *** [[http://feed43.com/7464425312130006.xml][HSReplay Article]]
 ** Books                                                             :books:
-*** [[https://feed43.com/7621403232482647.xml][多读书，读好书]]
 ** Blog                                                               :blog:
 *** [[http://tommyjiang.coding.me/atom.xml][自己的博客]]                                                      :tommy:
 *** Party                                                           :party:
 **** [[https://feed43.com/6050302227821176.xml][文三娃]]
 **** [[https://feed43.com/0560223450807214.xml][编程随想]]
-*** WeChat                                                         :wechat:
-**** [[https://rss-wechat.herokuapp.com/users/1/web_requests/10/weixin.xml][圈外孙圈圈]]
 ** AI                                                                   :AI:
 *** [[https://rss.lilydjwg.me/zhihuzhuanlan/xiaoleimlnote][晓雷机器学习笔记]]                                                :zhihu:
 *** [[https://rss.lilydjwg.me/zhihuzhuanlan/jiqizhixin?group_id=927220614751195136][机器之心]]
-** Entertainment                                             :entertainment:
-*** [[https://www.zhihu.com/rss][知乎日报]]                                                        :zhihu:
+** Work                                                               :work:
+*** [[https://github.com/Tunnelblick/Tunnelblick/releases.atom][Tunnelblick]]
 
