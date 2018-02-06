@@ -193,10 +193,6 @@ layers configuration."
   ; Org export
   (setq org-latex-pdf-process (list "latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
 
-  ; Hot fix for helm
-  (with-eval-after-load 'helm
-    (setq helm-display-function 'helm-default-display-buffer))
-
   ; (setq debug-on-error)
 
   ; (add-to-list
