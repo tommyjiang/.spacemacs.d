@@ -9,6 +9,19 @@
     charset
     (font-spec :family "Hiragino Sans GB W3"))))
 
+; Solarized
+(setq solarized-scale-org-headlines nil)
+(custom-theme-set-faces
+ 'solarized-light
+ '(org-agenda-date-today
+   ((t (:foreground "#268db2" :box nil))))
+ '(org-agenda-structure
+   ((t (:box nil))))
+ '(org-agenda-date
+   ((t (:box nil))))
+ '(org-verbatim
+   ((t (:inherit fixed-pitch))))
+ )
 
 ; 启动后全屏
 (toggle-frame-maximized)
