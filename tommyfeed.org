@@ -4,6 +4,7 @@
 **** [[http://planet.emacsen.org/atom.xml][Planet Emacsen]]
 **** [[https://github.com/railwaycat/homebrew-emacsmacport/releases.atom][Emacs port]]
 **** [[https://www.reddit.com/r/orgmode/.rss][Reddit orgmode]]                                              :orgmode:
+**** [[https://www.reddit.com/r/spacemacs/.rss][Reddit spacemacs]]                                            :orgmode:
 ** Geek                                                               :geek:
 *** [[http://www.ruanyifeng.com/blog/atom.xml][阮一峰博客]]
 ** Game                                                               :game:

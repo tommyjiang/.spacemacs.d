@@ -20,7 +20,9 @@
  '(org-agenda-date
    ((t (:box nil))))
  '(org-verbatim
-   ((t (:inherit fixed-pitch))))
+   ((t (:foreground "#d33682" :inherit fixed-pitch))))
+ '(org-checkbox
+   ((t (:foreground "#d33682" :box nil))))
  )
 
 ; 启动后全屏
