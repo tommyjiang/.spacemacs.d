@@ -1,11 +1,10 @@
 ; Org-mode settings by Tommy
 
+; Do not confirm deletion in org agenda
 (setq org-agenda-confirm-kill nil)
 
+; Pad leading zero in org agenda
 (setq org-agenda-time-leading-zero t)
-
-; org-mode crypt append system path
-(setq exec-path (append exec-path '("/usr/local/bin")))
 
 ; Display agenda when starting Emacs
 (add-hook 'after-init-hook (lambda () (org-agenda nil " ")))
@@ -120,8 +119,7 @@
 
 (defface phone-number-face '((t (:foreground "red"))) t)
 
-(setq org-agenda-confirm-kill nil)
-
+; org completion with helm
 (setq org-completion-use-ido nil)
 
 (when (and (boundp 'org-completion-handler)
