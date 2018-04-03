@@ -41,7 +41,7 @@
 (server-start)
 
 ; 不放大缩小字号
-(setq font-latex-fontify-sectioning 1.0) ; do not fontify section title
+(setq font-latex-fontify-sectioning 'color) ; do not fontify section title
 (setq font-latex-fontify-script nil) ; do not fontify script
 
 (provide 'init-auctex)
