@@ -179,6 +179,7 @@ layers configuration."
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
   (setq purpose-mode nil)
   (spaceline-compile) ; 更新 spaceline 设置
+  (setq ispell-personal-dictionary "~/org/.aspell.en.pws")
 
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
