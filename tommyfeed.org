@@ -3,6 +3,7 @@
 *** Emacs                                                           :emacs:
 **** [[http://planet.emacsen.org/atom.xml][Planet Emacsen]]
 **** [[https://github.com/railwaycat/homebrew-emacsmacport/releases.atom][Emacs port]]
+**** [[http://cestlaz.github.io/rss.xml][Using Emacs Series]]
 **** [[https://www.reddit.com/r/orgmode/.rss][Reddit orgmode]]                                              :orgmode:
 **** [[https://www.reddit.com/r/spacemacs/.rss][Reddit spacemacs]]                                            :orgmode:
 ** Geek                                                               :geek:
@@ -13,6 +14,7 @@
 ** Books                                                             :books:
 ** Blog                                                               :blog:
 *** [[http://tommyjiang.coding.me/atom.xml][自己的博客]]                                                      :tommy:
+*** [[http://karpathy.github.io/feed.xml][A. Karpathy]]                                                        :CV:
 *** Party                                                           :party:
 **** [[https://feed43.com/6050302227821176.xml][文三娃]]
 **** [[https://feed43.com/0560223450807214.xml][编程随想]]

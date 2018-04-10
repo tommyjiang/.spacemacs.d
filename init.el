@@ -180,21 +180,6 @@ layers configuration."
   (setq purpose-mode nil)
   (spaceline-compile) ; 更新 spaceline 设置
 
-  ; helm-bibtex settings
-  (setq bibtex-completion-bibliography '("~/org/paper.bib"
-                                         "~/org/tutorial.bib"))
-  (setq bibtex-completion-library-path '("~/Downloads/Machine Learning/Papers/"
-                                         "~/Downloads/Machine Learning/Books/General"
-                                         "~/Downloads/Machine Learning/Tutorials"))
-
-  ; Org export
-  (setq org-latex-pdf-process (list "latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
-
-  ; PDF open app
-  (setq org-file-apps
-        `((auto-mode . emacs)
-          ("\\.pdf\\'" . "okular \"%s\"")))
-
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
 
@@ -233,4 +218,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auctex flyspell-correct dash iedit simple-httpd hydra epl highlight helm-bibtex company evil async smartparens git-commit elfeed alert org-plus-contrib flycheck projectile markdown-mode magit-popup ghub powerline yasnippet ivy helm magit auto-compile parsebib helm-core with-editor slime ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode pcre2el pbcopy paradox packed osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download open-junk-file neotree move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint less-css-mode launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump diminish company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (s gitignore-mode avy auctex flyspell-correct dash iedit simple-httpd hydra epl highlight helm-bibtex company evil async smartparens git-commit elfeed alert org-plus-contrib flycheck projectile markdown-mode magit-popup ghub powerline yasnippet ivy helm magit auto-compile parsebib helm-core with-editor slime ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode pcre2el pbcopy paradox packed osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download open-junk-file neotree move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint less-css-mode launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump diminish company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
