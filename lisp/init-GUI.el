@@ -23,6 +23,18 @@
    ((t (:foreground "#d33682" :inherit fixed-pitch))))
  '(org-checkbox
    ((t (:foreground "#d33682" :box nil))))
+ '(font-latex-sectioning-0-face
+   ((t (:height 1.0))))
+ '(font-latex-sectioning-1-face
+   ((t (:height 1.0))))
+ '(font-latex-sectioning-2-face
+   ((t (:height 1.0))))
+ '(font-latex-sectioning-3-face
+   ((t (:height 1.0))))
+ '(font-latex-sectioning-4-face
+   ((t (:height 1.0))))
+ '(font-latex-sectioning-5-face
+   ((t (:height 1.0))))
  )
 
 ; 启动后全屏
