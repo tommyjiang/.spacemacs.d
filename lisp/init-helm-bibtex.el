@@ -1,8 +1,8 @@
 ; helm-bibtex settings
 (setq bibtex-completion-bibliography '("~/org/paper.bib"
                                        "~/org/tutorial.bib"))
-(setq bibtex-completion-library-path '("~/Documents/Library.papers3/Library.papers3/Files" 
-                                       "~/Downloads/Machine Learning/Books/General" 
+(setq bibtex-completion-library-path '("~/Documents/Library.papers3/Library.papers3/Files"
+                                       "~/Downloads/Machine Learning/Books"
                                        "~/Downloads/Machine Learning/Tutorials"))
 
 ; Org export

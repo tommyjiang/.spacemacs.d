@@ -35,6 +35,10 @@
    ((t (:height 1.0))))
  '(font-latex-sectioning-5-face
    ((t (:height 1.0))))
+ '(org-document-title
+   ((t (:foreground "#93a1a1"))))
+ '(org-document-info
+   ((t (:foreground "#93a1a1"))))
  )
 
 ; 启动后全屏
