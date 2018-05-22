@@ -2,7 +2,7 @@
 (setq bibtex-completion-bibliography '("~/org/paper.bib"
                                        "~/org/tutorial.bib"))
 (setq bibtex-completion-library-path '("~/Downloads/Machine Learning/Papers/"
-                                       "~/Downloads/Machine Learning/Books/General"
+                                       "~/Downloads/Machine Learning/Books"
                                        "~/Downloads/Machine Learning/Tutorials"))
 
 ; Org export
