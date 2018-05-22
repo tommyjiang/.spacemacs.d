@@ -21,6 +21,4 @@
 ** AI                                                                   :AI:
 *** [[https://rss.lilydjwg.me/zhihuzhuanlan/xiaoleimlnote][晓雷机器学习笔记]]                                                :zhihu:
 *** [[https://rss.lilydjwg.me/zhihuzhuanlan/jiqizhixin?group_id=927220614751195136][机器之心]]
-** Work                                                               :work:
-*** [[https://github.com/Tunnelblick/Tunnelblick/releases.atom][Tunnelblick]]
 

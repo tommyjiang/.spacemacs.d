@@ -83,7 +83,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '(;"Source Code Pro"
+                               "Inconsolata"
                                :size 24
                                :weight normal
                                :width normal
@@ -158,7 +159,7 @@ before layers configuration."
 )
 
 (defun dotspacemacs/user-init ()
-  (setq ispell-program-name "/usr/bin/aspell")
+  (setq ispell-program-name "/usr/local/bin/aspell")
 )
 
 (defun dotspacemacs/user-config ()
@@ -179,7 +180,7 @@ layers configuration."
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
   (setq purpose-mode nil)
   (spaceline-compile) ; 更新 spaceline 设置
-  (setq ispell-personal-dictionary "~/org/.aspell.en.pws") ; dict 设置
+  (setq ispell-personal-dictionary "~/org/.aspell.en.pws") ; aspell dict 位置
   (setq org-html-head-extra nil) ; 导出 html 时采用自定义 CSS
 
   (org-agenda nil " ") ; 启动后显示 org agenda
