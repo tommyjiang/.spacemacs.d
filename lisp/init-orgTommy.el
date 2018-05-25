@@ -144,8 +144,8 @@
 
 (defun tommy/org-html-checkbox (checkbox)
   "Format CHECKBOX into HTML."
-  (case checkbox (on "<span class=\"check\">&#x2705;</span>") ; checkbox (checked)
-                 (off "<span class=\"checkbox\">&#x1F5F9;</span>") ; checkbox (not checked)
+  (case checkbox (on "<span class=\"check\">&#x2610;</span>") ; checkbox (checked)
+                 (off "<span class=\"checkbox\">&#x2611;</span>") ; checkbox (not checked)
                  (trans "<code>[-]</code>")
                  (t "")))
 
