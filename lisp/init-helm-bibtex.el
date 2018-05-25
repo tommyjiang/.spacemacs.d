@@ -8,6 +8,11 @@
 ; Org export
 (setq org-latex-pdf-process (list "latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
 
+; PDF open app
+(setq org-file-apps
+      `((auto-mode . emacs)
+        ("\\.pdf\\'" . "okular \"%s\"")))
+
 ; Replaced version of open pdf
 (defun my/org-ref-open-pdf-at-point ()
     "Open the pdf for bibtex key under point if it exists."
