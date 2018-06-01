@@ -36,7 +36,6 @@
 (setq TeX-source-correlate-method-active 'synctex)
 (setq TeX-source-correlate-start-server t)
 (setq TeX-view-program-selection '((output-pdf "Okular")))
-; (setq TeX-view-program-list '(("Okular" "okular --unique %o#src:%n%b")))
 (server-start)
 
 ; 不放大缩小字号
