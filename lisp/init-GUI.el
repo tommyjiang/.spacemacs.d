@@ -41,9 +41,18 @@
  '(org-document-info
    ((t (:foreground "#93a1a1"))))
  ; mu4e
- '(mu4e-highlight-face
-   ((t (:foreground "#268db2" :background "#fdf6e3"))))
+ ; '(mu4e-highlight-face
+ ;   ((t (:inherit default :foreground "#268db2"))))
+ '(mu4e-modeline-face
+   ((t (:inherit default :background ))))
  )
+
+(setq theming-modifications '(
+  (solarized-light (mu4e-highlight-face :foreground "#268db2")
+                   ))
+)
+
+(spacemacs/update-theme)
 
 ; 启动后全屏
 (toggle-frame-maximized)
