@@ -21,8 +21,10 @@
      emacs-lisp
      (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/tommyfeed.org"))
      git
+     gnus
      latex
      markdown
+     (mu4e :variables mu4e-installation-path "/usr/local/Cellar/mu/1.0/share/emacs/site-lisp/mu/mu4e")
      (org :variables org-want-todo-bindings t)
      osx
      spell-checking
@@ -170,6 +172,7 @@ layers configuration."
   (require 'init-cal)
   (require 'init-bbdb)
   (require 'init-evil)
+  (require 'init-mu4e)
   (require 'init-org)
   (require 'init-orgTommy)
   (require 'init-auctex)
@@ -184,13 +187,6 @@ layers configuration."
 
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -203,21 +199,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-ref helm-bibtex dumb-jump elfeed helm helm-core magit slime ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode pdf-tools pcre2el pbcopy password-generator parsebib paradox overseer osx-trash osx-dictionary orgit org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint less-css-mode launchctl key-chord ivy info+ indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit ghub gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies editorconfig diminish company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode biblio bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (solarized-theme restart-emacs helm magit slime imenu-list which-key yasnippet-snippets ws-butler winum web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder rainbow-delimiters pug-mode pcre2el pbcopy password-generator paradox overseer osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit ghub gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies editorconfig dumb-jump diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))))
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
+ )
 )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (bind-key pdf-tools org2ctex s gitignore-mode avy auctex flyspell-correct dash iedit simple-httpd hydra epl highlight helm-bibtex company evil async smartparens git-commit elfeed alert org-plus-contrib flycheck projectile markdown-mode magit-popup ghub powerline yasnippet ivy helm magit auto-compile parsebib helm-core with-editor slime ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode pcre2el pbcopy paradox packed osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download open-junk-file neotree move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative link-hint less-css-mode launchctl info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump diminish company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))

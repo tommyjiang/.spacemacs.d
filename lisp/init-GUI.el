@@ -13,6 +13,7 @@
 (setq solarized-scale-org-headlines nil)
 (custom-theme-set-faces
  'solarized-light
+ ; org mode
  '(org-agenda-date-today
    ((t (:foreground "#268db2" :box nil))))
  '(org-agenda-structure
@@ -39,6 +40,9 @@
    ((t (:foreground "#93a1a1"))))
  '(org-document-info
    ((t (:foreground "#93a1a1"))))
+ ; mu4e
+ '(mu4e-highlight-face
+   ((t (:foreground "#268db2" :background "#fdf6e3"))))
  )
 
 ; 启动后全屏
