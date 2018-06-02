@@ -5,7 +5,7 @@
 (setq mu4e-maildir "~/mail"
       mu4e-drafts-folder "/Drafts"
       mu4e-sent-folder "/Sent Messages"
-      mu4e-refile-folder "/&UXZO1mWHTvZZOQ-.Archive"
+      mu4e-refile-folder "/&UXZO1mWHTvZZOQ-.&W1hoYw-"
       mu4e-trash-folder "/Deleted Messages"
       mu4e-update-interval nil
       mu4e-compose-signature-auto-include nil
