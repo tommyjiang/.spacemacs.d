@@ -127,7 +127,12 @@
         (insert (org~mu4e-mime-multipart
                  raw-body html (mapconcat 'identity html-images "\n")))))))
 
-; bbdb hook
-(add-hook 'message-setup-hook 'bbdb-mail-aliases)
+; 只显示直接发送邮件的联系人
+(setq helm-mu-contacts-personal t)
+
+; 利用 helm-mu 进行查找
+(define-key mu4e-main-mode-map "s" 'helm-mu)
+(define-key mu4e-headers-mode-map "s" 'helm-mu)
+(define-key mu4e-view-mode-map "s" 'helm-mu)
 
 (provide 'init-mu4e)
