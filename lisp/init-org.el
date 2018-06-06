@@ -702,7 +702,7 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
       next-headline)))
 
 (setq org-archive-mark-done nil)
-(setq org-archive-location "~/git/org/archive/%s_archive::* Archived Tasks")
+(setq org-archive-location "~/org/archive/%s_archive::* Archived Tasks")
 
 (defun bh/skip-non-archivable-tasks ()
   "Skip trees that are not available for archiving"
@@ -1756,7 +1756,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (add-hook 'message-mode-hook 'orgstruct++-mode 'append)
 (add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
-(add-hook 'message-mode-hook 'bbdb-define-all-aliases 'append)
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
 ;(add-hook 'message-mode-hook 'turn-on-flyspell 'append)
 (add-hook 'message-mode-hook
@@ -1767,7 +1766,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
 
 ;; Disable keys in org-mode
-;;    C-c [ 
+;;    C-c [
 ;;    C-c ]
 ;;    C-c ;
 ;;    C-c C-x C-q  cancelling the clock (we never want this)

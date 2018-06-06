@@ -15,7 +15,6 @@
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
      auto-completion
-     bbdb
      bibtex
      common-lisp
      emacs-lisp
@@ -30,7 +29,8 @@
      syntax-checking
      theming)
    ;; Additional layers
-   ;; dotspacemacs-additional-packages '(org2ctex)
+   dotspacemacs-additional-packages
+   '(bbdb)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(
@@ -180,10 +180,11 @@ layers configuration."
 
   (setq magit-push-always-verify nil) ; magit 每次 push 不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
-  (setq purpose-mode nil)
   (spaceline-compile) ; 更新 spaceline 设置
   (setq ispell-personal-dictionary "~/org/.aspell.en.pws") ; aspell dict 位置
   (setq org-html-head-extra nil) ; 导出 html 时采用自定义 CSS
+
+  (setq debug-on-error t)
 
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
@@ -206,7 +207,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (define-word yasnippet-snippets ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode pcre2el pbcopy password-generator paradox overseer osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lorem-ipsum linum-relative link-hint less-css-mode launchctl indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies editorconfig dumb-jump diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (ace-window smartparens highlight helm helm-core magit yasnippet-snippets ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters pug-mode pcre2el password-generator paradox overseer orgit org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lorem-ipsum linum-relative link-hint less-css-mode indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit ghub gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies editorconfig dumb-jump diminish define-word counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

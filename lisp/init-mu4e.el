@@ -58,6 +58,7 @@
 
 ; 日期格式
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
+(setq mu4e-view-date-format "%Y-%m-%d %A %H:%M")
 
 ; 显示内容
 (setq mu4e-headers-fields
@@ -70,5 +71,68 @@
 ; Modeline 显示
 (setq mu4e-enable-mode-line t)
 (mu4e-alert-enable-mode-line-display)
+
+; org-mu4e 配置
+; https://emacs-china.org/t/topic/498/9
+(defun mu4e-toggle-org-mode ()
+  (interactive)
+  (cond
+   ((eq major-mode 'mu4e-view-mode) (mu4e-org-mode))
+   ((eq major-mode 'mu4e-org-mode) (mu4e-view-mode))
+   ((eq major-mode 'mu4e-compose-mode) (org-mu4e-compose-org-mode))
+   ((eq major-mode 'org-mu4e-compose-org-mode) (mu4e-compose-mode))))
+
+(with-eval-after-load 'mu4e-view
+  (spacemacs/set-leader-keys-for-major-mode 'mu4e-view-mode
+    "to" 'mu4e-toggle-org-mode))
+
+(with-eval-after-load 'mu4e-utils
+  (spacemacs/set-leader-keys-for-major-mode 'mu4e-org-mode
+    "to" 'mu4e-toggle-org-mode))
+
+(with-eval-after-load 'mu4e-compose
+  (spacemacs/set-leader-keys-for-major-mode 'mu4e-compose-mode "to" 'mu4e-toggle-org-mode))
+
+(with-eval-after-load 'org-mu4e
+  (setq org-mu4e-convert-to-html t)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mu4e-compose-org-mode "to" 'mu4e-toggle-org-mode)
+  (defun org~mu4e-mime-convert-to-html ()
+    "Convert the current body to html."
+    (unless (fboundp 'org-export-string-as)
+      (mu4e-error "require function 'org-export-string-as not found."))
+    (let* ((begin
+            (save-excursion
+              (goto-char (point-min))
+              (search-forward mail-header-separator)))
+           (end (point-max))
+           (raw-body (buffer-substring begin end))
+           (tmp-file (make-temp-name (expand-file-name "mail"
+                                                       temporary-file-directory)))
+           (org-export-skip-text-before-1st-heading nil)
+           (org-export-htmlize-output-type 'inline-css)
+           (org-export-preserve-breaks t)
+           (org-export-with-LaTeX-fragments
+            (if (executable-find "dvipng") 'dvipng
+              (mu4e-message "Cannot find dvipng, ignore inline LaTeX") nil))
+           (html-and-images
+            (org~mu4e-mime-replace-images
+             (org-export-string-as raw-body 'html nil)
+             tmp-file))
+           (html-images (cdr html-and-images))
+           (html (car html-and-images)))
+      (delete-region begin end)
+      (save-excursion
+        (goto-char begin)
+        (newline)
+        (insert (org~mu4e-mime-multipart
+                 raw-body html (mapconcat 'identity html-images "\n")))))))
+
+; 只显示直接发送邮件的联系人
+(setq helm-mu-contacts-personal t)
+
+; 利用 helm-mu 进行查找
+(define-key mu4e-main-mode-map "s" 'helm-mu)
+(define-key mu4e-headers-mode-map "s" 'helm-mu)
+(define-key mu4e-view-mode-map "s" 'helm-mu)
 
 (provide 'init-mu4e)

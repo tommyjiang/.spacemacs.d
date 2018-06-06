@@ -99,12 +99,6 @@
 ; Look ahead for 3 days
 (setq org-agenda-span 3)
 
-; Org Agenda faces
-(custom-set-faces
-  '(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))) t)
-  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))) t)
-  )
-
 ; replace \emsp in org clock report
 (defun tommy-org-clocktable-indent-string (level)
   (if (= level 1)
@@ -151,5 +145,7 @@
 
 (defadvice org-html-checkbox (around tommy activate)
   (setq ad-return-value (tommy/org-html-checkbox (ad-get-arg 0))))
+
+(setq org-html-postamble nil)
 
 (provide 'init-orgTommy)

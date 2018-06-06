@@ -11,46 +11,50 @@
 
 ; Solarized
 (setq solarized-scale-org-headlines nil)
+
+(setq solarized-height-minus-1 1.0)
+(setq solarized-height-plus-1 1.0)
+(setq solarized-height-plus-2 1.0)
+(setq solarized-height-plus-3 1.0)
+(setq solarized-height-plus-4 1.0)
+
 (custom-theme-set-faces
  'solarized-light
  ; org mode
- '(org-agenda-date-today
-   ((t (:foreground "#268db2" :box nil))))
- '(org-agenda-structure
-   ((t (:box nil))))
  '(org-agenda-date
+   ((t (:box nil))))
+ '(org-agenda-date-today
+   ((t (:foreground "#268db2" :weight bold :box nil))))
+ '(org-agenda-date-weekend
+   ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
+ '(org-agenda-structure
    ((t (:box nil))))
  '(org-verbatim
    ((t (:foreground "#d33682" :inherit fixed-pitch))))
  '(org-checkbox
    ((t (:foreground "#d33682" :box nil))))
- '(font-latex-sectioning-0-face
-   ((t (:height 1.0))))
- '(font-latex-sectioning-1-face
-   ((t (:height 1.0))))
- '(font-latex-sectioning-2-face
-   ((t (:height 1.0))))
- '(font-latex-sectioning-3-face
-   ((t (:height 1.0))))
- '(font-latex-sectioning-4-face
-   ((t (:height 1.0))))
- '(font-latex-sectioning-5-face
-   ((t (:height 1.0))))
  '(org-document-title
    ((t (:foreground "#93a1a1"))))
  '(org-document-info
    ((t (:foreground "#93a1a1"))))
- ; mu4e
- ; '(mu4e-highlight-face
- ;   ((t (:inherit default :foreground "#268db2"))))
- '(mu4e-modeline-face
-   ((t (:inherit default :background ))))
- )
-
-(setq theming-modifications '(
-  (solarized-light (mu4e-highlight-face :foreground "#268db2")
-                   ))
 )
+
+(setq theming-modifications
+      '((solarized-light
+         ; company
+         (company-tooltip-selection :foreground "#073642" :background "#268db2")
+         ; helm
+         (helm-match :inherit default :foreground "#268bd2")
+         ; helm-mu
+         (helm-mu-contacts-name-face :inherit default)
+         ; info
+         (info-double-quoted-name :foreground "#268bd2")
+         ; mu4e
+         (mu4e-highlight-face :foreground "#268db2")
+         (mu4e-modeline-face :inherit default :background "#eee8d5")
+         ; spaceline
+         (spaceline-python-venv 'mu4e-modeline-face)
+         )))
 
 (spacemacs/update-theme)
 
