@@ -44,6 +44,7 @@
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268db2")
          ; helm
+         (helm-buffer-directory :inherit default :foreground "#cb4b16")
          (helm-match :inherit default :foreground "#268bd2")
          ; helm-mu
          (helm-mu-contacts-name-face :inherit default)
