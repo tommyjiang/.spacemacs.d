@@ -24,7 +24,7 @@
  '(org-agenda-date
    ((t (:box nil))))
  '(org-agenda-date-today
-   ((t (:foreground "#268db2" :weight bold :box nil))))
+   ((t (:foreground "#268bd2" :weight bold :box nil))))
  '(org-agenda-date-weekend
    ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
  '(org-agenda-structure
@@ -42,15 +42,16 @@
 (setq theming-modifications
       '((solarized-light
          ; company
-         (company-tooltip-selection :foreground "#073642" :background "#268db2")
+         (company-tooltip-selection :foreground "#073642" :background "#268bd2")
          ; helm
+         (helm-buffer-directory :inherit default :foreground "#cb4b16")
          (helm-match :inherit default :foreground "#268bd2")
          ; helm-mu
          (helm-mu-contacts-name-face :inherit default)
          ; info
          (info-double-quoted-name :foreground "#268bd2")
          ; mu4e
-         (mu4e-highlight-face :foreground "#268db2")
+         (mu4e-highlight-face :foreground "#268bd2")
          (mu4e-modeline-face :inherit default :background "#eee8d5")
          ; spaceline
          (spaceline-python-venv 'mu4e-modeline-face)
