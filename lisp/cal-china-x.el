@@ -3,7 +3,7 @@
 ;; Copyright (C) 2006-2013, 2015 William Xu
 
 ;; Author: William Xu <william.xwl@gmail.com>
-;; Version: 2.5
+;; Version: 2.6b
 ;; Url: https://github.com/xwl/cal-china-x
 ;; Package-Requires: ((cl-lib "0.5"))
 
@@ -158,7 +158,7 @@ There is a short poem for remembering,
   "Pre-defined japanese public holidays.
 You can add this to your `calendar-holidays'.")
 
-(defconst cal-china-x-chinese-holidays
+(defconst cal-china-x-chinese-holidays ; Todo 12.29/12.30 判断除夕
   '((holiday-fixed 1 1 "元旦")
     (holiday-lunar 1 1 "春节" 0)
     (holiday-lunar 1 5 "破五" 0)
@@ -167,7 +167,6 @@ You can add this to your `calendar-holidays'.")
     (holiday-solar-term "清明" "清明节")
     (holiday-fixed 5 1 "劳动节")
     (holiday-lunar 5 5 "端午节" 0)
-    (holiday-lunar 5 20 "唐飞生日" 0)
     (holiday-lunar 7 7 "七夕" 0)
     (holiday-lunar 7 15 "中元节" 0)
     (holiday-lunar 8 15 "中秋节" 0)
@@ -227,25 +226,42 @@ as schools, where people may use some specific school diary."
   :type 'symbol
   :group 'cal-china-x)
 
+(defcustom cal-china-x-force-chinese-week-day nil
+  "Force using chinese week day, even though it may not align nicely.
+
+Default is nil. The chinese week day will be enabled automatically if
+the package 'cnfonts (old name: 'chinese-fonts-setup) is loaded."
+  :type 'boolean
+  :group 'cal-china-x)
+
 ;;;###autoload
 (defun cal-china-x-birthday-from-chinese (lunar-month lunar-day)
-  "Return birthday date this year in Gregorian form.
+  "Return next birthday date in Gregorian form.
 
 LUNAR-MONTH and LUNAR-DAY are date number used in chinese lunar
 calendar."
   (interactive "nlunar month: \nnlunar day: ")
-  (let* ((birthday-chinese (list lunar-month lunar-day))
-	 (current-chinese-date (calendar-chinese-from-absolute
-				(calendar-absolute-from-gregorian
-				 (calendar-current-date))))
-	 (cycle (car current-chinese-date))
-	 (year (cadr current-chinese-date))
-	 (birthday-chinese-full `(,cycle ,year ,@birthday-chinese))
-	 (birthday-gregorian-full (calendar-gregorian-from-absolute
-				   (calendar-chinese-to-absolute
-				    birthday-chinese-full))))
+  (let* ((current-chinese-date (calendar-chinese-from-absolute
+                                (calendar-absolute-from-gregorian
+                                 (calendar-current-date))))
+         (cycle (car current-chinese-date))
+         (year (cadr current-chinese-date))
+         (birthday-gregorian-full
+          (cal-china-x-birthday-from-chinese-1
+           cycle year lunar-month lunar-day)))
+    ;; If it is before current date, calculate next year.
+    (when (calendar-date-compare (list birthday-gregorian-full)
+                                 (list (calendar-current-date)))
+      (setq birthday-gregorian-full
+            (cal-china-x-birthday-from-chinese-1
+             cycle (1+ year) lunar-month lunar-day)))
     (message "Your next birthday in gregorian is on %s"
-	     (calendar-date-string birthday-gregorian-full))))
+             (calendar-date-string birthday-gregorian-full))))
+
+(defun cal-china-x-birthday-from-chinese-1 (cycle year lunar-month lunar-day)
+  (calendar-gregorian-from-absolute
+   (calendar-chinese-to-absolute
+    (list cycle year lunar-month lunar-day))))
 
 ;;;###autoload
 (defun holiday-lunar (lunar-month lunar-day string &optional num)
@@ -366,9 +382,9 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
   (setq diary-date-forms chinese-date-diary-pattern)
 
   ;; chinese month and year
-  (setq calendar-font-lock-keywords
-        (append calendar-font-lock-keywords
-                '(("[0-9]+年\\ *[0-9]+月" . font-lock-function-name-face))))
+  ; (setq calendar-font-lock-keywords
+  ;       (append calendar-font-lock-keywords
+  ;               '(("[0-9]+年\\ *[0-9]+月" . font-lock-function-name-face))))
 
   (setq calendar-chinese-celestial-stem cal-china-x-celestial-stem
         calendar-chinese-terrestrial-branch cal-china-x-terrestrial-branch)
@@ -377,11 +393,18 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
                                            'font-lock-face
                                            'calendar-month-header))
 
-  ;; if chinese font width equals to twice of ascii font
-  (eval-after-load 'chinese-fonts-setup
-    '(progn
-       (setq calendar-day-header-array cal-china-x-days)
-       ))
+  (if cal-china-x-force-chinese-week-day
+      (setq calendar-day-header-array cal-china-x-days)
+
+    (eval-after-load 'chinese-fonts-setup ; older name of cnfonts, to be removed
+      '(progn
+         (setq calendar-day-header-array cal-china-x-days)
+         ))
+
+    (eval-after-load 'cnfonts
+      '(progn
+         (setq calendar-day-header-array cal-china-x-days)
+         )))
 
   (setq calendar-mode-line-format
         (list
@@ -414,11 +437,17 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
   (add-hook 'calendar-move-hook 'calendar-update-mode-line)
   (add-hook 'calendar-initial-window-hook 'calendar-update-mode-line)
 
+  (add-hook 'calendar-mode-hook
+            (lambda ()
+              (set (make-local-variable 'font-lock-defaults)
+                   ;; chinese month and year
+                   '((("[0-9]+年\\ *[0-9]+月" . font-lock-function-name-face)) t))
+              ))
+
   (advice-add 'calendar-mark-holidays :around 'cal-china-x-mark-holidays)
   (advice-add 'mouse-set-point :after 'cal-china-x-mouse-set-point)
   )
 
-
 ;;; Implementations
 
 (defun cal-china-x-day-name (date)
