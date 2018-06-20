@@ -29,6 +29,8 @@
    ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
  '(org-agenda-structure
    ((t (:box nil))))
+ '(org-agenda-calendar-event
+   ((t (:foreground "#268bd2"))))
  '(org-verbatim
    ((t (:foreground "#d33682" :inherit fixed-pitch))))
  '(org-checkbox
@@ -43,6 +45,8 @@
       '((solarized-light
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268bd2")
+         ; evil
+         (evil-ex-substitute-replacement :foreground "#d33682" :underline t)
          ; helm
          (helm-buffer-directory :inherit default :foreground "#cb4b16")
          (helm-match :inherit default :foreground "#268bd2")

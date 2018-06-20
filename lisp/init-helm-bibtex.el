@@ -3,6 +3,8 @@
                                        "~/org/tutorial.bib"))
 (setq bibtex-completion-library-path '("~/Documents/Library.papers3/Library.papers3/Files"
                                        "~/Downloads/Machine Learning/Books"
+                                       "~/Documents/Books/epub"
+                                       "~/Documents/Books/PDF"
                                        "~/Downloads/Machine Learning/Tutorials"))
 
 ; Org export
