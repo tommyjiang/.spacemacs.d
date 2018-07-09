@@ -9,20 +9,22 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(html
+   '(
      ;; --------------------------------------------------------
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
      auto-completion
      bibtex
+     (chrome :variables chrome-exec-path "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
      colors
      common-lisp
      (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/tommyfeed.org"))
      emacs-lisp
-     epub
+     (epub :variables nov-text-width 80)
      git
      gnus
+     html
      latex
      markdown
      (mu4e :variables mu4e-installation-path "/usr/local/Cellar/mu/1.0/share/emacs/site-lisp/mu/mu4e")
@@ -184,7 +186,6 @@ layers configuration."
 
   (setq magit-push-always-verify nil) ; magit 每次 push 不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
-  ; (setq purpose-mode nil)
   ; (spaceline-compile) ; 更新 spaceline 设置
   (setq ispell-personal-dictionary "~/org/.aspell.en.pws") ; aspell dict 位置
   (setq org-html-head-extra nil) ; 导出 html 时采用自定义 CSS
@@ -206,7 +207,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (counsel ivy magit magit-popup with-editor yasnippet-snippets ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon swiper string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode pcre2el pbcopy password-generator paradox overseer osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file nov neotree nameless mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit ghub gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies editorconfig dumb-jump diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (git-link editorconfig markdown-mode helm yasnippet-snippets ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file nov neotree nameless mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies edit-server dumb-jump dotenv-mode diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
