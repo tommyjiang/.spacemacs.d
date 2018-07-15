@@ -9,20 +9,22 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(html
+   '(
      ;; --------------------------------------------------------
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
      auto-completion
      bibtex
+     (chrome :variables chrome-exec-path "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
      colors
      common-lisp
      (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/tommyfeed.org"))
      emacs-lisp
-     epub
+     (epub :variables nov-text-width 80)
      git
      gnus
+     html
      latex
      markdown
      ; (mu4e :variables mu4e-installation-path "/usr/local/Cellar/mu/1.0/share/emacs/site-lisp/mu/mu4e")
@@ -184,7 +186,6 @@ layers configuration."
 
   (setq magit-push-always-verify nil) ; magit 每次 push 不再询问
   (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
-  ; (setq purpose-mode nil)
   ; (spaceline-compile) ; 更新 spaceline 设置
   (setq ispell-personal-dictionary "~/org/.aspell.en.pws") ; aspell dict 位置
   (setq org-html-head-extra nil) ; 导出 html 时采用自定义 CSS
