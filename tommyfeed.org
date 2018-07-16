@@ -12,6 +12,9 @@
 *** [[https://github.com/HearthSim/HSTracker/releases.atom][HSTracker]]
 *** [[http://feed43.com/7464425312130006.xml][HSReplay Article]]
 ** Books                                                             :books:
+*** [[http://feed43.com/7621403232482647.xml][免费电子书]]
+** Movies                                                           :movies:
+*** [[https://feedx.net/rss/doubanmvweek.xml][豆瓣电影]]
 ** Blog                                                               :blog:
 *** [[http://tommyjiang.coding.me/atom.xml][自己的博客]]                                                      :tommy:
 *** [[http://karpathy.github.io/feed.xml][A. Karpathy]]                                                        :CV:
@@ -21,4 +24,17 @@
 ** AI                                                                   :AI:
 *** [[https://rss.lilydjwg.me/zhihuzhuanlan/xiaoleimlnote][晓雷机器学习笔记]]                                                :zhihu:
 *** [[https://rss.lilydjwg.me/zhihuzhuanlan/jiqizhixin?group_id=927220614751195136][机器之心]]
+*** [[https://rss.lilydjwg.me/zhihuzhuanlan/qbitai][量子位]]
+*** [[http://feed43.com/4474803136438874.xml][智能驾驶 雷锋网]]                                            :automobile:
+** Wechat                                                           :wechat:
+*** [[http://feed43.com/1586033018083411.xml][秦小明]]
+*** [[http://feed43.com/8165364451877446.xml][三联生活周刊]]
+*** [[http://feed43.com/2268183341421101.xml][南方周末]]
+** Entertainment                                             :entertainment:
+*** [[https://feedx.net/rss/sohuspit.xml][搜狐神吐槽]]
+*** [[https://feedx.net/rss/163easy.xml][网易轻松一刻]]
+*** [[http://feed43.com/5811440204057746.xml][冷兔]]
+** Culture                                                         :culture:
+*** [[https://feedx.net/rss/one.xml][ONE·一个]]
+*** [[https://feedx.net/rss/shanghaishuping.xml][上海书评]]
 
