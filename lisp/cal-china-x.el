@@ -158,7 +158,7 @@ There is a short poem for remembering,
   "Pre-defined japanese public holidays.
 You can add this to your `calendar-holidays'.")
 
-(defconst cal-china-x-chinese-holidays ; Todo 12.29/12.30 判断除夕
+(defconst cal-china-x-chinese-holidays
   '((holiday-fixed 1 1 "元旦")
     (holiday-lunar 1 1 "春节" 0)
     (holiday-lunar 1 5 "破五" 0)
