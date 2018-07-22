@@ -87,9 +87,8 @@
 
 (defconst cal-china-x-day-name
   ["初一" "初二" "初三" "初四" "初五" "初六" "初七" "初八" "初九" "初十"
-   "十一" "十二" "十三" "十四" "十五" "十六" "十七" "十八" "十九"  "廿"
-   "廿一" "廿二" "廿三" "廿四" "廿五" "廿六" "廿七" "廿八" "廿九" "三十"
-   "卅一" "卅二" "卅三" "卅四" "卅五" "卅六" "卅七" "卅八" "卅九" "卅十"])
+   "十一" "十二" "十三" "十四" "十五" "十六" "十七" "十八" "十九" "二十"
+   "廿一" "廿二" "廿三" "廿四" "廿五" "廿六" "廿七" "廿八" "廿九" "三十"])
 
 (defvar chinese-date-diary-pattern
   `((year "年" month "月" day "日" " 星期[" ,(mapconcat 'identity cal-china-x-days "") "]")
@@ -132,33 +131,7 @@ There is a short poem for remembering,
     春雨惊春清谷天，夏满芒夏暑相连，
     秋处露秋寒霜降，冬雪雪冬小大寒。")
 
-(defconst cal-china-x-japanese-holidays
-  '((holiday-fixed 1 1 "元旦")
-    (holiday-fixed 1 2 "公务员法定休息日")
-    (holiday-fixed 1 3 "公务员法定休息日")
-    (holiday-fixed 1 4 "公务员法定休息日")
-    (holiday-float 1 1 1 "成人の日")
-    (holiday-fixed 2 11 "建国記念の日")
-    (holiday-solar-term "春分" "春分の日")
-    (holiday-fixed 4 29 "みどりの日")
-    (holiday-fixed 5 3 "憲法記念日")
-    (holiday-fixed 5 4 "国民の休日")
-    (holiday-fixed 5 5 "こどもの日")
-    (holiday-fixed 7 20 "海の日")
-    (holiday-fixed 9 15 "敬老の日")
-    (holiday-solar-term "秋分" "秋分の日")
-    (holiday-float 10 1 0 "体育の日")
-    (holiday-fixed 11 3 "文化の日")
-    (holiday-fixed 11 23 "勤労感謝の日")
-    (holiday-fixed 12 23 "天皇誕生日")
-    (holiday-fixed 12 28 "公务员法定休息日")
-    (holiday-fixed 12 29 "公务员法定休息日")
-    (holiday-fixed 12 30 "公务员法定休息日")
-    (holiday-fixed 12 31 "公务员法定休息日"))
-  "Pre-defined japanese public holidays.
-You can add this to your `calendar-holidays'.")
-
-(defconst cal-china-x-chinese-holidays ; Todo 12.29/12.30 判断除夕
+(defconst cal-china-x-chinese-holidays
   '((holiday-fixed 1 1 "元旦")
     (holiday-lunar 1 1 "春节" 0)
     (holiday-lunar 1 5 "破五" 0)
