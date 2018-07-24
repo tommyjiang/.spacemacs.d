@@ -74,7 +74,7 @@
 (defvar displayed-year)
 
 (defconst cal-china-x-celestial-stem
-  ["甲" "乙" "丙" "丁" "戊" "已" "庚" "辛" "壬" "癸"])
+  ["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
 
 (defconst cal-china-x-terrestrial-branch
   ["子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"])
@@ -340,8 +340,10 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
     (format "%s%s年%s%s%s(%s)%s"
             (calendar-chinese-sexagesimal-name cn-year)
             (aref cal-china-x-zodiac-name (% (1- cn-year) 12))
+            ; (concat (calendar-chinese-sexagesimal-name cn-month) "月")
             (aref cal-china-x-month-name (1-  (floor cn-month)))
             (if (integerp cn-month) "" "(闰月)")
+            ; (concat (calendar-chinese-sexagesimal-name cn-day) "日")
             (aref cal-china-x-day-name (1- cn-day))
             (cal-china-x-get-horoscope (car date) (cadr date))
             (cal-china-x-get-solar-term date))))
@@ -386,24 +388,9 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
 
          '(cal-china-x-get-holiday date)
 
-         '(concat " " (calendar-date-string date t)
-                  (format " 第%d周"
-                          (funcall (if cal-china-x-custom-week-start-date
-                                       'cal-china-x-custom-week-of-date
-                                     'cal-china-x-week-of-date)
-                                   date)))
+         '(concat " " (calendar-date-string date t))
 
          '(cal-china-x-chinese-date-string date)
-
-         ;; (concat
-         ;;  (calendar-mode-line-entry 'calendar-goto-info-node "read Info on Calendar"
-         ;;                            nil "info")
-         ;;  " / "
-         ;;  (calendar-mode-line-entry 'calendar-other-month "choose another month"
-         ;;                            nil "other")
-         ;;  " / "
-         ;;  (calendar-mode-line-entry 'calendar-goto-today "go to today's date"
-         ;;                            nil "today"))
 
          (calendar-mode-line-entry 'calendar-scroll-left "next month" ">")))
 
