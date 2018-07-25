@@ -155,4 +155,7 @@
     (browse-url url)))
 (setq flymd-browser-open-function 'my-flymd-browser-function)
 
+; 导出 html 时采用自定义 CSS
+(setq org-html-head-extra nil)
+
 (provide 'init-orgTommy)
