@@ -74,7 +74,7 @@
 (defvar displayed-year)
 
 (defconst cal-china-x-celestial-stem
-  ["甲" "乙" "丙" "丁" "戊" "已" "庚" "辛" "壬" "癸"])
+  ["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
 
 (defconst cal-china-x-terrestrial-branch
   ["子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"])
@@ -89,6 +89,9 @@
   ["初一" "初二" "初三" "初四" "初五" "初六" "初七" "初八" "初九" "初十"
    "十一" "十二" "十三" "十四" "十五" "十六" "十七" "十八" "十九" "二十"
    "廿一" "廿二" "廿三" "廿四" "廿五" "廿六" "廿七" "廿八" "廿九" "三十"])
+
+(defconst cal-china-x-nine-characters
+  ["一九" "二九" "三九" "四九" "五九" "六九" "七九" "八九" "九九"])
 
 (defvar chinese-date-diary-pattern
   `((year "年" month "月" day "日" " 星期[" ,(mapconcat 'identity cal-china-x-days "") "]")
@@ -337,14 +340,20 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
          (cn-year  (cadr   cn-date))
          (cn-month (cl-caddr  cn-date))
          (cn-day   (cl-cadddr cn-date)))
-    (format "%s%s年%s%s%s(%s)%s"
+    (format "%s%s年%s%s%s(%s)%s%s"
             (calendar-chinese-sexagesimal-name cn-year)
             (aref cal-china-x-zodiac-name (% (1- cn-year) 12))
+            ; (concat (calendar-chinese-sexagesimal-name cn-month) "月")
             (aref cal-china-x-month-name (1-  (floor cn-month)))
             (if (integerp cn-month) "" "(闰月)")
+            ; (concat (calendar-chinese-sexagesimal-name cn-day) "日")
             (aref cal-china-x-day-name (1- cn-day))
             (cal-china-x-get-horoscope (car date) (cadr date))
-            (cal-china-x-get-solar-term date))))
+            (cal-china-x-get-solar-term date)
+            (cal-china-x-get-several-nines-string date))))
+
+(cal-china-x-chinese-date-string '(1 1 2017))
+(cal-china-x-get-several-nines-string '(1 1 2017))
 
 (defun cal-china-x-setup ()
   (setq calendar-date-display-form
@@ -386,24 +395,9 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
 
          '(cal-china-x-get-holiday date)
 
-         '(concat " " (calendar-date-string date t)
-                  (format " 第%d周"
-                          (funcall (if cal-china-x-custom-week-start-date
-                                       'cal-china-x-custom-week-of-date
-                                     'cal-china-x-week-of-date)
-                                   date)))
+         '(concat " " (calendar-date-string date t))
 
          '(cal-china-x-chinese-date-string date)
-
-         ;; (concat
-         ;;  (calendar-mode-line-entry 'calendar-goto-info-node "read Info on Calendar"
-         ;;                            nil "info")
-         ;;  " / "
-         ;;  (calendar-mode-line-entry 'calendar-other-month "choose another month"
-         ;;                            nil "other")
-         ;;  " / "
-         ;;  (calendar-mode-line-entry 'calendar-goto-today "go to today's date"
-         ;;                            nil "today"))
 
          (calendar-mode-line-entry 'calendar-scroll-left "next month" ">")))
 
@@ -458,6 +452,29 @@ in a week."
                  ,(format "%s年春节"
                           (calendar-chinese-sexagesimal-name
                            (+ y 57))))))))))
+
+(defun cal-china-x-winter-solstice-date (date)
+  "Return winter solstice(冬至) date in Gregorian form.
+
+If MONTH = 12, return current year's date
+Else return last year's date"
+  (let* ((cyear (if (= (calendar-extract-month date) 12)
+                    ((calendar-extract-year date))
+                  (1- (calendar-extract-year date)))))
+    (car (rassoc '"冬至" (cal-china-x-solar-term-alist-new cyear)))))
+
+(defun winter-solstice-day-diff (date)
+  (cal-china-x-days-diff date (cal-china-x-winter-solstice-date date)))
+
+(defun cal-china-x-get-several-nines-string (date)
+  (let ((daygap (winter-solstice-day-diff date)))
+    (if (or (< daygap 0) (> daygap 80))
+        ""
+      (concat (aref cal-china-x-nine-characters (/ daygap 9))
+              "("
+              (number-to-string (1+ (% daygap 9)))
+              ")"
+              ))))
 
 (defun cal-china-x-get-solar-term (date)
   (let ((year (calendar-extract-year date)))

@@ -179,18 +179,11 @@ layers configuration."
   (require 'init-cal)
   (require 'init-bbdb)
   (require 'init-evil)
-  ; (require 'init-mu4e)
   (require 'init-org)
   (require 'init-orgTommy)
   (require 'init-auctex)
   (require 'init-helm-bibtex)
-
-  (setq magit-push-always-verify nil) ; magit 每次 push 不再询问
-  (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
-  ; (spaceline-compile) ; 更新 spaceline 设置
-  (setq ispell-personal-dictionary "~/org/.aspell.en.pws") ; aspell dict 位置
-  (setq org-html-head-extra nil) ; 导出 html 时采用自定义 CSS
-  (add-hook 'prog-mode-hook 'rainbow-mode) ; 开启 rainbow-mode
+  (require 'init-misc)
 
   (setq debug-on-error t)
 
