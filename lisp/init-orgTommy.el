@@ -147,8 +147,6 @@
 (defadvice org-html-checkbox (around tommy activate)
   (setq ad-return-value (tommy/org-html-checkbox (ad-get-arg 0))))
 
-(setq org-html-postamble nil)
-
 ; Flymd Firefox 配置
 (defun my-flymd-browser-function (url)
   (let ((browse-url-browser-function 'browse-url-firefox))
@@ -157,5 +155,7 @@
 
 ; 导出 html 时采用自定义 CSS
 (setq org-html-head-extra nil)
+
+(setq org-html-postamble nil)
 
 (provide 'init-orgTommy)
