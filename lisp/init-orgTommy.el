@@ -146,6 +146,9 @@
 (defadvice org-html-checkbox (around tommy activate)
   (setq ad-return-value (tommy/org-html-checkbox (ad-get-arg 0))))
 
+; 导出 html 时去掉 extra header
+(setq org-html-head-extra nil)
+
 (setq org-html-postamble nil)
 
 (provide 'init-orgTommy)
