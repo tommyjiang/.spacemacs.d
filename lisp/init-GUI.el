@@ -43,7 +43,7 @@
 
 (setq theming-modifications
       '((solarized-light
-         (calendar-weekday-header :foreground "#cb4b16")
+         (calendar-weekend-header :foreground "#cb4b16")
          (eval-sexp-fu-flash :background "#268bd2")
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268bd2")

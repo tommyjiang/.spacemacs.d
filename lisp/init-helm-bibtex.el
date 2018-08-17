@@ -1,7 +1,7 @@
 ; helm-bibtex settings
 (setq bibtex-completion-bibliography '("~/org/paper.bib"
                                        "~/org/tutorial.bib"))
-(setq bibtex-completion-library-path '("~/Documents/Library.papers3/Library.papers3/Files"
+(setq bibtex-completion-library-path '("~/Downloads/Machine Learning/Papers"
                                        "~/Downloads/Machine Learning/Books"
                                        "~/Documents/Books/epub"
                                        "~/Documents/Books/PDF"

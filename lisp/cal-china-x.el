@@ -25,7 +25,7 @@
 ;;; Commentary:
 
 ;; This extension mainly adds the following extra features:
-;;   - Chinese localizations
+;;   - Chinese localization
 ;;   - Display holiday, lunar, horoscope, zodiac, solar term info on mode line
 ;;   - Define holidays using `holiday-lunar', `holiday-solar-term'
 ;;   - Highlight holidays based on different priorities
@@ -89,6 +89,9 @@
   ["初一" "初二" "初三" "初四" "初五" "初六" "初七" "初八" "初九" "初十"
    "十一" "十二" "十三" "十四" "十五" "十六" "十七" "十八" "十九" "二十"
    "廿一" "廿二" "廿三" "廿四" "廿五" "廿六" "廿七" "廿八" "廿九" "三十"])
+
+(defconst cal-china-x-nine-characters
+  ["一九" "二九" "三九" "四九" "五九" "六九" "七九" "八九" "九九"])
 
 (defvar chinese-date-diary-pattern
   `((year "年" month "月" day "日" " 星期[" ,(mapconcat 'identity cal-china-x-days "") "]")
@@ -337,14 +340,19 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
          (cn-year  (cadr   cn-date))
          (cn-month (cl-caddr  cn-date))
          (cn-day   (cl-cadddr cn-date)))
-    (format "%s%s年%s%s%s(%s)%s"
+    (format "%s%s年%s%s%s(%s)%s%s%s"
             (calendar-chinese-sexagesimal-name cn-year)
             (aref cal-china-x-zodiac-name (% (1- cn-year) 12))
+            ; (concat (calendar-chinese-sexagesimal-name cn-month) "月")
             (aref cal-china-x-month-name (1-  (floor cn-month)))
             (if (integerp cn-month) "" "(闰月)")
+            ; (concat (calendar-chinese-sexagesimal-name cn-day) "日")
             (aref cal-china-x-day-name (1- cn-day))
             (cal-china-x-get-horoscope (car date) (cadr date))
-            (cal-china-x-get-solar-term date))))
+            (cal-china-x-get-solar-term date)
+            (cal-china-x-get-several-nines-string date)
+            (cal-china-x-get-futian-string date)
+            )))
 
 (defun cal-china-x-setup ()
   (setq calendar-date-display-form
@@ -443,6 +451,96 @@ in a week."
                  ,(format "%s年春节"
                           (calendar-chinese-sexagesimal-name
                            (+ y 57))))))))))
+
+(defun cal-china-x-solar-term-date (date solar-term)
+  "Return solar-term date in Gregorian form."
+  (let* ((cyear (calendar-extract-year date)))
+    (car (rassoc solar-term (cal-china-x-solar-term-alist-new cyear)))))
+
+(defun cal-china-x-winter-solstice-date (date)
+  "Return winter solstice(冬至) date in Gregorian form.
+
+If MONTH = 12, return current year's date
+Else return last year's date"
+  (let* ((cyear (if (= (calendar-extract-month date) 12)
+                    (calendar-extract-year date)
+                  (1- (calendar-extract-year date)))))
+    (car (rassoc '"冬至" (cal-china-x-solar-term-alist-new cyear)))))
+
+(defun winter-solstice-day-diff (date)
+  (cal-china-x-days-diff date (cal-china-x-winter-solstice-date date)))
+
+(defun cal-china-x-get-several-nines-string (date)
+  (let ((daygap (winter-solstice-day-diff date)))
+    (if (or (< daygap 0) (> daygap 80))
+        ""
+      (concat (aref cal-china-x-nine-characters (/ daygap 9))
+              "("
+              (number-to-string (1+ (% daygap 9)))
+              ")"
+              ))))
+
+(defun cal-china-x-solar-term-date (date solar-term)
+  "Return solar-term date in Gregorian form."
+  (let* ((cyear (calendar-extract-year date)))
+    (car (rassoc solar-term (cal-china-x-solar-term-alist-new cyear)))))
+
+(defun cal-china-x-chinese-day-celestial-stem-number (date)
+  "String of Chinese date of Gregorian DATE.
+Defaults to today's date if DATE is not given."
+  (let* ((a-date (calendar-absolute-from-gregorian date)))
+    (% (+ a-date 15) 10)))
+
+(defun cal-china-x-solar-term-celestical-stem (date solar-term)
+  (cal-china-x-chinese-day-celestial-stem-number
+   (cal-china-x-solar-term-date date solar-term)))
+
+(defun cal-china-x-day-diff-from-solar-term (date solar-term) ; 庚日
+  (let ((ss-stem (- 7 (cal-china-x-solar-term-celestical-stem date solar-term))))
+    (if (< ss-stem 0) (+ ss-stem 10)
+      ss-stem)))
+
+(defun cal-china-x-chufu-date (date)
+  (let* ((ss-date (cal-china-x-solar-term-date date "夏至"))
+         (ss-year (calendar-extract-year ss-date))
+         (ss-day (calendar-extract-day ss-date))
+         (day-diff (+ 20 (cal-china-x-day-diff-from-solar-term date "夏至")))
+         (chufu-day (- day-diff (- 30 ss-day))))
+    (list 7 chufu-day ss-year)))
+
+(defun cal-china-x-zhongfu-date (date)
+  (list 7 (+ (calendar-extract-day (cal-china-x-chufu-date date)) 10)
+        (calendar-extract-year date)))
+
+(defun cal-china-x-mofu-date (date)
+  (let* ((ss-date (cal-china-x-solar-term-date date "立秋"))
+         (ss-year (calendar-extract-year ss-date))
+         (ss-day (calendar-extract-day ss-date))
+         (day-diff (cal-china-x-day-diff-from-solar-term date "立秋"))
+         (mofu-day (+ day-diff ss-day)))
+    (list 8 mofu-day ss-year)))
+
+(defun cal-china-x-get-futian-string (date)
+  (let* ((chufu (cal-china-x-chufu-date date))
+         (zhongfu (cal-china-x-zhongfu-date date))
+         (mofu (cal-china-x-mofu-date date))
+         (chufu-gap (cal-china-x-days-diff date chufu))
+         (zhongfu-gap (cal-china-x-days-diff date zhongfu))
+         (mofu-gap (cal-china-x-days-diff date mofu))
+         )
+    (if (or (< chufu-gap 0) (> mofu-gap 9))
+        ""
+      (if (and (>= chufu-gap 0) (< zhongfu-gap 0))
+          (concat "初伏("
+                  (number-to-string (1+ chufu-gap))
+                  ")")
+        (if (and (>= zhongfu-gap 0) (< mofu-gap 0))
+            (concat "中伏("
+                    (number-to-string (1+ zhongfu-gap))
+                    ")")
+          (concat "末伏("
+                  (number-to-string (1+ mofu-gap))
+                  ")"))))))
 
 (defun cal-china-x-get-solar-term (date)
   (let ((year (calendar-extract-year date)))
