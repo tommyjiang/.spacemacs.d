@@ -351,8 +351,7 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
             (cal-china-x-get-horoscope (car date) (cadr date))
             (cal-china-x-get-solar-term date)
             (cal-china-x-get-several-nines-string date)
-            (cal-china-x-get-futian-string date)
-            )))
+            (cal-china-x-get-futian-string date))))
 
 (defun cal-china-x-setup ()
   (setq calendar-date-display-form
