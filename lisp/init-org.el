@@ -405,7 +405,7 @@ A prefix arg forces clock in of the default task."
                                     ("STYLE_ALL" . "habit"))))
 
 ;; Agenda log mode items to display (closed and state changes by default)
-(setq org-agenda-log-mode-items (quote (closed state)))
+(setq org-agenda-log-mode-items (quote (closed clock state)))
 
 ; Tags with fast selection keys
 (setq org-tag-alist (quote (("CANCELLED" . ?c)
