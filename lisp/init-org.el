@@ -89,7 +89,7 @@
               ("DONE" :foreground "#2aa198" :weight bold)
               ("WAITING" :foreground "#cb4b16" :weight bold)
               ("HOLD" :foreground "#d33682" :weight bold)
-              ("CANCELLED" :foreground "#2aa198" :weight bold))))
+              ("CANCELLED" :foreground "#b58900" :weight bold))))
 
 ; Fast Selection
 (setq org-use-fast-todo-selection t)
@@ -173,7 +173,7 @@
                 (org-agenda-sorting-strategy
                  '(todo-state-down effort-up category-keep))))
               (" " "Agenda"
-               ((agenda "" nil)
+               ((agenda "" ((org-agenda-start-with-log-mode '(closed clock state))))
                 ; (tags "REFILE"
                 ;       ((org-agenda-overriding-header "待归类任务")
                 ;        (org-tags-match-list-sublevels nil)))
@@ -405,7 +405,7 @@ A prefix arg forces clock in of the default task."
                                     ("STYLE_ALL" . "habit"))))
 
 ;; Agenda log mode items to display (closed and state changes by default)
-(setq org-agenda-log-mode-items (quote (closed state)))
+(setq org-agenda-log-mode-items (quote (closed clock state)))
 
 ; Tags with fast selection keys
 (setq org-tag-alist (quote (("CANCELLED" . ?c)

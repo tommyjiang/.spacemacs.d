@@ -520,8 +520,6 @@ Defaults to today's date if DATE is not given."
          (mofu-day (+ day-diff ss-day)))
     (list 8 mofu-day ss-year)))
 
-(cal-china-x-mofu-date '(7 21 2018))
-
 (defun cal-china-x-get-futian-string (date)
   (let* ((chufu (cal-china-x-chufu-date date))
          (zhongfu (cal-china-x-zhongfu-date date))
