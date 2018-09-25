@@ -114,13 +114,13 @@
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("t" "Todo" entry (file "~/org/Refile.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("s" "Someday" entry (file+olp+datetree+prompt "~/org/Diary.org")
-               "* TODO %?\n%T\n")
+               "* TODO %?\n%U\n")
+              ("s" "Someday" entry (file+olp+datetree "~/org/Diary.org")
+               "* TODO %?\n%T\n" :time-prompt t)
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
-               "* %?\n%T\n" :clock-in t :clock-resume t)
+               "* %?\n%U\n")
               ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
-               "* %?\n%T\n" :clock-in t :clock-resume t :time-prompt t)
+               "* %?\n%U\n" :time-prompt t)
               ("h" "Habit" entry (file "~/git/org/Refile.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
