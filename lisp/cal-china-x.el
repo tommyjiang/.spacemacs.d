@@ -140,6 +140,7 @@ There is a short poem for remembering,
     (holiday-lunar 1 5 "破五" 0)
     (holiday-lunar 1 15 "元宵节" 0)
     (holiday-lunar 2 2 "龙抬头" 0)
+    (holiday-fixed 2 14 "情人节")
     (holiday-solar-term "清明" "清明节")
     (holiday-fixed 5 1 "劳动节")
     (holiday-lunar 5 5 "端午节" 0)
@@ -150,13 +151,19 @@ There is a short poem for remembering,
     (holiday-fixed 9 10 "教师节")
     (holiday-fixed 10 1 "国庆节")
     (holiday-lunar 12 8 "腊八" 0)
+    (holiday-solar-term "立春" "立春")
+    (holiday-solar-term "立夏" "立夏")
+    (holiday-solar-term "立秋" "立秋")
+    (holiday-solar-term "立冬" "立冬")
+    (holiday-solar-term "冬至" "冬至")
     (holiday-lunar 12 23 "小年" 0)
+    (holiday-fixed 12 24 "平安夜")
+    (holiday-fixed 12 25 "圣诞节")
     (holiday-lunar 12 30 "除夕" 0)
     )
   "Pre-defined chinese public holidays.
 You can add this to your `calendar-holidays'.")
 
-
 ;;; Interfaces
 
 (defgroup cal-china-x nil
@@ -351,7 +358,8 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
             (cal-china-x-get-horoscope (car date) (cadr date))
             (cal-china-x-get-solar-term date)
             (cal-china-x-get-several-nines-string date)
-            (cal-china-x-get-futian-string date))))
+            (cal-china-x-get-futian-string date)
+            )))
 
 (defun cal-china-x-setup ()
   (setq calendar-date-display-form
