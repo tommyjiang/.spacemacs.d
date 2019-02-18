@@ -51,7 +51,7 @@
          (evil-ex-substitute-replacement :foreground "#d33682" :underline t)
          ; helm
          (helm-buffer-directory :inherit default :foreground "#cb4b16")
-         (helm-match :inherit default :foreground "#268bd2" :weight bold)
+         (helm-match :inherit default :foreground "#268bd2")
          ; helm-mu
          (helm-mu-contacts-name-face :inherit default)
          ; info

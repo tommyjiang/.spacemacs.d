@@ -153,7 +153,8 @@
     (browse-url url)))
 (setq flymd-browser-open-function 'my-flymd-browser-function)
 
-; 导出 html 时采用自定义 CSS
+; 导出 html 时去掉 extra header
+>>>>>>> origin/master
 (setq org-html-head-extra nil)
 
 (setq org-html-postamble nil)
