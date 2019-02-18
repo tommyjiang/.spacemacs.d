@@ -136,6 +136,7 @@
 ; Restore window after quitting the agenda
 (setq org-agenda-restore-windows-after-quit t)
 
+; checkbox 对号标志
 (defun tommy/org-html-checkbox (checkbox)
   "Format CHECKBOX into HTML."
   (case checkbox (on "<span class=\"check\">&#x2611;</span>") ; checkbox (checked)
@@ -145,6 +146,9 @@
 
 (defadvice org-html-checkbox (around tommy activate)
   (setq ad-return-value (tommy/org-html-checkbox (ad-get-arg 0))))
+
+; 导出 html 时去掉 extra header
+(setq org-html-head-extra nil)
 
 (setq org-html-postamble nil)
 

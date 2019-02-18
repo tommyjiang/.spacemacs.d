@@ -114,9 +114,9 @@
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("t" "Todo" entry (file "~/org/Refile.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("s" "Someday" entry (file+olp+datetree+prompt "~/org/Diary.org")
-               "* TODO %?\n%T\n")
+               "* TODO %?\n%U\n")
+              ("s" "Someday" entry (file+olp+datetree "~/org/Diary.org")
+               "* TODO %?\n%T\n" :time-prompt t)
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%U\n")
               ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
@@ -397,7 +397,7 @@ A prefix arg forces clock in of the default task."
                                     ("STYLE_ALL" . "habit"))))
 
 ;; Agenda log mode items to display (closed and state changes by default)
-(setq org-agenda-log-mode-items (quote (closed state)))
+(setq org-agenda-log-mode-items (quote (closed clock state)))
 
 ; Tags with fast selection keys
 (setq org-tag-alist (quote (("CANCELLED" . ?c)
@@ -1574,7 +1574,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
 
 ;; Disable keys in org-mode
-;;    C-c [ 
+;;    C-c [
 ;;    C-c ]
 ;;    C-c ;
 ;;    C-c C-x C-q  cancelling the clock (we never want this)
