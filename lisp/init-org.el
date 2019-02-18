@@ -118,7 +118,7 @@
               ("s" "Someday" entry (file+olp+datetree "~/org/Diary.org")
                "* TODO %?\n%T\n" :time-prompt t)
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
-               "* %?\n%U\n"t)
+               "* %?\n%U\n")
               ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%U\n" :time-prompt t)
               ("h" "Habit" entry (file "~/git/org/Refile.org")
@@ -1575,7 +1575,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
 
 ;; Disable keys in org-mode
-;;    C-c [ 
+;;    C-c [
 ;;    C-c ]
 ;;    C-c ;
 ;;    C-c C-x C-q  cancelling the clock (we never want this)

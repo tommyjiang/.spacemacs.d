@@ -136,6 +136,7 @@
 ; Restore window after quitting the agenda
 (setq org-agenda-restore-windows-after-quit t)
 
+; checkbox 对号标志
 (defun tommy/org-html-checkbox (checkbox)
   "Format CHECKBOX into HTML."
   (case checkbox (on "<span class=\"check\">&#x2611;</span>") ; checkbox (checked)

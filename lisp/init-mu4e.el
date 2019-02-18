@@ -133,6 +133,10 @@
 ; 直接执行标记，不再询问
 (setq mu4e-headers-leave-behavior 'apply)
 
+; 只显示最近 7 天的发件人
+(setq mu4e-compose-complete-only-after
+      (format-time-string "%Y-%m-%d" (time-subtract (current-time) (days-to-time 7))))
+
 ; 利用 helm-mu 进行查找
 (define-key mu4e-main-mode-map "s" 'helm-mu)
 (define-key mu4e-headers-mode-map "s" 'helm-mu)

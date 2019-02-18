@@ -35,7 +35,7 @@
      theming)
    ;; Additional layers
    dotspacemacs-additional-packages
-   '(;org2ctex
+   '(org2ctex
      bbdb)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
@@ -51,7 +51,7 @@
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
    ; dotspacemacs-delete-orphan-packages t
-   ))
+  ))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -92,8 +92,7 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '(;"Source Code Pro"
-                               "Inconsolata"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 24
                                :weight normal
                                :width normal
@@ -175,7 +174,7 @@ before layers configuration."
 
 (defun dotspacemacs/user-config ()
   "Configuration function.
- This function is called at the very end of Spacemacs initialization after
+This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (add-to-list 'load-path "~/.spacemacs.d/lisp") ; 添加初始化文件路径
   (require 'init-GUI)
@@ -188,6 +187,7 @@ layers configuration."
   (require 'init-auctex)
   (require 'init-helm-bibtex)
   (require 'init-misc)
+  (require 'init-org2ctex)
 
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   (org-agenda nil " ") ; 启动后显示 org agenda
