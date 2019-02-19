@@ -18,7 +18,7 @@
 ; 显示周数
 (setq calendar-intermonth-header
       (propertize "周"
-                  'font-lock-face 'font-lock-keyword-face))
+                  'font-lock-face 'font-lock-warning-face))
 
 ; 周几名称显示
 (setq calendar-week-start-day 1
