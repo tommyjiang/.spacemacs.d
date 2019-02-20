@@ -26,7 +26,7 @@
  '(org-agenda-date-today
    ((t (:foreground "#268bd2" :weight bold :box nil))))
  '(org-agenda-date-weekend
-   ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
+   ((t (:inherit org-agenda-date :foreground "#f47983" :weight bold))))
  '(org-agenda-structure
    ((t (:box nil))))
  '(org-agenda-calendar-event
