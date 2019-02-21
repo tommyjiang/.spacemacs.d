@@ -26,7 +26,7 @@
  '(org-agenda-date-today
    ((t (:foreground "#268bd2" :weight bold :box nil))))
  '(org-agenda-date-weekend
-   ((t (:inherit org-agenda-date :foreground "#F47983" :weight bold))))
+   ((t (:inherit org-agenda-date :foreground "#f47983" :weight bold))))
  '(org-agenda-structure
    ((t (:box nil))))
  '(org-agenda-calendar-event
@@ -43,7 +43,7 @@
 
 (setq theming-modifications
       '((solarized-light
-         (calendar-weekend-header :foreground "#cb4b16")
+         (calendar-weekend-header :foreground "#859900")
          (eval-sexp-fu-flash :background "#268bd2")
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268bd2")
