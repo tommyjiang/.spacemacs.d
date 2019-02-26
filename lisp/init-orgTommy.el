@@ -158,4 +158,10 @@
 
 (setq org-html-postamble nil)
 
+; org-drill 默认 twoside
+(setq org-drill-card-type-alist '((nil org-drill-present-two-sided-card nil t)))
+
+; org-drill-tree binding
+(global-set-key "\C-ct" 'org-drill-tree)
+
 (provide 'init-orgTommy)
