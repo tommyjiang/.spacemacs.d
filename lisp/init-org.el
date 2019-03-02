@@ -1,4 +1,5 @@
 (require 'org-habit)
+(require 'org-drill)
 
 ; Org Indent Mode
 (setq org-startup-indented t)
@@ -120,9 +121,7 @@
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%U\n")
               ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
-               "* %?\n%U\n" :time-prompt t)
-              ("h" "Habit" entry (file "~/git/org/Refile.org")
-               "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
+               "* %?\n%U\n" :time-prompt t))))
 
 ; Tag Inheritance
 (setq org-use-tag-inheritance t)
@@ -160,15 +159,8 @@
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
-      (quote (("h" "Habits" tags-todo "STYLE=\"habit\""
-               ((org-agenda-overriding-header "Habits")
-                (org-agenda-sorting-strategy
-                 '(todo-state-down effort-up category-keep))))
-              (" " "Agenda"
+      (quote ((" " "Agenda"
                ((agenda "" nil)
-                ; (tags "REFILE"
-                ;       ((org-agenda-overriding-header "待归类任务")
-                ;        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-CANCELLED/!"
                            ((org-agenda-overriding-header "计划中项目")
                             (org-agenda-skip-function 'bh/skip-non-stuck-projects)
@@ -211,10 +203,6 @@
                             (org-tags-match-list-sublevels nil)
                             (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)))
-               ; (tags "-REFILE/"
-               ;        ((org-agenda-overriding-header "Tasks to Archive")
-               ;         (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
-               ;         (org-tags-match-list-sublevels nil)))
                )
                nil))))
 
@@ -768,6 +756,7 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 ; Do not use sub or superscripts - I currently don't need this functionality in my documents
 (setq org-export-with-sub-superscripts nil)
 ; Use org.css from the norang website for export document stylesheets
+(setq org-html-head-extra "<link rel=\"stylesheet\" href=\"http://doc.norang.ca/org.css\" type=\"text/css\" />")
 (setq org-html-head-include-default-style nil)
 ; Do not generate internal css formatting for HTML exports
 (setq org-export-htmlize-output-type (quote css))
@@ -1330,6 +1319,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-modules (quote (org-bbdb
                           org-bibtex
                           org-crypt
+                          org-drill
                           org-gnus
                           org-id
                           org-info
