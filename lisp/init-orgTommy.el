@@ -9,6 +9,9 @@
 ; Display agenda when starting Emacs
 (add-hook 'after-init-hook (lambda () (org-agenda nil " ")))
 
+; Disable hl-todo mode in orgmode
+(add-hook 'org-mode-hook (lambda () (hl-todo-mode -1) nil))
+
 ; Set org deadline faces
 (setq org-agenda-deadline-faces
   '((1.0  . org-level-1)
