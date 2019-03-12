@@ -43,7 +43,6 @@
 
 (setq theming-modifications
       '((solarized-light
-         (calendar-weekend-header :foreground "#859900")
          (eval-sexp-fu-flash :background "#268bd2")
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268bd2")
@@ -61,7 +60,8 @@
          (mu4e-modeline-face :inherit default :background "#eee8d5")
          ; spaceline
          (spaceline-python-venv 'mu4e-modeline-face)
-         )))
+        )
+       ))
 
 (spacemacs/update-theme)
 
