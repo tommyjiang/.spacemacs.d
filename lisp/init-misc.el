@@ -14,6 +14,9 @@
 ; markdown
 (setq markdown-toc-header-toc-title "**目录**")
 
+; python interpreter
+(setq python-shell-interpreter 'python3)
+
 (setq debug-on-error t)
 
 (provide 'init-misc)
