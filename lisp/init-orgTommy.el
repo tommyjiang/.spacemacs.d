@@ -100,7 +100,7 @@
       year month day iso-week (nth day-of-week chinese-dayname))))
 
 ; Look ahead for 3 days
-(setq org-agenda-span 3)
+(setq org-agenda-span 4)
 
 ; replace \emsp in org clock report
 (defun tommy-org-clocktable-indent-string (level)

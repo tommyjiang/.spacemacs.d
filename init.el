@@ -10,6 +10,7 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     python
      ;; --------------------------------------------------------
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
@@ -82,8 +83,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
-                         solarized-dark
+   dotspacemacs-themes '(solarized-dark
+                         solarized-light
                          spacemacs-light
                          spacemacs-dark
                          monokai)
@@ -170,6 +171,10 @@ before layers configuration."
 
 (defun dotspacemacs/user-init ()
   (setq ispell-program-name "/usr/local/bin/aspell")
+  (setq configuration-layer--elpa-archives
+    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+      ("org-cn"   . "http://elpa.emacs-china.org/org/")
+      ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 )
 
 (defun dotspacemacs/user-config ()
@@ -212,3 +217,74 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  )
 )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files nil)
+ '(org2ctex-latex-classes
+   (quote
+    (("ctexart" "\\documentclass[12pt, fontset=adobe, UTF8, a4paper, oneside]{ctexart}"
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+      ("\\paragraph{%s}" . "\\paragraph*{%s}")
+      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+     ("ctexrep" "\\documentclass[fontset=adobe,UTF8,a4paper,zihao=-4]{ctexrep}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+     ("ctexbook" "\\documentclass[fontset=adobe,UTF8,a4paper,zihao=-4]{ctexbook}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+     ("beamer" "\\documentclass[presentation]{beamer}
+\\usepackage[fontset=adobe,UTF8,a4paper,zihao=-4]{ctex}"
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))))
+ '(org2ctex-latex-packages-alist
+   (list "
+%%% 默认使用的latex宏包 %%%
+\\usepackage{fancyhdr} % 设置页眉页脚宏包
+\\usepackage{geometry} % 设置页边距宏包
+\\usepackage{xcolor} % 颜色宏包
+\\usepackage{enumitem} % 枚举设置宏包
+\\usepackage{tikz} % 画图宏包
+% 宏包设置
+% 页眉页脚样式
+\\pagestyle{fancy} % 页面样式采用fancyhdr宏包中的fancy
+\\fancyhf{} % 去掉页眉
+\\cfoot{\\thepage} % 页脚中间显示页码
+\\renewcommand{\\headrulewidth}{0pt} % 去掉页眉的横线
+% 页边距设置
+\\geometry{top = 2.54cm, bottom = 2.54cm, left = 3.18cm, right = 3.18cm}
+% 清华紫
+\\definecolor{THU}{RGB}{111, 23, 135}
+% 交叉引用宏包
+\\hypersetup{colorlinks=true,linkcolor=THU,citecolor=THU}"))
+ '(package-selected-packages
+   (quote
+    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic web-mode tagedit smeargle slime-company slime slim-mode scss-mode sass-mode reveal-in-osx-finder rainbow-mode rainbow-identifiers pug-mode pbcopy osx-trash osx-dictionary orgit org2ctex org-ref pdf-tools key-chord ivy tablist org-present org-pomodoro org-mime org-download mu4e-maildirs-extension mu4e-alert ht alert log4e gntp mmm-mode markdown-toc magit-gitflow magit-popup launchctl htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet helm-bibtex parsebib haml-mode gnuplot gmail-message-mode ham-mode markdown-mode html-to-markdown gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flymd flycheck-pos-tip pos-tip flycheck evil-magit magit transient git-commit with-editor emmet-mode elfeed-web simple-httpd elfeed-org elfeed-goodies ace-jump-mode noflet elfeed edit-server company-web web-completion-data company-statistics company-auctex company common-lisp-snippets color-identifiers-mode biblio biblio-core bbdb auto-yasnippet yasnippet auto-dictionary auctex ac-ispell auto-complete solarized-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(calendar-weekend-header ((t (:foreground "#859900"))))
+ '(company-tooltip-selection ((t (:foreground "#073642" :background "#268bd2"))))
+ '(eval-sexp-fu-flash ((t (:background "#268bd2"))))
+ '(evil-ex-substitute-replacement ((t (:foreground "#d33682" :underline t))))
+ '(helm-buffer-directory ((t (:inherit default :foreground "#cb4b16"))))
+ '(helm-match ((t (:inherit default :foreground "#268bd2"))))
+ '(helm-mu-contacts-name-face ((t (:inherit default))))
+ '(info-double-quoted-name ((t (:foreground "#268bd2"))))
+ '(mu4e-highlight-face ((t (:foreground "#268bd2"))))
+ '(mu4e-modeline-face ((t (:inherit default :background "#eee8d5"))))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))))
+ '(spaceline-python-venv ((t ((quote mu4e-modeline-face))))))

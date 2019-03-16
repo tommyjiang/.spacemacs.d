@@ -25,12 +25,12 @@
 )
 
 ; 邮箱账户配置
-(setq user-mail-address "187355802@qq.com"
-      user-full-name "江浩"
+(setq user-mail-address "cxsmarkchan@163.com"
+      user-full-name "陈晓爽"
       mu4e-compose-signature
       (concat
        "祝好，\n"
-       "江浩")
+       "晓爽")
       mu4e-compose-signature-auto-include t
       )
 
