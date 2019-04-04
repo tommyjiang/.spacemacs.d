@@ -732,6 +732,7 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
  (quote ((emacs-lisp . t)
          (dot . t)
          (ditaa . t)
+         (C . t)
          (R . t)
          (python . t)
          (ruby . t)
