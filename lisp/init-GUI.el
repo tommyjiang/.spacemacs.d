@@ -72,6 +72,7 @@
         ("OKAY" . "#afd8af")
         ("DONT" . "#5f7f5f")
         ("FAIL" . "#cc5353")
+        ("FURTHER" . "#cc5353")
         ("DONE" . "#afd8af")
         ("FIXME" . "#cc9393")
         ("XXX"   . "#cc5353")))
