@@ -65,6 +65,17 @@
 
 (spacemacs/update-theme)
 
+; hl-todo face
+(setq hl-todo-keyword-faces
+      '(("THEM" . "#dc8cc3")
+        ("PROG" . "#7cb8bb")
+        ("OKAY" . "#afd8af")
+        ("DONT" . "#5f7f5f")
+        ("FAIL" . "#cc5353")
+        ("DONE" . "#afd8af")
+        ("FIXME" . "#cc9393")
+        ("XXX"   . "#cc5353")))
+
 ; 启动后全屏
 (toggle-frame-maximized)
 
