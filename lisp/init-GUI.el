@@ -43,6 +43,7 @@
 
 (setq theming-modifications
       '((solarized-light
+         (calendar-weekend-header :foreground "#859900")
          (eval-sexp-fu-flash :background "#268bd2")
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268bd2")
@@ -60,10 +61,21 @@
          (mu4e-modeline-face :inherit default :background "#eee8d5")
          ; spaceline
          (spaceline-python-venv 'mu4e-modeline-face)
-        )
-       ))
+         )))
 
 (spacemacs/update-theme)
+
+; hl-todo face
+(setq hl-todo-keyword-faces
+      '(("THEM" . "#dc8cc3")
+        ("PROG" . "#7cb8bb")
+        ("OKAY" . "#afd8af")
+        ("DONT" . "#5f7f5f")
+        ("FAIL" . "#cc5353")
+        ("FURTHER" . "#cc5353")
+        ("DONE" . "#afd8af")
+        ("FIXME" . "#cc9393")
+        ("XXX"   . "#cc5353")))
 
 ; 启动后全屏
 (toggle-frame-maximized)
