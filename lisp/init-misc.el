@@ -17,6 +17,10 @@
 ; python interpreter
 (setq python-shell-interpreter 'python3)
 
+; Chrome for ubuntu
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
+
 (setq debug-on-error t)
 
 (provide 'init-misc)

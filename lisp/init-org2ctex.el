@@ -4,6 +4,7 @@
 
 ; 设置字体
 (setq org2ctex-latex-fonts nil)
+(setq org-latex-listings 'minted)
 
 ; 设置 ctex class 导出方法，使用 adobe 字体
 (custom-set-variables '(org2ctex-latex-classes

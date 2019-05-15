@@ -714,9 +714,6 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 (require 'ox-latex)
 (require 'ox-ascii)
 
-(setq org-ditaa-jar-path "~/java/ditaa0_6b.jar")
-(setq org-plantuml-jar-path "~/java/plantuml.jar")
-
 (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
 ; Make babel results blocks lowercase
