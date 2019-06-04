@@ -188,7 +188,7 @@ layers configuration."
   (require 'init-org2ctex)
 
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
-  (global-hl-todo-mode -1)
+  ;(global-hl-todo-mode -1)
   (org-agenda nil " ") ; 启动后显示 org agenda
 )
 (defun dotspacemacs/emacs-custom-settings ()
