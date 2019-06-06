@@ -10,7 +10,7 @@
 (add-hook 'after-init-hook (lambda () (org-agenda nil " ")))
 
 ; Disable hl-todo mode in orgmode
-(add-hook 'org-mode-hook (lambda () (hl-todo-mode -1) nil))
+; (add-hook 'org-mode-hook (lambda () (hl-todo-mode -1) nil))
 
 ; Set org deadline faces
 (setq org-agenda-deadline-faces
@@ -165,6 +165,6 @@
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
 
 ; org mode auto-fill mode
-(add-hook 'org-mode-hook 'auto-fill-mode) 
+(add-hook 'org-mode-hook 'auto-fill-mode)
 
 (provide 'init-orgTommy)
