@@ -167,7 +167,4 @@
 ; org mode auto-fill mode
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
-; org mode inline image width
-(setq org-image-actual-width 400)
-
 (provide 'init-orgTommy)
