@@ -31,6 +31,10 @@
    ((t (:box nil))))
  '(org-agenda-calendar-event
    ((t (:foreground "#268bd2"))))
+ '(org-block-begin-line
+   ((t (:italic t :underline nil))))
+ '(org-block-end-line
+   ((t (:italic t :overline nil))))
  '(org-verbatim
    ((t (:foreground "#d33682" :inherit fixed-pitch))))
  '(org-checkbox
