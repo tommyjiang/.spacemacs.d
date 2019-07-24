@@ -22,8 +22,8 @@
 
 ; 周几名称显示
 (setq calendar-week-start-day 1
-      calendar-day-name-array ["日" "一" "二" "三"
-                               "四" "五" "六"])
+      calendar-day-name-array ["日" "一" "二" "三" "四" "五" "六"]
+      calendar-day-header-array ["日" "一" "二" "三" "四" "五" "六"])
 
 ; 周末用 keyword 颜色显示
 (defadvice calendar-generate-month
