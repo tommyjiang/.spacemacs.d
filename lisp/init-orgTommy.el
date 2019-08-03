@@ -167,4 +167,7 @@
 ; org mode auto-fill mode
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
+; set org-tag-column
+(setq org-tags-column -100)
+
 (provide 'init-orgTommy)
