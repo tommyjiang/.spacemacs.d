@@ -17,7 +17,6 @@
 
 ;; Custom Key Bindings
 (global-set-key (kbd "<f12>") 'org-agenda)
-; (global-set-key (kbd "<f5>") 'bh/org-todo)
 (global-set-key (kbd "<S-f5>") 'bh/widen)
 (global-set-key (kbd "<f7>") 'bh/set-truncate-lines)
 (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
@@ -26,7 +25,6 @@
 (global-set-key (kbd "<f9> c") 'calendar)
 (global-set-key (kbd "<f9> f") 'boxquote-insert-file)
 (global-set-key (kbd "<f9> h") 'bh/hide-other)
-; (global-set-key (kbd "<f9> n") 'bh/toggle-next-task-display)
 (global-set-key (kbd "<f9> w") 'widen)
 (global-set-key (kbd "<f9> p") 'org-set-property)
 
@@ -34,22 +32,14 @@
 (global-set-key (kbd "<f9> o") 'bh/punch-out)
 (global-set-key (kbd "<f9> n") 'org-clock-cancel)
 
-; (global-set-key (kbd "<f9> r") 'boxquote-region)
-; (global-set-key (kbd "<f9> s") 'bh/switch-to-scratch)
-
-(global-set-key (kbd "<f9> t") 'bh/insert-inactive-timestamp)
-(global-set-key (kbd "<f9> T") 'bh/toggle-insert-inactive-timestamp)
-
 (global-set-key (kbd "<f9> v") 'visible-mode)
 (global-set-key (kbd "<f9> l") 'org-toggle-link-display)
-(global-set-key (kbd "<f9> SPC") 'bh/clock-in-last-task)
 (global-set-key (kbd "C-<f9>") 'previous-buffer)
 (global-set-key (kbd "M-<f9>") 'org-toggle-inline-images)
 (global-set-key (kbd "C-x n r") 'narrow-to-region)
 (global-set-key (kbd "C-<f10>") 'next-buffer)
 (global-set-key (kbd "<f11>") 'org-clock-goto)
 (global-set-key (kbd "C-<f11>") 'org-clock-in)
-(global-set-key (kbd "C-S-<f12>") 'bh/save-then-publish)
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (defun bh/hide-other ()
@@ -69,15 +59,6 @@
   (save-excursion
     (set-window-start (selected-window)
                       (window-start (selected-window)))))
-
-(defun bh/make-org-scratch ()
-  (interactive)
-  (find-file "/tmp/publish/scratch.org")
-  (gnus-make-directory "/tmp/publish"))
-
-(defun bh/switch-to-scratch ()
-  (interactive)
-  (switch-to-buffer "*scratch*"))
 
 ; Todo Keywords
 (setq org-todo-keywords
@@ -792,147 +773,6 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 ;; Enable abbrev-mode
 (add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))
 
-;; Skeletons
-;;
-;; sblk - Generic block #+begin_FOO .. #+end_FOO
-(define-skeleton skel-org-block
-  "Insert an org block, querying for type."
-  "Type: "
-  "#+begin_" str "\n"
-  _ - \n
-  "#+end_" str "\n")
-
-(define-abbrev org-mode-abbrev-table "sblk" "" 'skel-org-block)
-
-;; splantuml - PlantUML Source block
-(define-skeleton skel-org-block-plantuml
-  "Insert a org plantuml block, querying for filename."
-  "File (no extension): "
-  "#+begin_src plantuml :file " str ".png :cache yes\n"
-  _ - \n
-  "#+end_src\n")
-
-(define-abbrev org-mode-abbrev-table "splantuml" "" 'skel-org-block-plantuml)
-
-(define-skeleton skel-org-block-plantuml-activity
-  "Insert a org plantuml block, querying for filename."
-  "File (no extension): "
-  "#+begin_src plantuml :file " str "-act.png :cache yes :tangle " str "-act.txt\n"
-  (bh/plantuml-reset-counters)
-  "@startuml\n"
-  "skinparam activity {\n"
-  "BackgroundColor<<New>> Cyan\n"
-  "}\n\n"
-  "title " str " - \n"
-  "note left: " str "\n"
-  "(*) --> \"" str "\"\n"
-  "--> (*)\n"
-  _ - \n
-  "@enduml\n"
-  "#+end_src\n")
-
-(defvar bh/plantuml-if-count 0)
-
-(defun bh/plantuml-if () 
-  (incf bh/plantuml-if-count)
-  (number-to-string bh/plantuml-if-count))
-
-(defvar bh/plantuml-loop-count 0)
-
-(defun bh/plantuml-loop () 
-  (incf bh/plantuml-loop-count)
-  (number-to-string bh/plantuml-loop-count))
-
-(defun bh/plantuml-reset-counters ()
-  (setq bh/plantuml-if-count 0
-        bh/plantuml-loop-count 0)
-  "")
-
-(define-abbrev org-mode-abbrev-table "sact" "" 'skel-org-block-plantuml-activity)
-
-(define-skeleton skel-org-block-plantuml-activity-if
-  "Insert a org plantuml block activity if statement"
-  "" 
-  "if \"\" then\n"
-  "  -> [condition] ==IF" (setq ifn (bh/plantuml-if)) "==\n"
-  "  --> ==IF" ifn "M1==\n"
-  "  -left-> ==IF" ifn "M2==\n"
-  "else\n"
-  "end if\n"
-  "--> ==IF" ifn "M2==")
-
-(define-abbrev org-mode-abbrev-table "sif" "" 'skel-org-block-plantuml-activity-if)
-
-(define-skeleton skel-org-block-plantuml-activity-for
-  "Insert a org plantuml block activity for statement"
-  "Loop for each: " 
-  "--> ==LOOP" (setq loopn (bh/plantuml-loop)) "==\n"
-  "note left: Loop" loopn ": For each " str "\n"
-  "--> ==ENDLOOP" loopn "==\n"
-  "note left: Loop" loopn ": End for each " str "\n" )
-
-(define-abbrev org-mode-abbrev-table "sfor" "" 'skel-org-block-plantuml-activity-for)
-
-(define-skeleton skel-org-block-plantuml-sequence
-  "Insert a org plantuml activity diagram block, querying for filename."
-  "File appends (no extension): "
-  "#+begin_src plantuml :file " str "-seq.png :cache yes :tangle " str "-seq.txt\n"
-  "@startuml\n"
-  "title " str " - \n"
-  "actor CSR as \"Customer Service Representative\"\n"
-  "participant CSMO as \"CSM Online\"\n"
-  "participant CSMU as \"CSM Unix\"\n"
-  "participant NRIS\n"
-  "actor Customer"
-  _ - \n
-  "@enduml\n"
-  "#+end_src\n")
-
-(define-abbrev org-mode-abbrev-table "sseq" "" 'skel-org-block-plantuml-sequence)
-
-;; sdot - Graphviz DOT block
-(define-skeleton skel-org-block-dot
-  "Insert a org graphviz dot block, querying for filename."
-  "File (no extension): "
-  "#+begin_src dot :file " str ".png :cache yes :cmdline -Kdot -Tpng\n"
-  "graph G {\n"
-  _ - \n
-  "}\n"
-  "#+end_src\n")
-
-(define-abbrev org-mode-abbrev-table "sdot" "" 'skel-org-block-dot)
-
-;; sditaa - Ditaa source block
-(define-skeleton skel-org-block-ditaa
-  "Insert a org ditaa block, querying for filename."
-  "File (no extension): "
-  "#+begin_src ditaa :file " str ".png :cache yes\n"
-  _ - \n
-  "#+end_src\n")
-
-(define-abbrev org-mode-abbrev-table "sditaa" "" 'skel-org-block-ditaa)
-
-;; selisp - Emacs Lisp source block
-(define-skeleton skel-org-block-elisp
-  "Insert a org emacs-lisp block"
-  ""
-  "#+begin_src emacs-lisp\n"
-  _ - \n
-  "#+end_src\n")
-
-(define-abbrev org-mode-abbrev-table "selisp" "" 'skel-org-block-elisp)
-
-; (global-set-key (kbd "<f5>") 'bh/org-todo)
-
-(defun bh/org-todo (arg)
-  (interactive "p")
-  (if (equal arg 4)
-      (save-restriction
-        (bh/narrow-to-org-subtree)
-        (org-show-todo-tree nil))
-    (bh/narrow-to-org-subtree)
-    (org-show-todo-tree nil)))
-
 (global-set-key (kbd "<S-f5>") 'bh/widen)
 
 (defun bh/widen ()
@@ -979,10 +819,6 @@ so change the default 'F' binding in the agenda to allow both"
         (when org-agenda-sticky
           (org-agenda-redo)))
     (bh/narrow-to-org-subtree)))
-
-; (add-hook 'org-agenda-mode-hook
-;          '(lambda () (org-defkey org-agenda-mode-map "N" 'bh/narrow-to-subtree))
-;          'append)
 
 (defun bh/narrow-up-one-org-level ()
   (widen)
