@@ -3,8 +3,7 @@
 
 ; Org Indent Mode
 (setq org-startup-indented t)
-(add-hook 'org-mode-hook
-  (lambda () (setq truncate-lines nil)))
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
 ;; Standard key bindings
 (global-set-key "\C-cl" 'org-store-link)
@@ -17,62 +16,23 @@
 
 ;; Custom Key Bindings
 (global-set-key (kbd "<f12>") 'org-agenda)
-(global-set-key (kbd "<S-f5>") 'bh/widen)
-(global-set-key (kbd "<f7>") 'bh/set-truncate-lines)
 (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
-(global-set-key (kbd "<f9> <f9>") 'bh/show-org-agenda)
 (global-set-key (kbd "<f9> b") 'bbdb)
 (global-set-key (kbd "<f9> c") 'calendar)
-(global-set-key (kbd "<f9> f") 'boxquote-insert-file)
-(global-set-key (kbd "<f9> h") 'bh/hide-other)
 (global-set-key (kbd "<f9> w") 'widen)
 (global-set-key (kbd "<f9> p") 'org-set-property)
 
-(global-set-key (kbd "<f9> i") 'bh/punch-in)
-(global-set-key (kbd "<f9> o") 'bh/punch-out)
 (global-set-key (kbd "<f9> n") 'org-clock-cancel)
-
-(global-set-key (kbd "<f9> t") 'bh/insert-inactive-timestamp)
-(global-set-key (kbd "<f9> T") 'bh/toggle-insert-inactive-timestamp)
 
 (global-set-key (kbd "<f9> v") 'visible-mode)
 (global-set-key (kbd "<f9> l") 'org-toggle-link-display)
-(global-set-key (kbd "<f9> SPC") 'bh/clock-in-last-task)
 (global-set-key (kbd "C-<f9>") 'previous-buffer)
 (global-set-key (kbd "M-<f9>") 'org-toggle-inline-images)
 (global-set-key (kbd "C-x n r") 'narrow-to-region)
 (global-set-key (kbd "C-<f10>") 'next-buffer)
 (global-set-key (kbd "<f11>") 'org-clock-goto)
 (global-set-key (kbd "C-<f11>") 'org-clock-in)
-(global-set-key (kbd "C-S-<f12>") 'bh/save-then-publish)
 (global-set-key (kbd "C-c c") 'org-capture)
-
-(defun bh/hide-other ()
-  (interactive)
-  (save-excursion
-    (org-back-to-heading 'invisible-ok)
-    (hide-other)
-    (org-cycle)
-    (org-cycle)
-    (org-cycle)))
-
-(defun bh/set-truncate-lines ()
-  "Toggle value of truncate-lines and refresh window display."
-  (interactive)
-  (setq truncate-lines (not truncate-lines))
-  ;; now refresh window display (an idiom from simple.el):
-  (save-excursion
-    (set-window-start (selected-window)
-                      (window-start (selected-window)))))
-
-(defun bh/make-org-scratch ()
-  (interactive)
-  (find-file "/tmp/publish/scratch.org")
-  (gnus-make-directory "/tmp/publish"))
-
-(defun bh/switch-to-scratch ()
-  (interactive)
-  (switch-to-buffer "*scratch*"))
 
 ; Todo Keywords
 (setq org-todo-keywords
@@ -138,14 +98,6 @@
 ; Use the current window for indirect buffer display
 (setq org-indirect-buffer-display 'current-window)
 
-;;;; Refile settings
-; Exclude DONE state tasks from refile targets
-(defun bh/verify-refile-target ()
-  "Exclude todo keywords with a done state from refile targets"
-  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
-
-(setq org-refile-target-verify-function 'bh/verify-refile-target)
-
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)
 
@@ -201,17 +153,6 @@
                )
                nil))))
 
-(defun bh/org-auto-exclude-function (tag)
-  "Automatic task exclusion in the agenda with / RET"
-  (and (cond
-        ((string= tag "hold")
-         t)
-        ((string= tag "farm")
-         t))
-       (concat "-" tag)))
-
-(setq org-agenda-auto-exclude-function 'bh/org-auto-exclude-function)
-
 ;; Resume clocking task when emacs is restarted
 (org-clock-persistence-insinuate)
 ;;
@@ -219,8 +160,6 @@
 (setq org-clock-history-length 23)
 ;; Resume clocking task on clock-in if the clock is open
 (setq org-clock-in-resume t)
-;; Change tasks to NEXT when clocking in
-(setq org-clock-in-switch-to-state 'bh/clock-in-to-next)
 ;; Separate drawers for clocking and logs
 (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
 ;; Save clock data and state changes and notes in the LOGBOOK drawer
@@ -238,21 +177,6 @@
 ;; Include current clocking task in clock reports
 (setq org-clock-report-include-clocking-task t)
 
-(setq bh/keep-clock-running nil)
-
-(defun bh/clock-in-to-next (kw)
-  "Switch a task from TODO to NEXT when clocking in.
-Skips capture tasks, projects, and subprojects.
-Switch projects and subprojects from NEXT back to TODO"
-  (when (not (and (boundp 'org-capture-mode) org-capture-mode))
-    (cond
-     ((and (member (org-get-todo-state) (list "TODO"))
-           (bh/is-task-p))
-      "NEXT")
-     ((and (member (org-get-todo-state) (list "NEXT"))
-           (bh/is-project-p))
-      "TODO"))))
-
 (defun bh/find-project-task ()
   "Move point to the parent (project) task if any"
   (save-restriction
@@ -264,97 +188,7 @@ Switch projects and subprojects from NEXT back to TODO"
       (goto-char parent-task)
       parent-task)))
 
-(defun bh/punch-in (arg)
-  "Start continuous clocking and set the default task to the
-selected task.  If no task is selected set the Organization task
-as the default task."
-  (interactive "p")
-  (setq bh/keep-clock-running t)
-  (if (equal major-mode 'org-agenda-mode)
-      ;;
-      ;; We're in the agenda
-      ;;
-      (let* ((marker (org-get-at-bol 'org-hd-marker))
-             (tags (org-with-point-at marker (org-get-tags-at))))
-        (if (and (eq arg 4) tags)
-            (org-agenda-clock-in '(16))
-          (bh/clock-in-organization-task-as-default)))
-    ;;
-    ;; We are not in the agenda
-    ;;
-    (save-restriction
-      (widen)
-      ; Find the tags on the current task
-      (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
-          (org-clock-in '(16))
-        (bh/clock-in-organization-task-as-default)))))
-
-(defun bh/punch-out ()
-  (interactive)
-  (setq bh/keep-clock-running nil)
-  (when (org-clock-is-active)
-    (org-clock-out))
-  (org-agenda-remove-restriction-lock))
-
-(defun bh/clock-in-default-task ()
-  (save-excursion
-    (org-with-point-at org-clock-default-task
-      (org-clock-in))))
-
-(defun bh/clock-in-parent-task ()
-  "Move point to the parent (project) task if any and clock in"
-  (let ((parent-task))
-    (save-excursion
-      (save-restriction
-        (widen)
-        (while (and (not parent-task) (org-up-heading-safe))
-          (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
-            (setq parent-task (point))))
-        (if parent-task
-            (org-with-point-at parent-task
-              (org-clock-in))
-          (when bh/keep-clock-running
-            (bh/clock-in-default-task)))))))
-
-(defvar bh/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
-
-(defun bh/clock-in-organization-task-as-default ()
-  (interactive)
-  (org-with-point-at (org-id-find bh/organization-task-id 'marker)
-    (org-clock-in '(16))))
-
-(defun bh/clock-out-maybe ()
-  (when (and bh/keep-clock-running
-             (not org-clock-clocking-in)
-             (marker-buffer org-clock-default-task)
-             (not org-clock-resolving-clocks-due-to-idleness))
-    (bh/clock-in-parent-task)))
-
-(add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
-
 (require 'org-id)
-(defun bh/clock-in-task-by-id (id)
-  "Clock in a task by id"
-  (org-with-point-at (org-id-find id 'marker)
-    (org-clock-in nil)))
-
-(defun bh/clock-in-last-task (arg)
-  "Clock in the interrupted task if there is one
-Skip the default task and get the next one.
-A prefix arg forces clock in of the default task."
-  (interactive "p")
-  (let ((clock-in-to-task
-         (cond
-          ((eq arg 4) org-clock-default-task)
-          ((and (org-clock-is-active)
-                (equal org-clock-default-task (cadr org-clock-history)))
-           (caddr org-clock-history))
-          ((org-clock-is-active) (cadr org-clock-history))
-          ((equal org-clock-default-task (car org-clock-history)) (cadr org-clock-history))
-          (t (car org-clock-history)))))
-    (widen)
-    (org-with-point-at clock-in-to-task
-      (org-clock-in nil))))
 
 (setq org-time-stamp-rounding-minutes (quote (1 1)))
 
@@ -380,7 +214,7 @@ A prefix arg forces clock in of the default task."
                                     ("STYLE_ALL" . "habit"))))
 
 ;; Agenda log mode items to display (closed and state changes by default)
-;; (setq org-agenda-log-mode-items (quote (closed clock state)))
+(setq org-agenda-log-mode-items (quote (state)))
 
 ; Tags with fast selection keys
 (setq org-tag-alist (quote (("CANCELLED" . ?c)
@@ -392,43 +226,6 @@ A prefix arg forces clock in of the default task."
 
 ; For tag searches ignore tasks with scheduled and deadline dates
 (setq org-agenda-tags-todo-honor-ignore-options t)
-
-;(require 'bbdb)
-;(require 'bbdb-com)
-;
-;(global-set-key (kbd "<f9> p") 'bh/phone-call)
-;
-;;;
-;;; Phone capture template handling with BBDB lookup
-;;; Adapted from code by Gregory J. Grubbs
-;(defun bh/phone-call ()
-;  "Return name and company info for caller from bbdb lookup"
-;  (interactive)
-;  (let* (name rec caller)
-;    (setq name (completing-read "Who is calling? "
-;                                (bbdb-hashtable)
-;                                'bbdb-completion-predicate
-;                                'confirm))
-;    (when (> (length name) 0)
-;      ; Something was supplied - look it up in bbdb
-;      (setq rec
-;            (or (first
-;                 (or (bbdb-search (bbdb-records) name nil nil)
-;                     (bbdb-search (bbdb-records) nil name nil)))
-;                name)))
-;
-;    ; Build the bbdb link if we have a bbdb record, otherwise just return the name
-;    (setq caller (cond ((and rec (vectorp rec))
-;                        (let ((name (bbdb-record-name rec))
-;                              (company (bbdb-record-company rec)))
-;                          (concat "[[bbdb:"
-;                                  name "]["
-;                                  name "]]"
-;                                  (when company
-;                                    (concat " - " company)))))
-;                       (rec)
-;                       (t "NameOfCaller")))
-;    (insert caller)))
 
 (setq org-agenda-span 'day)
 
@@ -709,15 +506,8 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 (require 'ox-latex)
 (require 'ox-ascii)
 
-(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
-
 ; Make babel results blocks lowercase
 (setq org-babel-results-keyword "results")
-
-(defun bh/display-inline-images ()
-  (condition-case nil
-      (org-display-inline-images)
-    (error nil)))
 
 (org-babel-do-load-languages
  (quote org-babel-load-languages)
@@ -795,21 +585,6 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
         (org-show-todo-tree nil))
     (bh/narrow-to-org-subtree)
     (org-show-todo-tree nil)))
-
-(global-set-key (kbd "<S-f5>") 'bh/widen)
-
-(defun bh/widen ()
-  (interactive)
-  (if (equal major-mode 'org-agenda-mode)
-      (progn
-        (org-agenda-remove-restriction-lock)
-        (when org-agenda-sticky
-          (org-agenda-redo)))
-    (widen)))
-
-(add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "W" (lambda () (interactive) (setq bh/hide-scheduled-and-waiting-next-tasks t) (bh/widen))))
-          'append)
 
 (defun bh/restrict-to-file-or-follow (arg)
   "Set agenda restriction to 'file or with argument invoke follow mode.
@@ -1163,10 +938,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-table-export-default-format "orgtbl-to-csv")
 
-; (setq org-link-frame-setup (quote ((vm . vm-visit-folder)
-;                                   (gnus . org-gnus-no-new-news)
-;                                   (file . find-file))))
-
 ; Use the current window for C-c ' source editing
 (setq org-src-window-setup 'current-window)
 
@@ -1203,129 +974,15 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (global-auto-revert-mode t)
 
-; (require 'org-crypt)
-; Encrypt all entries before saving
-; (org-crypt-use-before-save-magic)
-; (setq org-tags-exclude-from-inheritance (quote ("crypt")))
-
-; (setq org-crypt-disable-auto-save nil)
-
-(setq org-use-speed-commands t)
-(setq org-speed-commands-user (quote (("0" . ignore)
-                                      ("1" . ignore)
-                                      ("2" . ignore)
-                                      ("3" . ignore)
-                                      ("4" . ignore)
-                                      ("5" . ignore)
-                                      ("6" . ignore)
-                                      ("7" . ignore)
-                                      ("8" . ignore)
-                                      ("9" . ignore)
-
-                                      ("a" . ignore)
-                                      ("d" . ignore)
-                                      ("h" . bh/hide-other)
-                                      ("i" progn
-                                       (forward-char 1)
-                                       (call-interactively 'org-insert-heading-respect-content))
-                                      ("k" . org-kill-note-or-show-branches)
-                                      ("l" . ignore)
-                                      ("m" . ignore)
-                                      ("q" . bh/show-org-agenda)
-                                      ("r" . ignore)
-                                      ("s" . org-save-all-org-buffers)
-                                      ("w" . org-refile)
-                                      ("x" . ignore)
-                                      ("y" . ignore)
-                                      ("z" . org-add-note)
-
-                                      ("A" . ignore)
-                                      ("B" . ignore)
-                                      ("E" . ignore)
-                                      ("F" . bh/restrict-to-file-or-follow)
-                                      ("G" . ignore)
-                                      ("H" . ignore)
-                                      ("J" . org-clock-goto)
-                                      ("K" . ignore)
-                                      ("L" . ignore)
-                                      ("M" . ignore)
-                                      ("N" . bh/narrow-to-org-subtree)
-                                      ("P" . bh/narrow-to-org-project)
-                                      ("Q" . ignore)
-                                      ("R" . ignore)
-                                      ("S" . ignore)
-                                      ("T" . bh/org-todo)
-                                      ("U" . bh/narrow-up-one-org-level)
-                                      ("V" . ignore)
-                                      ("W" . bh/widen)
-                                      ("X" . ignore)
-                                      ("Y" . ignore)
-                                      ("Z" . ignore))))
-
-(defun bh/show-org-agenda ()
-  (interactive)
-  (if org-agenda-sticky
-      (switch-to-buffer "*Org Agenda( )*")
-    (switch-to-buffer "*Org Agenda*"))
-  (delete-other-windows))
-
 (require 'org-protocol)
 
 (setq require-final-newline t)
-
-(defvar bh/insert-inactive-timestamp t)
-
-(defun bh/toggle-insert-inactive-timestamp ()
-  (interactive)
-  (setq bh/insert-inactive-timestamp (not bh/insert-inactive-timestamp))
-  (message "Heading timestamps are %s" (if bh/insert-inactive-timestamp "ON" "OFF")))
-
-(defun bh/insert-inactive-timestamp ()
-  (interactive)
-  (org-insert-time-stamp nil t t nil nil nil))
-
-(defun bh/insert-inactive-timestamp ()
-  (interactive)
-  (org-insert-time-stamp nil t t nil nil nil))
-
-(defun bh/insert-heading-inactive-timestamp ()
-  (save-excursion
-    (when bh/insert-inactive-timestamp
-      (org-return)
-      (org-cycle)
-      (bh/insert-inactive-timestamp))))
-
-(add-hook 'org-insert-heading-hook 'bh/insert-heading-inactive-timestamp 'append)
 
 (setq org-export-with-timestamps nil)
 
 (setq org-return-follows-link t)
 
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
-
-(defun bh/prepare-meeting-notes ()
-  "Prepare meeting notes for email
-   Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
-  (interactive)
-  (let (prefix)
-    (save-excursion
-      (save-restriction
-        (narrow-to-region (region-beginning) (region-end))
-        (untabify (point-min) (point-max))
-        (goto-char (point-min))
-        (while (re-search-forward "^\\( *-\\\) \\(TODO\\|DONE\\): " (point-max) t)
-          (replace-match (concat (make-string (length (match-string 1)) ?>) " " (match-string 2) ": ")))
-        (goto-char (point-min))
-        (kill-ring-save (point-min) (point-max))))))
-
 (setq org-remove-highlights-with-change t)
-
-(add-to-list 'Info-default-directory-list "~/git/org-mode/doc")
 
 (setq org-read-date-prefer-future 'time)
 
@@ -1346,23 +1003,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-agenda-persistent-filter t)
 
-; (setq org-link-mailto-program (quote (compose-mail "%a" "%s")))
-
-;(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-;(require 'smex)
-;(smex-initialize)
-;
-;(global-set-key (kbd "M-x") 'smex)
-;(global-set-key (kbd "C-x x") 'smex)
-;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; Bookmark handling
-;;
-(global-set-key (kbd "<C-f6>") '(lambda () (interactive) (bookmark-set "SAVED")))
-(global-set-key (kbd "<f6>") '(lambda () (interactive) (bookmark-jump "SAVED")))
-
-(require 'org-mime)
-
 (setq org-agenda-skip-additional-timestamps-same-entry t)
 
 (setq org-table-use-standard-references (quote from))
@@ -1381,21 +1021,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-src-fontify-natively t)
 
-(setq org-structure-template-alist
-      (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")
-              ("e" "#+begin_example\n?\n#+end_example" "<example>\n?\n</example>")
-              ("q" "#+begin_quote\n?\n#+end_quote" "<quote>\n?\n</quote>")
-              ("v" "#+begin_verse\n?\n#+end_verse" "<verse>\n?\n</verse>")
-              ("c" "#+begin_center\n?\n#+end_center" "<center>\n?\n</center>")
-              ("l" "#+begin_latex\n?\n#+end_latex" "<literal style=\"latex\">\n?\n</literal>")
-              ("L" "#+latex: " "<literal style=\"latex\">?</literal>")
-              ("h" "#+begin_html\n?\n#+end_html" "<literal style=\"html\">\n?\n</literal>")
-              ("H" "#+html: " "<literal style=\"html\">?</literal>")
-              ("a" "#+begin_ascii\n?\n#+end_ascii")
-              ("A" "#+ascii: ")
-              ("i" "#+index: ?" "#+index: ?")
-              ("I" "#+include %file ?" "<include file=%file markup=\"?\">"))))
-
 (defun bh/mark-next-parent-tasks-todo ()
   "Visit each parent task and change NEXT states to TODO"
   (let ((mystate (or (and (fboundp 'org-state)
@@ -1408,47 +1033,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
             (org-todo "TODO")))))))
 
 (add-hook 'org-after-todo-state-change-hook 'bh/mark-next-parent-tasks-todo 'append)
-(add-hook 'org-clock-in-hook 'bh/mark-next-parent-tasks-todo 'append)
 
 (setq org-startup-folded t)
-
-(add-hook 'message-mode-hook 'orgstruct++-mode 'append)
-(add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
-; (add-hook 'message-mode-hook 'bbdb-define-all-aliases 'append)
-(add-hook 'message-mode-hook 'orgtbl-mode 'append)
-;(add-hook 'message-mode-hook 'turn-on-flyspell 'append)
-(add-hook 'message-mode-hook
-          '(lambda () (setq fill-column 72))
-          'append)
-
-;; flyspell mode for spell checking everywhere
-;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
-
-;; Disable keys in org-mode
-;;    C-c [
-;;    C-c ]
-;;    C-c ;
-;;    C-c C-x C-q  cancelling the clock (we never want this)
-(add-hook 'org-mode-hook
-          '(lambda ()
-             ;; Undefine C-c [ and C-c ] since this breaks my
-             ;; org-agenda files when directories are include It
-             ;; expands the files in the directories individually
-             (org-defkey org-mode-map "\C-c[" 'undefined)
-             (org-defkey org-mode-map "\C-c]" 'undefined)
-             (org-defkey org-mode-map "\C-c;" 'undefined)
-             (org-defkey org-mode-map "\C-c\C-x\C-q" 'undefined))
-          'append)
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c M-o") 'bh/mail-subtree))
-          'append)
-
-(defun bh/mail-subtree ()
-  (interactive)
-  (org-mark-subtree)
-  (org-mime-subtree))
 
 (setq org-src-preserve-indentation nil)
 (setq org-edit-src-content-indentation 0)
