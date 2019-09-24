@@ -1,6 +1,6 @@
 ; 设置英文字体
 (set-face-attribute
-  'default nil :font "Inconsolata 16")
+  'default nil :font "Inconsolata 18")
 
 ; 设置中文字体
 (if (display-graphic-p)
