@@ -169,6 +169,10 @@ before layers configuration."
 )
 
 (defun dotspacemacs/user-init ()
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   (setq ispell-program-name "/usr/local/bin/aspell")
 )
 
@@ -181,7 +185,6 @@ layers configuration."
   (require 'init-cal)
   (require 'init-bbdb)
   (require 'init-evil)
-  ; (require 'init-mu4e)
   (require 'init-org)
   (require 'init-orgTommy)
   (require 'init-auctex)
