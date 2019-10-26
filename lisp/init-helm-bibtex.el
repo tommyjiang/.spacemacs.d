@@ -1,6 +1,5 @@
 ; helm-bibtex settings
-(setq bibtex-completion-bibliography '("~/org/paper.bib"
-                                       "~/org/tutorial.bib"))
+(setq bibtex-completion-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
 
 (defun list-dirs-recursively (dir &optional include-symlinks)
   "Return list of all subdirectories recursively. Returns absolute paths.
@@ -36,5 +35,7 @@ Optionally call recursively on symlinks."
         (message "No PDF found for %s" key))))
 
 (advice-add 'org-ref-open-pdf-at-point :override #'my/org-ref-open-pdf-at-point)
+
+(setq bibtex-completion-cite-prompt-for-optional-arguments nil)
 
 (provide 'init-helm-bibtex)
