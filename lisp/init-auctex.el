@@ -42,4 +42,13 @@
 (setq font-latex-fontify-sectioning 'color) ; do not fontify section title
 (setq font-latex-fontify-script nil) ; do not fontify script
 
+; 添加 texlive 环境
+(setenv "PATH" (concat (getenv "PATH") ":/home/tommy/texlive/2019/bin/x86_64-linux"))
+(setq exec-path (append exec-path '("/home/tommy/texlive/2019/bin/x86_64-linux/")))
+
+; reftex 默认 bib
+(setq reftex-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
+
+(setq org-ref-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
+
 (provide 'init-auctex)
