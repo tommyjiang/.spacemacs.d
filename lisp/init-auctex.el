@@ -43,4 +43,9 @@
 (setq font-latex-fontify-sectioning 'color) ; do not fontify section title
 (setq font-latex-fontify-script nil) ; do not fontify script
 
+; reftex 默认 bib
+(setq reftex-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
+
+(setq org-ref-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
+
 (provide 'init-auctex)
