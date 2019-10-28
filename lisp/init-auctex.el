@@ -36,7 +36,7 @@
 (setq TeX-source-correlate-method-active 'synctex)
 (setq TeX-source-correlate-start-server t)
 (setq TeX-view-program-selection '((output-pdf "Skim")))
-(setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n %o")))
+(setq TeX-view-program-list '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b")))
 (server-start)
 
 ; 不放大缩小字号
@@ -47,5 +47,8 @@
 (setq reftex-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
 
 (setq org-ref-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
+
+(setq font-latex-match-reference-keywords
+      '(("rc" "[{")))
 
 (provide 'init-auctex)
