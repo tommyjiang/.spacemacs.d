@@ -51,4 +51,8 @@
 
 (setq org-ref-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
 
+; 高亮 reference 关键字
+(setq font-latex-match-reference-keywords
+      '(("citerb" "[{")))
+
 (provide 'init-auctex)
