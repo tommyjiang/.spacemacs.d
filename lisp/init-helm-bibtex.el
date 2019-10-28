@@ -1,6 +1,6 @@
 ; helm-bibtex settings
 (setq bibtex-completion-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
-(setq bibtex-completion-cite-default-command "rc")
+(setq bibtex-completion-cite-default-command "citerb")
 
 (defun list-dirs-recursively (dir &optional include-symlinks)
   "Return list of all subdirectories recursively. Returns absolute paths.

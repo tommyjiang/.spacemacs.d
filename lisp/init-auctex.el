@@ -49,6 +49,6 @@
 (setq org-ref-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
 
 (setq font-latex-match-reference-keywords
-      '(("rc" "[{")))
+      '(("citerb" "[{")))
 
 (provide 'init-auctex)
