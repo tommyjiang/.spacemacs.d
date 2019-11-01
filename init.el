@@ -21,13 +21,12 @@
      common-lisp
      (elfeed :variables rmh-elfeed-org-files (list "~/org/tommyfeed.org"))
      emacs-lisp
-     (epub :variables nov-text-width 80)
+     (epub :variables nov-text-width 70)
      git
      gnus
      html
      latex
      markdown
-     (mu4e :variables mu4e-installation-path "/usr/local/share/emacs/site-lisp/mu4e")
      (org :variables org-want-todo-bindings t)
      spell-checking
      syntax-checking
@@ -170,6 +169,10 @@ before layers configuration."
 
 (defun dotspacemacs/user-init ()
   (setq ispell-program-name "/usr/bin/aspell")
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 )
 
 (defun dotspacemacs/user-config ()
