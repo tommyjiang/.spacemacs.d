@@ -27,7 +27,6 @@
      html
      latex
      markdown
-     (mu4e :variables mu4e-installation-path "/usr/local/Cellar/mu/1.0_1/share/emacs/site-lisp/mu/mu4e")
      (org :variables org-want-todo-bindings t)
      osx
      spell-checking
@@ -190,7 +189,6 @@ layers configuration."
   (require 'init-auctex)
   (require 'init-helm-bibtex)
   (require 'init-misc)
-  (require 'init-org2ctex)
 
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   (org-agenda nil " ") ; 启动后显示 org agenda
