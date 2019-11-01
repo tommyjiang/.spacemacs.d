@@ -189,7 +189,6 @@ layers configuration."
   (require 'init-auctex)
   (require 'init-helm-bibtex)
   (require 'init-misc)
-  (require 'init-org2ctex)
 
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   ;(global-hl-todo-mode -1)
