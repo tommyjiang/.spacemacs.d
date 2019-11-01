@@ -55,4 +55,7 @@
 (setq font-latex-match-reference-keywords
       '(("citerb" "[{")))
 
+; 目录显示在左侧
+(setq reftex-toc-split-windows-horizontally t)
+
 (provide 'init-auctex)
