@@ -105,7 +105,7 @@
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
-      (quote ((" " "Agenda"
+      (quote (("," "Agenda"
                ((agenda "" nil)
                 (tags-todo "-CANCELLED/!"
                            ((org-agenda-overriding-header "计划中项目")
