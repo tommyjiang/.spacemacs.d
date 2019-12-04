@@ -169,10 +169,6 @@ before layers configuration."
 
 (defun dotspacemacs/user-init ()
   (setq ispell-program-name "/usr/bin/aspell")
-  (setq configuration-layer-elpa-archives
-        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 )
 
 (defun dotspacemacs/user-config ()
@@ -192,7 +188,7 @@ layers configuration."
   (require 'init-org2ctex)
 
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
-  (org-agenda nil " ") ; 启动后显示 org agenda
+  (org-agenda nil ",") ; 启动后显示 org agenda
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
