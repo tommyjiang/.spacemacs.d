@@ -155,12 +155,6 @@
 
 (setq org-html-postamble nil)
 
-; org-drill 默认 twoside
-(setq org-drill-card-type-alist '((nil org-drill-present-two-sided-card nil t)))
-
-; org-drill-tree binding
-(global-set-key "\C-ct" 'org-drill-tree)
-
 ; org LaTeX preview scale
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
 

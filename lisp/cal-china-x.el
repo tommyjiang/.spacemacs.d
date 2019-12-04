@@ -419,7 +419,7 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
                    '((("[0-9]+年\\ *[0-9]+月" . font-lock-function-name-face)) t))
               ))
 
-  (advice-add 'calendar-mark-holidays :around 'cal-china-x-mark-holidays)
+  ;(advice-add 'calendar-mark-holidays :around 'cal-china-x-mark-holidays)
   (advice-add 'mouse-set-point :after 'cal-china-x-mouse-set-point)
   )
 

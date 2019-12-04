@@ -1,5 +1,4 @@
 (require 'org-habit)
-(require 'org-drill)
 
 ; Org Indent Mode
 (setq org-startup-indented t)
@@ -106,7 +105,7 @@
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
-      (quote ((" " "Agenda"
+      (quote (("," "Agenda"
                ((agenda "" nil)
                 (tags-todo "-CANCELLED/!"
                            ((org-agenda-overriding-header "计划中项目")
