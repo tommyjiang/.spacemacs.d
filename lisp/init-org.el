@@ -1,5 +1,4 @@
 (require 'org-habit)
-(require 'org-drill)
 
 ; Org Indent Mode
 (setq org-startup-indented t)
