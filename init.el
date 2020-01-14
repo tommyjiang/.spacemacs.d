@@ -28,7 +28,6 @@
      latex
      markdown
      (org :variables org-want-todo-bindings t)
-     osx
      spell-checking
      syntax-checking
      theming)
