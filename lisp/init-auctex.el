@@ -51,4 +51,7 @@
 (setq font-latex-match-reference-keywords
       '(("citerb" "[{")))
 
+(setq reftex-toc-split-windows-horizontally t)
+(setq reftex-toc-max-level 3)
+
 (provide 'init-auctex)
