@@ -18,7 +18,6 @@
      bibtex
      (chrome :variables chrome-exec-path "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
      colors
-     common-lisp
      (elfeed :variables rmh-elfeed-org-files (list "~/org/tommyfeed.org"))
      emacs-lisp
      (epub :variables nov-text-width 80)
@@ -38,8 +37,8 @@
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(org-bullets
+     org-superstar
      org-projectile
-     persp-mode
      evil-unimpaired
      google-translate
      auctex-latexmk
@@ -168,6 +167,7 @@ before layers configuration."
 
 (defun dotspacemacs/user-init ()
   (setq ispell-program-name "/usr/local/bin/aspell")
+  (setq ispell-dictionary "american")
 )
 
 (defun dotspacemacs/user-config ()
@@ -185,7 +185,13 @@ layers configuration."
   (require 'init-helm-bibtex)
   (require 'init-misc)
 
+  (require 'org-crypt)
+
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-darwin/"))
+  (setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-darwin/")))
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa") t)
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
+  (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
 )
 (defun dotspacemacs/emacs-custom-settings ()
