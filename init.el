@@ -18,7 +18,6 @@
      bibtex
      (chrome :variables chrome-exec-path "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
      colors
-     common-lisp
      (elfeed :variables rmh-elfeed-org-files (list "~/org/tommyfeed.org"))
      emacs-lisp
      (epub :variables nov-text-width 80)
@@ -28,7 +27,6 @@
      latex
      markdown
      (org :variables org-want-todo-bindings t)
-     osx
      spell-checking
      syntax-checking
      theming)
@@ -39,8 +37,8 @@
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(org-bullets
+     org-superstar
      org-projectile
-     persp-mode
      evil-unimpaired
      google-translate
      auctex-latexmk
@@ -169,6 +167,7 @@ before layers configuration."
 
 (defun dotspacemacs/user-init ()
   (setq ispell-program-name "/usr/local/bin/aspell")
+  (setq ispell-dictionary "american")
 )
 
 (defun dotspacemacs/user-config ()
@@ -186,7 +185,13 @@ layers configuration."
   (require 'init-helm-bibtex)
   (require 'init-misc)
 
+  (require 'org-crypt)
+
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-darwin/"))
+  (setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-darwin/")))
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa") t)
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
+  (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
 )
 (defun dotspacemacs/emacs-custom-settings ()
@@ -201,7 +206,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/org/Beamer_example.org" "~/org/Chunqiu.org" "~/org/Diary.org" "~/org/Education.org" "~/org/Finance.org" "~/org/Food.org" "~/org/Geek.org" "~/org/Habit.org" "~/org/Job.org" "~/org/Life.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Self.org" "~/org/Watching.org" "~/org/tommyfeed.org")))
+    ("~/org/Job.org" "~/org/Beamer_example.org" "~/org/Diary.org" "~/org/Education.org" "~/org/Food.org" "~/org/Habit.org" "~/org/Life.org" "~/org/Reading.org" "~/org/Refile.org" "~/org/Self.org" "~/org/Watching.org" "~/org/tommyfeed.org")))
  '(org2ctex-latex-classes
    (quote
     (("ctexart" "\\documentclass[12pt, fontset=adobe, UTF8, a4paper, oneside]{ctexart}"
@@ -255,6 +260,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
  '(calendar-weekend-header ((t (:foreground "#859900"))))
  '(company-tooltip-selection ((t (:foreground "#073642" :background "#268bd2"))))
  '(eval-sexp-fu-flash ((t (:background "#268bd2"))))

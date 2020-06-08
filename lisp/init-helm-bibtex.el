@@ -39,4 +39,6 @@ Optionally call recursively on symlinks."
 
 (setq bibtex-completion-cite-prompt-for-optional-arguments nil)
 
+(spacemacs/set-leader-keys-for-major-mode 'latex-mode "rb" 'helm-bibtex)
+
 (provide 'init-helm-bibtex)
