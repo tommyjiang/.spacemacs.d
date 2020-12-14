@@ -114,6 +114,32 @@
 
 (advice-add 'org-clocktable-indent-string :override #'tommy-org-clocktable-indent-string)
 
+(defun org-datetree-insert-line-tommy (year &optional month day text)
+  (delete-region (save-excursion (skip-chars-backward " \t\n") (point)) (point))
+  (insert "\n" (make-string org-datetree-base-level ?*) " \n")
+  (backward-char)
+  (when month (org-do-demote))
+  (when day (org-do-demote))
+  (if text
+      (insert text)
+    (insert (format "%d" year))
+    (when month
+      (insert
+       (if day
+           (format-time-string "-%m-%d %A" (encode-time 0 0 0 day month year))
+         (format-time-string "-%m %B" (encode-time 0 0 0 1 month year))))))
+  (when (and day org-datetree-add-timestamp)
+    (save-excursion
+      (insert "\n")
+      (org-indent-line)
+      (org-insert-time-stamp
+       (encode-time 0 0 0 day month year)
+       nil
+       (eq org-datetree-add-timestamp 'inactive))))
+  (beginning-of-line))
+
+(advice-add 'org-datetree-insert-line :override #'org-datetree-insert-line-tommy)
+
 (defface phone-number-face '((t (:foreground "red"))) t)
 
 ; org completion with helm
