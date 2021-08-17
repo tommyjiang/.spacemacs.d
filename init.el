@@ -42,6 +42,8 @@
      google-translate
      auctex-latexmk
      window-purpose
+     evil-lisp-state
+     smartparens
      leuven-theme)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -72,9 +74,6 @@ before layers configuration."
    dotspacemacs-startup-banner 'official
    ;; t if you always want to see the changelog at startup
    dotspacemacs-always-show-changelog t
-   ;; List of items to show in the startup buffer. If nil it is disabled.
-   ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '(recents projects)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -167,10 +166,10 @@ before layers configuration."
 (defun dotspacemacs/user-init ()
   (setq ispell-program-name "/usr/local/bin/aspell")
   (setq ispell-dictionary "american")
-  (setq configuration-layer-elpa-archives
-    '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-      ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-      ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  ; (setq configuration-layer-elpa-archives
+  ;   '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;     ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+  ;     ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 )
 
 (defun dotspacemacs/user-config ()
@@ -188,8 +187,8 @@ layers configuration."
   (require 'init-helm-bibtex)
   (require 'init-misc)
 
-  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-darwin/"))
-  (setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-darwin/")))
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/x86_64-darwin/"))
+  (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/x86_64-darwin/")))
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
