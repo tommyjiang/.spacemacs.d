@@ -369,7 +369,7 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
 
 (defun cal-china-x-setup ()
   (setq calendar-date-display-form
-	'((cal-china-x-calendar-display-form
+    '((cal-china-x-calendar-display-form
            (mapcar (lambda (el) (string-to-number el))
                    (list month day year)))))
 
@@ -460,7 +460,7 @@ in a week."
                (calendar-gregorian-from-absolute
                 (cadr (assoc 1 (calendar-chinese-year y))))))
           (if (calendar-date-is-visible-p chinese-new-year)
-	      `((,chinese-new-year
+          `((,chinese-new-year
                  ,(format "%s年春节"
                           (calendar-chinese-sexagesimal-name
                            (+ y 57))))))))))

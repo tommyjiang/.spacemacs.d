@@ -60,11 +60,6 @@
          (helm-mu-contacts-name-face :inherit default)
          ; info
          (info-double-quoted-name :foreground "#268bd2")
-         ; mu4e
-         (mu4e-highlight-face :foreground "#268bd2")
-         (mu4e-modeline-face :inherit default :background "#eee8d5")
-         ; spaceline
-         (spaceline-python-venv 'mu4e-modeline-face)
          )))
 
 (spacemacs/update-theme)
