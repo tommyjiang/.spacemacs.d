@@ -3,6 +3,15 @@
 (setq magit-diff-refine-hunk (quote all))  ; 每行显示具体的 diff
 (add-hook 'after-save-hook 'magit-after-save-refresh-status t)  ; 保存后更新 magit-status
 
+; helm rg 搜索
+(setq helm-grep-ag-command (concat "rg"
+                                   " --color=never"
+                                   " --smart-case"
+                                   " --no-heading"
+                                   " --line-number %s %s %s")
+      helm-grep-file-path-style 'relative)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "hg" 'helm-do-grep-ag)
+
 ; powerline
 (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
 (spaceline-compile) ; 更新 spaceline 设置

@@ -39,6 +39,7 @@
      org-superstar
      org-projectile
      evil-unimpaired
+     forge
      google-translate
      auctex-latexmk
      window-purpose
@@ -164,12 +165,13 @@ before layers configuration."
 )
 
 (defun dotspacemacs/user-init ()
+  (setq byte-compile-warnings '(cl-functions))
   (setq ispell-program-name "/usr/local/bin/aspell")
   (setq ispell-dictionary "american")
-  ; (setq configuration-layer-elpa-archives
-  ;   '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-  ;     ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-  ;     ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  (setq configuration-layer-elpa-archives
+    '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+      ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
+      ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 )
 
 (defun dotspacemacs/user-config ()
@@ -189,83 +191,8 @@ layers configuration."
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/x86_64-darwin/"))
   (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/x86_64-darwin/")))
+  (setq helm-ff-allow-non-existing-file-at-point t)
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
-)
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org2ctex-latex-classes
-   (quote
-    (("ctexart" "\\documentclass[12pt, fontset=adobe, UTF8, a4paper, oneside]{ctexart}"
-      ("\\section{%s}" . "\\section*{%s}")
-      ("\\subsection{%s}" . "\\subsection*{%s}")
-      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-      ("\\paragraph{%s}" . "\\paragraph*{%s}")
-      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
-     ("ctexrep" "\\documentclass[fontset=adobe,UTF8,a4paper,zihao=-4]{ctexrep}"
-      ("\\part{%s}" . "\\part*{%s}")
-      ("\\chapter{%s}" . "\\chapter*{%s}")
-      ("\\section{%s}" . "\\section*{%s}")
-      ("\\subsection{%s}" . "\\subsection*{%s}")
-      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
-     ("ctexbook" "\\documentclass[fontset=adobe,UTF8,a4paper,zihao=-4]{ctexbook}"
-      ("\\part{%s}" . "\\part*{%s}")
-      ("\\chapter{%s}" . "\\chapter*{%s}")
-      ("\\section{%s}" . "\\section*{%s}")
-      ("\\subsection{%s}" . "\\subsection*{%s}")
-      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
-     ("beamer" "\\documentclass[presentation]{beamer}
-\\usepackage[fontset=adobe,UTF8,a4paper,zihao=-4]{ctex}"
-      ("\\section{%s}" . "\\section*{%s}")
-      ("\\subsection{%s}" . "\\subsection*{%s}")
-      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))))
- '(org2ctex-latex-packages-alist
-   (list "
-%%% 默认使用的latex宏包 %%%
-\\usepackage{fancyhdr} % 设置页眉页脚宏包
-\\usepackage{geometry} % 设置页边距宏包
-\\usepackage{xcolor} % 颜色宏包
-\\usepackage{enumitem} % 枚举设置宏包
-\\usepackage{tikz} % 画图宏包
-% 宏包设置
-% 页眉页脚样式
-\\pagestyle{fancy} % 页面样式采用fancyhdr宏包中的fancy
-\\fancyhf{} % 去掉页眉
-\\cfoot{\\thepage} % 页脚中间显示页码
-\\renewcommand{\\headrulewidth}{0pt} % 去掉页眉的横线
-% 页边距设置
-\\geometry{top = 2.54cm, bottom = 2.54cm, left = 3.18cm, right = 3.18cm}
-% 清华紫
-\\definecolor{THU}{RGB}{111, 23, 135}
-% 交叉引用宏包
-\\hypersetup{colorlinks=true,linkcolor=THU,citecolor=THU}"))
- '(package-selected-packages
-   (quote
-    (doom-modeline counsel helm magit transient all-the-icons org-plus-contrib yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org tagedit symon swiper string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode shrink-path scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode prettier-js pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org2ctex org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file nov nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lv lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies eldoc-eval editorconfig edit-server dumb-jump dotenv-mode diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
- '(calendar-weekend-header ((t (:foreground "#859900"))))
- '(company-tooltip-selection ((t (:foreground "#073642" :background "#268bd2"))))
- '(eval-sexp-fu-flash ((t (:background "#268bd2"))))
- '(evil-ex-substitute-replacement ((t (:foreground "#d33682" :underline t))))
- '(helm-buffer-directory ((t (:inherit default :foreground "#cb4b16"))))
- '(helm-match ((t (:inherit default :foreground "#268bd2"))))
- '(helm-mu-contacts-name-face ((t (:inherit default))))
- '(info-double-quoted-name ((t (:foreground "#268bd2"))))
- '(mu4e-highlight-face ((t (:foreground "#268bd2"))))
- '(mu4e-modeline-face ((t (:inherit default :background "#eee8d5"))))
- '(spaceline-python-venv ((t ((quote mu4e-modeline-face))))))
 )

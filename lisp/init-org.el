@@ -70,11 +70,11 @@
 (setq org-capture-templates
       (quote (("t" "Todo" entry (file "~/org/Refile.org")
                "* TODO %?\n%U\n")
-              ("s" "Someday" entry (file+datetree "~/org/Diary.org")
+              ("s" "Someday" entry (file+olp+datetree "~/org/Diary.org")
                "* TODO %?\n%T\n" :time-prompt t)
-              ("d" "Diary" entry (file+datetree "~/org/Diary.org")
+              ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%T\n")
-              ("j" "Journal" entry (file+datetree "~/org/Diary.org")
+              ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%T\n" :time-prompt t))))
 
 ; Tag Inheritance
