@@ -196,3 +196,34 @@ layers configuration."
   (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
 )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (doom-modeline counsel helm magit transient all-the-icons org-plus-contrib yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org tagedit symon swiper string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode shrink-path scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode prettier-js pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org2ctex org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file nov nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lv lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies eldoc-eval editorconfig edit-server dumb-jump dotenv-mode diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3"))))
+ '(calendar-weekend-header ((t (:foreground "#859900"))))
+ '(company-tooltip-selection ((t (:foreground "#073642" :background "#268bd2"))))
+ '(eval-sexp-fu-flash ((t (:background "#268bd2"))))
+ '(evil-ex-substitute-replacement ((t (:foreground "#d33682" :underline t))))
+ '(helm-buffer-directory ((t (:inherit default :foreground "#cb4b16"))))
+ '(helm-match ((t (:inherit default :foreground "#268bd2"))))
+ '(helm-mu-contacts-name-face ((t (:inherit default))))
+ '(info-double-quoted-name ((t (:foreground "#268bd2"))))
+ '(mu4e-highlight-face ((t (:foreground "#268bd2"))))
+ '(mu4e-modeline-face ((t (:inherit default :background "#eee8d5"))))
+ '(spaceline-python-venv ((t ((quote mu4e-modeline-face))))))
+)
