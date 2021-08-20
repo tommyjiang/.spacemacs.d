@@ -190,4 +190,35 @@
 ; set org-tag-column
 (setq org-tags-column -100)
 
+(defun tommy/org-roam-buffer-toggle ()
+  "Toggle display of the persistent `org-roam-buffer'."
+  (interactive)
+  (pcase (org-roam-buffer--visibility)
+    ('visible
+     (progn
+       (delete-window (get-buffer-window org-roam-buffer))
+       (remove-hook 'post-command-hook #'org-roam-buffer--redisplay-h)))
+    ((or 'exists 'none)
+     (progn
+       (display-buffer (get-buffer-create org-roam-buffer))
+       (org-roam-buffer-persistent-redisplay)))))
+
+(defun tommy/org-roam-buffer-persistent-redisplay ()
+  "Recompute contents of the persistent `org-roam-buffer'.
+Has no effect when there's no `org-roam-node-at-point'."
+  (when-let ((node (org-roam-node-at-point)))
+    (unless (equal node org-roam-buffer-current-node)
+      (setq org-roam-buffer-current-node node
+            org-roam-buffer-current-directory org-roam-directory)
+      (if (get-buffer-window org-roam-buffer)
+          (delete-window (get-buffer-window org-roam-buffer)))
+      (let ((buffer (get-buffer-create org-roam-buffer)))
+        (with-current-buffer buffer
+          (org-roam-buffer-render-contents)
+          (add-hook 'kill-buffer-hook #'org-roam-buffer--persistent-cleanup-h nil t))
+        (display-buffer buffer)))))
+
+(advice-add 'org-roam-buffer-toggle :override #'tommy/org-roam-buffer-toggle)
+(advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
+
 (provide 'init-orgTommy)
