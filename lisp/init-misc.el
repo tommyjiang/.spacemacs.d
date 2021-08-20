@@ -3,7 +3,8 @@
 (setq magit-diff-refine-hunk (quote all))  ; 每行显示具体的 diff
 (add-hook 'after-save-hook 'magit-after-save-refresh-status t)  ; 保存后更新 magit-status
 
-; helm rg 搜索
+; helm
+(setq helm-ff-allow-non-existing-file-at-point t)
 (setq helm-grep-ag-command (concat "rg"
                                    " --color=never"
                                    " --smart-case"

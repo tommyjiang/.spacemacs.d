@@ -48,6 +48,19 @@
 (setq theming-modifications
       '((solarized-light
          (calendar-weekend-header :foreground "#859900")
+         (org-agenda-date :box nil)
+         (org-agenda-date-today :weight bold :box nil)
+         (org-agenda-date-weekend :inherit org-agenda-date :weight bold :box nil)
+         (org-agenda-structure :box nil)
+         (org-agenda-calendar-event :foreground "#268bd2")
+         (org-block-begin-line :italic t :underline nil)
+         (org-block-end-line :italic t :overline nil)
+         (org-verbatim :foreground "#d33682" :inherit fixed-pitch)
+         (org-checkbox :foreground "#d33682" :box nil)
+         (org-document-title :foreground "#93a1a1")
+         (org-document-info :foreground "#93a1a1")
+         (org-roam-header-line :foreground "#268bd2" :bold t)
+         ; eval
          (eval-sexp-fu-flash :background "#268bd2")
          ; company
          (company-tooltip-selection :foreground "#073642" :background "#268bd2")
@@ -56,8 +69,6 @@
          ; helm
          (helm-buffer-directory :inherit default :foreground "#cb4b16")
          (helm-match :inherit default :foreground "#268bd2")
-         ; helm-mu
-         (helm-mu-contacts-name-face :inherit default)
          ; info
          (info-double-quoted-name :foreground "#268bd2")
          )))

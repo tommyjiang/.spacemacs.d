@@ -26,7 +26,7 @@
      html
      latex
      markdown
-     (org :variables org-want-todo-bindings t)
+     (org :variables org-want-todo-bindings t org-enable-roam-support t)
      spell-checking
      syntax-checking
      theming)
@@ -166,6 +166,8 @@ before layers configuration."
 
 (defun dotspacemacs/user-init ()
   (setq byte-compile-warnings '(cl-functions))
+  (setq org-roam-directory "~/org/org-roam")
+  (setq org-roam-v2-ack t)
   (setq ispell-program-name "/usr/local/bin/aspell")
   (setq ispell-dictionary "american")
   (setq configuration-layer-elpa-archives
@@ -191,10 +193,11 @@ layers configuration."
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/x86_64-darwin/"))
   (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/x86_64-darwin/")))
-  (setq helm-ff-allow-non-existing-file-at-point t)
+
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
+  (org-roam-db-autosync-mode)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
