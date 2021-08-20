@@ -1,3 +1,4 @@
 *.DS_Store
 auctex-latexmk-*.*
 snippets/
+.spacemacs.env
