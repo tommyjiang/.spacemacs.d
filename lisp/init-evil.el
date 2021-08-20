@@ -2,7 +2,7 @@
 (evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'org-mode 'normal)
 (add-hook 'git-commit-mode-hook 'evil-insert-state)
-(evil-set-initial-state 'magit-status-mode 'emacs)
+(evil-set-initial-state 'magit-status-mode 'normal)
 (setq evil-default-state 'normal)
 
 ; Org capture 自动转为 insert state

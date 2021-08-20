@@ -218,7 +218,20 @@ Has no effect when there's no `org-roam-node-at-point'."
           (add-hook 'kill-buffer-hook #'org-roam-buffer--persistent-cleanup-h nil t))
         (display-buffer buffer)))))
 
+(defun tommy/org-roam-backlinks-section (node)
+  "The backlinks section for NODE."
+  (when-let ((backlinks (seq-sort #'org-roam-backlinks-sort (org-roam-backlinks-get node))))
+    (magit-insert-section (org-roam-backlinks)
+      (magit-insert-heading "反向引用:")
+      (dolist (backlink backlinks)
+        (org-roam-node-insert-section
+         :source-node (org-roam-backlink-source-node backlink)
+         :point (org-roam-backlink-point backlink)
+         :properties (org-roam-backlink-properties backlink)))
+      (insert ?\n))))
+
 (advice-add 'org-roam-buffer-toggle :override #'tommy/org-roam-buffer-toggle)
 (advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
+(advice-add 'org-roam-backlinks-section :override #'tommy/org-roam-backlinks-section)
 
 (provide 'init-orgTommy)

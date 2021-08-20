@@ -55,6 +55,7 @@
          (org-agenda-calendar-event :foreground "#268bd2")
          (org-block-begin-line :italic t :underline nil)
          (org-block-end-line :italic t :overline nil)
+         (org-link :foreground "#d33682")
          (org-verbatim :foreground "#d33682" :inherit fixed-pitch)
          (org-checkbox :foreground "#d33682" :box nil)
          (org-document-title :foreground "#93a1a1")
