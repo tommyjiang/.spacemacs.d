@@ -5,9 +5,6 @@
 (evil-set-initial-state 'magit-status-mode 'normal)
 (setq evil-default-state 'normal)
 
-; Org capture 自动转为 insert state
-(add-hook 'org-capture-mode-hook 'evil-insert-state) ; org capture
-
 ; Org mode 中回车的设置
 (define-key evil-normal-state-map (kbd "RET") 'org-return)
 

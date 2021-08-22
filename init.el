@@ -165,11 +165,19 @@ before layers configuration."
 )
 
 (defun dotspacemacs/user-init ()
+  ; 忽略 cl 警告
   (setq byte-compile-warnings '(cl-functions))
+  ; Org roam 设置
   (setq org-roam-directory "~/org/org-roam")
   (setq org-roam-v2-ack t)
+  ; Org capture 自动转为 insert state
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
+
+  ; ispell bin 路径和字典
   (setq ispell-program-name "/usr/local/bin/aspell")
   (setq ispell-dictionary "american")
+
+  ; melpa 源地址
   (setq configuration-layer-elpa-archives
     '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
       ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
