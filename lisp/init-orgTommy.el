@@ -234,4 +234,7 @@ Has no effect when there's no `org-roam-node-at-point'."
 (advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
 (advice-add 'org-roam-backlinks-section :override #'tommy/org-roam-backlinks-section)
 
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'org-id-get-create)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "hg" 'helm-do-grep-ag)
+
 (provide 'init-orgTommy)

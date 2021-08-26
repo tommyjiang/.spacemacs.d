@@ -11,7 +11,6 @@
                                    " --no-heading"
                                    " --line-number %s %s %s")
       helm-grep-file-path-style 'relative)
-(spacemacs/set-leader-keys-for-major-mode 'org-mode "hg" 'helm-do-grep-ag)
 
 ; powerline
 (setq powerline-default-separator 'nil) ; 设置 powerline 分割线
