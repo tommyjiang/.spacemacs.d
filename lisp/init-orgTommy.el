@@ -114,6 +114,21 @@
 
 (advice-add 'org-clocktable-indent-string :override #'tommy-org-clocktable-indent-string)
 
+; 判断是否为空行
+(defun blank-line-p (&optional pos)
+  "Returns `t' if line (optionally, line at POS) is empty or
+composed only of whitespace."
+  (save-excursion
+    (goto-char (or pos (point)))
+    (beginning-of-line)
+    (= (point-at-eol)
+       (progn (skip-syntax-forward " ") (point)))))
+
+; 向上一行
+(defun backward-line ()
+    "Backward line"
+    (forward-line -1))
+
 (defun org-datetree-insert-line-tommy (year &optional month day text)
   (delete-region (save-excursion (skip-chars-backward " \t\n") (point)) (point))
   (insert "\n" (make-string org-datetree-base-level ?*) " \n")
@@ -136,6 +151,9 @@
        (encode-time 0 0 0 day month year)
        nil
        (eq org-datetree-add-timestamp 'inactive))))
+  ; 向下一行，如果是空行则删除，如果不是空行则回退到目前位置
+  (forward-line)
+  (if (blank-line-p) (delete-region (save-excursion (skip-chars-backward " \t\n") (point)) (point)) (backward-line))
   (beginning-of-line))
 
 (advice-add 'org-datetree-insert-line :override #'org-datetree-insert-line-tommy)
@@ -230,11 +248,28 @@ Has no effect when there's no `org-roam-node-at-point'."
          :properties (org-roam-backlink-properties backlink)))
       (insert ?\n))))
 
+(defun tommy/org-roam-reflinks-section (node)
+  "The reflinks section for NODE."
+  (when (org-roam-node-refs node)
+    (let* ((reflinks (seq-sort #'org-roam-reflinks-sort (org-roam-reflinks-get node))))
+      (magit-insert-section (org-roam-reflinks)
+        (magit-insert-heading "参考引用:")
+        (dolist (reflink reflinks)
+          (org-roam-node-insert-section
+           :source-node (org-roam-reflink-source-node reflink)
+           :point (org-roam-reflink-point reflink)
+           :properties (org-roam-reflink-properties reflink)))
+        (insert ?\n)))))
+
+
 (advice-add 'org-roam-buffer-toggle :override #'tommy/org-roam-buffer-toggle)
 (advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
 (advice-add 'org-roam-backlinks-section :override #'tommy/org-roam-backlinks-section)
+(advice-add 'org-roam-reflinks-section :override #'tommy/org-roam-reflinks-section)
 
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'org-id-get-create)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "rr" 'org-roam-ref-add)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "rm" 'org-roam-ref-remove)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "hg" 'helm-do-grep-ag)
 
 (provide 'init-orgTommy)

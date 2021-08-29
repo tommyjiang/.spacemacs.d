@@ -66,7 +66,7 @@
 ;; I use C-c c to start capture mode
 (global-set-key (kbd "C-c c") 'org-capture)
 
-;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
+;; Capture templates
 (setq org-capture-templates
       (quote (("t" "Todo" entry (file "~/org/Refile.org")
                "* TODO %?\n%U\n")
