@@ -261,15 +261,22 @@ Has no effect when there's no `org-roam-node-at-point'."
            :properties (org-roam-reflink-properties reflink)))
         (insert ?\n)))))
 
-
 (advice-add 'org-roam-buffer-toggle :override #'tommy/org-roam-buffer-toggle)
 (advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
 (advice-add 'org-roam-backlinks-section :override #'tommy/org-roam-backlinks-section)
 (advice-add 'org-roam-reflinks-section :override #'tommy/org-roam-reflinks-section)
 
+(add-to-list 'load-path "~/.spacemacs.d/org-roam-ui")
+(load-library "org-roam-ui")
+
+(setq org-roam-ui-sync-theme t)
+(setq org-roam-ui-follow t)
+(setq org-roam-ui-update-on-save t)
+
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'org-id-get-create)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "rr" 'org-roam-ref-add)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "rm" 'org-roam-ref-remove)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "rg" 'org-roam-ui-mode)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "hg" 'helm-do-grep-ag)
 
 (provide 'init-orgTommy)
