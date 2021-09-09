@@ -279,4 +279,7 @@ Has no effect when there's no `org-roam-node-at-point'."
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "rg" 'org-roam-ui-mode)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "hg" 'helm-do-grep-ag)
 
+; 保存文件前重新计算所有表格
+(add-hook 'before-save-hook 'org-table-iterate-buffer-tables)
+
 (provide 'init-orgTommy)
