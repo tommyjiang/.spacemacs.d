@@ -74,6 +74,7 @@
          (info-double-quoted-name :foreground "#268bd2")
          )))
 
+; 更新主题
 (spacemacs/update-theme)
 
 ; hl-todo face
