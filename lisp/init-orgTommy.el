@@ -261,8 +261,50 @@ Has no effect when there's no `org-roam-node-at-point'."
            :properties (org-roam-reflink-properties reflink)))
         (insert ?\n)))))
 
+(cl-defun tommy/org-roam-node-insert-section (&key source-node point properties)
+  "Insert section for a link from SOURCE-NODE to some other node.
+The other node is normally `org-roam-buffer-current-node'.
+
+SOURCE-NODE is an `org-roam-node' that links or references with
+the other node.
+
+POINT is a character position where the link is located in
+SOURCE-NODE's file.
+
+PROPERTIES (a plist) contains additional information about the
+link.
+
+Despite the name, this function actually inserts 2 sections at
+the same time:
+
+1. `org-roam-node-section' for a heading that describes
+   SOURCE-NODE. Acts as a parent section of the following one.
+
+2. `org-roam-preview-section' for a preview content that comes
+   from SOURCE-NODE's file for the link (that references the
+   other node) at POINT. Acts a child section of the previous
+   one."
+  (magit-insert-section section (org-roam-node-section)
+    (let ((outline (if-let ((outline (plist-get properties :outline)))
+                       (mapconcat #'org-link-display-format outline " -> ")
+                     "Top")))
+      (insert (concat (propertize (org-roam-node-title source-node)
+                                  'font-lock-face 'org-roam-title)
+                      (format " (%s)"
+                              (propertize outline 'font-lock-face 'org-roam-olp)))))
+    (magit-insert-heading)
+    (oset section node source-node)
+    (magit-insert-section section (org-roam-preview-section)
+      (insert (org-roam-fontify-like-in-org-mode
+               (org-roam-preview-get-contents (org-roam-node-file source-node) point))
+              "\n")
+      (oset section file (org-roam-node-file source-node))
+      (oset section point point)
+      (insert ?\n))))
+
 (advice-add 'org-roam-buffer-toggle :override #'tommy/org-roam-buffer-toggle)
 (advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
+(advice-add 'org-roam-node-insert-section :override #'tommy/org-roam-node-insert-section)
 (advice-add 'org-roam-backlinks-section :override #'tommy/org-roam-backlinks-section)
 (advice-add 'org-roam-reflinks-section :override #'tommy/org-roam-reflinks-section)
 
