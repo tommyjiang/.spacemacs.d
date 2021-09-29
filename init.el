@@ -43,6 +43,7 @@
      evil-unimpaired
      forge
      google-translate
+     helm-ls-git
      auctex-latexmk
      window-purpose
      evil-lisp-state
@@ -180,11 +181,11 @@ before layers configuration."
   (setq ispell-dictionary "american")
 
   ; melpa 源地址
-  (setq configuration-layer-elpa-archives
-    '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-      ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
-      ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-      ))
+  ;(setq configuration-layer-elpa-archives
+  ;  '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;    ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
+  ;    ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ;    ))
 )
 
 (defun dotspacemacs/user-config ()
@@ -220,9 +221,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(highlight-parentheses-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
  '(package-selected-packages
-   (quote
-    (doom-modeline counsel helm magit transient all-the-icons org-plus-contrib yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org tagedit symon swiper string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode shrink-path scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode prettier-js pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org2ctex org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file nov nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lv lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies eldoc-eval editorconfig edit-server dumb-jump dotenv-mode diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+   '(doom-modeline counsel helm magit transient all-the-icons org-plus-contrib yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org tagedit symon swiper string-inflection spaceline-all-the-icons solarized-theme smeargle slime-company slim-mode shrink-path scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode prettier-js pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org2ctex org-ref org-present org-pomodoro org-mime org-download org-brain open-junk-file nov nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow lv lorem-ipsum link-hint launchctl indent-guide impatient-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies eldoc-eval editorconfig edit-server dumb-jump dotenv-mode diminish counsel-projectile company-web company-statistics company-auctex common-lisp-snippets column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -236,5 +238,17 @@ This function is called at the very end of Spacemacs initialization."
  '(helm-buffer-directory ((t (:inherit default :foreground "#cb4b16"))))
  '(helm-match ((t (:inherit default :foreground "#268bd2"))))
  '(info-double-quoted-name ((t (:foreground "#268bd2"))))
- )
+ '(org-agenda-calendar-event ((t (:foreground "#268bd2"))))
+ '(org-agenda-date ((t (:box nil))))
+ '(org-agenda-date-today ((t (:weight bold :box nil))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :weight bold :box nil))))
+ '(org-agenda-structure ((t (:box nil))))
+ '(org-block-begin-line ((t (:italic t :underline nil))))
+ '(org-block-end-line ((t (:italic t :overline nil))))
+ '(org-checkbox ((t (:foreground "#d33682" :box nil))))
+ '(org-document-info ((t (:foreground "#93a1a1"))))
+ '(org-document-title ((t (:foreground "#93a1a1"))))
+ '(org-link ((t (:foreground "#d33682"))))
+ '(org-roam-header-line ((t (:foreground "#268bd2" :bold t))))
+ '(org-verbatim ((t (:foreground "#d33682" :inherit fixed-pitch)))))
 )
