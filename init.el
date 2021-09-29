@@ -43,7 +43,6 @@
      evil-unimpaired
      forge
      google-translate
-     helm-ls-git
      auctex-latexmk
      window-purpose
      evil-lisp-state
@@ -202,6 +201,8 @@ layers configuration."
   (require 'init-auctex)
   (require 'init-helm-bibtex)
   (require 'init-misc)
+
+  (require 'helm-ls-git)
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/x86_64-darwin/"))
   (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/x86_64-darwin/")))
