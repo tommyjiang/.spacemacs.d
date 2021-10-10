@@ -70,6 +70,7 @@
          ; helm
          (helm-buffer-directory :inherit default :foreground "#cb4b16")
          (helm-match :inherit default :foreground "#268bd2")
+         (helm-ff-file-extension :inherit default :foreground "#cb4b16")
          ; info
          (info-double-quoted-name :foreground "#268bd2")
          )))
