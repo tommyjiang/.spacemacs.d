@@ -46,10 +46,18 @@
 ; reftex 默认 bib
 (setq reftex-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
 
-(setq org-ref-default-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
+(setq bibtex-completion-bibliography '("~/CV-DL-OD-Interview/refs.bib"))
 
 (setq font-latex-match-reference-keywords
       '(("citerb" "[{")))
+
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (font-lock-add-keywords nil
+                                    '(("\\noindent" 0 font-lock-keyword-face t)
+                                      ("\\ParallelLText" 0 font-lock-keyword-face t)
+                                      ("\\ParallelRText" 0 font-lock-keyword-face t)
+                                      ("\\ParallelPar" 0 font-lock-keyword-face t)))))
 
 (setq reftex-toc-split-windows-horizontally t)
 (setq reftex-toc-max-level 3)
