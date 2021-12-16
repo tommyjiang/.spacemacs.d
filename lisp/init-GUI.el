@@ -55,6 +55,7 @@
          (calendar-weekend-header :foreground "#859900")
          (company-tooltip-scrollbar-thumb :background "#cb4b16")
          (company-tooltip-scrollbar-track :background "wheat")
+         (helm-non-file-buffer :underline nil)
          (org-agenda-date :box nil)
          (org-agenda-date-today :weight bold :box nil)
          (org-agenda-date-weekend :inherit org-agenda-date :weight bold :box nil)
@@ -98,9 +99,6 @@
         ("DONE" . "#afd8af")
         ("FIXME" . "#cc9393")
         ("XXX"   . "#cc5353")))
-
-; company 中英文混排右对齐
-(set-char-table-range glyphless-char-display #xfeff 'zero-width)
 
 ; 启动后全屏
 (toggle-frame-maximized)
