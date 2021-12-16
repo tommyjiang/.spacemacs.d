@@ -209,8 +209,8 @@ layers configuration."
 
   (require 'helm-ls-git)
 
-  (setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022/bin/x86_64-darwin/"))
-  (setq exec-path (append exec-path '("/usr/local/texlive/2022/bin/x86_64-darwin/")))
+  (setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022/bin/x86_64-linux/"))
+  (setq exec-path (append exec-path '("/usr/local/texlive/2022/bin/x86_64-linux/")))
 
   (setq org-agenda-start-with-log-mode nil) ; org agenda 不显示 log
   (setq debug-on-error t)
