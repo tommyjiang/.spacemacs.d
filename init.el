@@ -22,7 +22,6 @@
      emacs-lisp
      (epub :variables nov-text-width 80)
      git
-     gnus
      html
      latex
      markdown
