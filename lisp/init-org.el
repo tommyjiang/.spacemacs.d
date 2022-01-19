@@ -77,7 +77,10 @@
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%T\n")
               ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
-               "* %?\n%T\n" :time-prompt t))))
+               "* %?\n%T\n" :time-prompt t)
+              ("D" "Deadline" entry (file+olp+datetree "~/org/Diary.org")
+               "* %?\nDEADLINE: %t\n%T\n" :time-prompt t)
+              )))
 
 ; Tag Inheritance
 (setq org-use-tag-inheritance t)
