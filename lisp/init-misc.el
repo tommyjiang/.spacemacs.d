@@ -1,7 +1,8 @@
 ; magit
 (setq magit-push-always-verify nil) ; magit 每次 push 不再询问
 (setq magit-diff-refine-hunk (quote all))  ; 每行显示具体的 diff
-(add-hook 'after-save-hook 'magit-after-save-refresh-status t)  ; 保存后更新 magit-status
+(with-eval-after-load 'magit-mode
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))  ; 保存后更新 magit-status
 
 ; helm
 (setq helm-ff-allow-non-existing-file-at-point t)
