@@ -20,7 +20,7 @@
      colors
      (elfeed :variables rmh-elfeed-org-files (list "~/org/tommyfeed.org"))
      emacs-lisp
-     (epub :variables nov-text-width 80)
+     epub
      git
      html
      latex
