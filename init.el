@@ -180,11 +180,11 @@ before layers configuration."
   (setq ispell-dictionary "american")
 
   ; melpa 源地址
-  (setq configuration-layer-elpa-archives
-    '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-      ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
-      ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-      ))
+  ;(setq configuration-layer-elpa-archives
+  ;  '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;    ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
+  ;    ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ;    ))
 )
 
 (defun dotspacemacs/user-config ()
