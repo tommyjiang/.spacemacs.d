@@ -19,8 +19,6 @@
 (setq solarized-height-plus-4 1.0)
 
 ; 调整 epub mode(nov mode) 行高
-(setq nov-text-width t)
-(setq visual-fill-column-center-text t)
 (defun set-bigger-spacing ()
   (setq-local default-text-properties '(line-spacing 0.25 line-height 1.25)))
 (add-hook 'nov-mode-hook 'set-bigger-spacing)
