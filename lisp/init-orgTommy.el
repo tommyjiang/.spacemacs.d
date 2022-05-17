@@ -302,46 +302,11 @@ the same time:
       (oset section point point)
       (insert ?\n))))
 
-(defun tommy/org-roam-file-p (&optional file)
-  "Return t if FILE is an Org-roam file, nil otherwise.
-If FILE is not specified, use the current buffer's file-path.
-
-FILE is an Org-roam file if:
-- It's located somewhere under `org-roam-directory'
-- It has a matching file extension (`org-roam-file-extensions')
-- It doesn't match excluded regexp (`org-roam-file-exclude-regexp')"
-  (when (or file (buffer-file-name (buffer-base-buffer)))
-    (let* ((path (or file (buffer-file-name (buffer-base-buffer))))
-           (relative-path (file-relative-name path org-roam-directory))
-           (ext (org-roam--file-name-extension path))
-           (ext (if (string= ext "gpg")
-                    (org-roam--file-name-extension (file-name-sans-extension path))
-                  ext))
-           (org-roam-dir-p (org-roam-descendant-of-p path org-roam-directory))
-           (valid-file-ext-p (member ext org-roam-file-extensions))
-           (match-exclude-regexp-p
-            (cond
-             ((not org-roam-file-exclude-regexp) nil)
-             ((stringp org-roam-file-exclude-regexp)
-              (string-match-p org-roam-file-exclude-regexp relative-path))
-             ((listp org-roam-file-exclude-regexp)
-              (let (is-match)
-                (dolist (exclude-re org-roam-file-exclude-regexp)
-                  (setq is-match (or is-match (string-match-p exclude-re relative-path))))
-                is-match)))))
-      (save-match-data
-        (and
-         path
-         org-roam-dir-p
-         valid-file-ext-p
-         (not match-exclude-regexp-p))))))
-
 (advice-add 'org-roam-buffer-toggle :override #'tommy/org-roam-buffer-toggle)
 (advice-add 'org-roam-buffer-persistent-redisplay :override #'tommy/org-roam-buffer-persistent-redisplay)
 (advice-add 'org-roam-node-insert-section :override #'tommy/org-roam-node-insert-section)
 (advice-add 'org-roam-backlinks-section :override #'tommy/org-roam-backlinks-section)
 (advice-add 'org-roam-reflinks-section :override #'tommy/org-roam-reflinks-section)
-(advice-add 'org-roam-file-p :override #'tommy/org-roam-file-p)
 
 (add-to-list 'load-path "~/.spacemacs.d/org-roam-ui")
 (load-library "org-roam-ui")
