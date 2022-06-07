@@ -75,6 +75,12 @@ before layers configuration."
    ;; If the value is nil then no banner is displayed.
    ;; dotspacemacs-startup-banner 'official
    dotspacemacs-startup-banner 'official
+   ;; Scale factor controls the scaling (size) of the startup banner. Default
+   ;; value is `auto' for scaling the logo automatically to fit all buffer
+   ;; contents, to a maximum of the full image height and a minimum of 3 line
+   ;; heights. If set to a number (int or float) it is used as a constant
+   ;; scaling factor for the default logo size.
+   dotspacemacs-startup-banner-scale 'auto
    ;; t if you always want to see the changelog at startup
    dotspacemacs-always-show-changelog t
    ;; List of themes, the first of the list is loaded when spacemacs starts.
@@ -205,8 +211,8 @@ layers configuration."
 
   (require 'helm-ls-git)
 
-  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/x86_64-darwin/"))
-  (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/x86_64-darwin/")))
+  (setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022/bin/x86_64-darwin/"))
+  (setq exec-path (append exec-path '("/usr/local/texlive/2022/bin/x86_64-darwin/")))
 
   (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
   (setq debug-on-error t)
