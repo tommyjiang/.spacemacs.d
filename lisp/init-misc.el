@@ -29,4 +29,7 @@
 ; python interpreter
 (setq python-shell-interpreter 'python3)
 
+; elfeed argument
+(setq elfeed-curl-extra-arguments '("--insecure"))
+
 (provide 'init-misc)
