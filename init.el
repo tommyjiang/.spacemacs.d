@@ -214,7 +214,7 @@ layers configuration."
   (setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022/bin/x86_64-darwin/"))
   (setq exec-path (append exec-path '("/usr/local/texlive/2022/bin/x86_64-darwin/")))
 
-  (setq org-agenda-start-with-log-mode t) ; org agenda 显示 log
+  (setq org-agenda-start-with-log-mode nil) ; org agenda 不显示 log
   (setq debug-on-error t)
   (org-agenda nil ",") ; 启动后显示 org agenda
   (org-roam-db-autosync-mode)
