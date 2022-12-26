@@ -68,6 +68,8 @@
          (org-document-title :foreground "#93a1a1")
          (org-document-info :foreground "#93a1a1")
          (org-roam-header-line :foreground "#268bd2" :bold t)
+         (org-pomodoro-mode-line :foreground "#cb4b16")
+         (org-pomodoro-mode-line-break :foreground "#268bd2")
          ; eval
          (eval-sexp-fu-flash :background "#268bd2")
          ; company

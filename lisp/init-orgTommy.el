@@ -324,4 +324,22 @@ the same time:
 ; 保存文件前重新计算所有表格
 (add-hook 'before-save-hook 'org-table-iterate-buffer-tables)
 
+; 调用操作系统提醒
+(setq alert-default-style 'libnotify)
+
+; org-pomodoro 取消声音
+(setq org-pomodoro-finished-sound-p nil)
+
+(defun tommy/org-pomodoro-finished ()
+  "Is invoked when a pomodoro was finished successfully.
+This may send a notification, play a sound and start a pomodoro break."
+  (unless org-pomodoro-clock-break
+    (org-clock-out nil t))
+  (org-pomodoro-reset)
+  (org-pomodoro-maybe-play-sound :pomodoro)
+  (org-pomodoro-notify "Pomodoro completed!" "Time for a break.")
+  (run-hooks 'org-pomodoro-finished-hook))
+
+(advice-add 'org-pomodoro-finished :override #'tommy/org-pomodoro-finished)
+
 (provide 'init-orgTommy)

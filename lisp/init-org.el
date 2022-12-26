@@ -11,6 +11,7 @@
 (global-set-key "\C-cg" 'org-mac-grab-link)
 (global-set-key "\C-cf" 'org-roam-node-find)
 (global-set-key "\C-ci" 'org-roam-node-insert)
+(global-set-key "\C-ct" 'org-pomodoro)
 
 ; Agenda Setup
 (setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
