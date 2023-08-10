@@ -158,8 +158,6 @@ composed only of whitespace."
 
 (advice-add 'org-datetree-insert-line :override #'org-datetree-insert-line-tommy)
 
-(defface phone-number-face '((t (:foreground "red"))) t)
-
 ; org completion with helm
 (setq org-completion-use-ido nil)
 
