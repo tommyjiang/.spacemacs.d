@@ -25,7 +25,7 @@
      html
      latex
      markdown
-     (org :variables org-want-todo-bindings t org-enable-roam-support t)
+     (org :variables org-want-todo-bindings t)
      spell-checking
      syntax-checking
      theming)
@@ -40,6 +40,7 @@
    '(org-bullets
      org-superstar
      org-projectile
+     org-rich-yank
      evil-unimpaired
      forge
      google-translate
@@ -175,9 +176,6 @@ before layers configuration."
 (defun dotspacemacs/user-init ()
   ; 忽略 cl 警告
   (setq byte-compile-warnings '(cl-functions))
-  ; Org roam 设置
-  (setq org-roam-directory "~/org/org-roam")
-  (setq org-roam-v2-ack t)
   ; Org capture 自动转为 insert state
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
@@ -216,6 +214,49 @@ layers configuration."
 
   (setq org-agenda-start-with-log-mode nil) ; org agenda 不显示 log
   (setq debug-on-error t)
+  (setq package-check-signature nil)
   (org-agenda nil ",") ; 启动后显示 org agenda
-  (org-roam-db-autosync-mode)
+)
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yasnippet-snippets ws-butler writeroom-mode winum which-key websocket web-mode web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org term-cursor tagedit symon symbol-overlay string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs request rainbow-mode rainbow-identifiers rainbow-delimiters quickrun pug-mode prettier-js pcre2el password-generator paradox overseer orgit org-rich-yank org-ref org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nov nameless multi-line monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum inspector info+ indent-guide impatient-mode hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-git-grep helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-bibtex helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates git-timemachine git-modes git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-textobj-line evil-tex evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emmet-mode elisp-slime-nav elisp-def elfeed-org elfeed-goodies editorconfig edit-server dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word company-web company-reftex company-math company-auctex column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bind-map bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "nil" :slant normal :weight normal :height 241 :width normal))))
+ '(calendar-weekend-header ((t (:foreground "#859900"))))
+ '(company-tooltip-scrollbar-thumb ((t (:background "#cb4b16"))))
+ '(company-tooltip-scrollbar-track ((t (:background "wheat"))))
+ '(company-tooltip-selection ((t (:foreground "#073642" :background "#268bd2"))))
+ '(eval-sexp-fu-flash ((t (:background "#268bd2"))))
+ '(evil-ex-substitute-replacement ((t (:foreground "#d33682" :underline t))))
+ '(helm-buffer-directory ((t (:inherit default :foreground "#cb4b16"))))
+ '(helm-ff-file-extension ((t (:inherit default :foreground "#cb4b16"))))
+ '(helm-match ((t (:inherit default :foreground "#268bd2"))))
+ '(info-double-quoted-name ((t (:foreground "#268bd2"))))
+ '(org-agenda-calendar-event ((t (:foreground "#268bd2"))))
+ '(org-agenda-date ((t (:box nil))))
+ '(org-agenda-date-today ((t (:weight bold :box nil))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :weight bold :box nil))))
+ '(org-agenda-structure ((t (:box nil))))
+ '(org-block-begin-line ((t (:italic t :underline nil))))
+ '(org-block-end-line ((t (:italic t :overline nil))))
+ '(org-checkbox ((t (:foreground "#d33682" :box nil))))
+ '(org-document-info ((t (:foreground "#93a1a1"))))
+ '(org-document-title ((t (:foreground "#93a1a1"))))
+ '(org-link ((t (:foreground "#d33682"))))
+ '(org-pomodoro-mode-line ((t (:foreground "#cb4b16"))))
+ '(org-pomodoro-mode-line-break ((t (:foreground "#268bd2"))))
+ '(org-verbatim ((t (:foreground "#d33682" :inherit fixed-pitch)))))
 )

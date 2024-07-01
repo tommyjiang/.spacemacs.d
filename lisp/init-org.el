@@ -9,8 +9,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cg" 'org-mac-grab-link)
-(global-set-key "\C-cf" 'org-roam-node-find)
-(global-set-key "\C-ci" 'org-roam-node-insert)
 (global-set-key "\C-ct" 'org-pomodoro)
 
 ; Agenda Setup
