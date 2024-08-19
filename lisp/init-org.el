@@ -951,8 +951,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-clock-sound "/usr/local/lib/tngchime.wav")
 
 ; Enable habit tracking (and a bunch of other modules)
-(setq org-modules (quote (org-bbdb
-                          org-bibtex
+(setq org-modules (quote (org-bibtex
                           org-crypt
                           org-drill
                           org-gnus
