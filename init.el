@@ -20,7 +20,6 @@
      colors
      (elfeed :variables rmh-elfeed-org-files (list "~/org/tommyfeed.org"))
      emacs-lisp
-     epub
      git
      html
      latex
@@ -32,6 +31,7 @@
    ;; Additional layers
    dotspacemacs-additional-packages
    '(bbdb
+     focus
      websocket
      solarized-theme
      )
