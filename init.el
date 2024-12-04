@@ -206,6 +206,7 @@ layers configuration."
   (require 'init-auctex)
   (require 'init-helm-bibtex)
   (require 'init-misc)
+  (require 'init-topspace)
 
   (require 'helm-ls-git)
 
