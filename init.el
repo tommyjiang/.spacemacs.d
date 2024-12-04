@@ -20,7 +20,6 @@
      colors
      (elfeed :variables rmh-elfeed-org-files (list "~/org/tommyfeed.org"))
      emacs-lisp
-     epub
      git
      html
      latex
@@ -32,6 +31,7 @@
    ;; Additional layers
    dotspacemacs-additional-packages
    '(bbdb
+     focus
      websocket
      solarized-theme
      )
@@ -97,11 +97,11 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Inconsolata"
-                               :size 24
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.0)
+   ; dotspacemacs-default-font '("Inconsolata"
+   ;                             :size 24
+   ;                             :weight normal
+   ;                             :width normal
+   ;                             :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -180,7 +180,7 @@ before layers configuration."
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
   ; ispell bin 路径和字典
-  (setq ispell-program-name "/usr/local/bin/aspell")
+  (setq ispell-program-name "/usr/bin/aspell")
   (setq ispell-dictionary "american")
 
   ; melpa 源地址
@@ -210,8 +210,8 @@ layers configuration."
 
   (require 'helm-ls-git)
 
-  (setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022/bin/x86_64-darwin/"))
-  (setq exec-path (append exec-path '("/usr/local/texlive/2022/bin/x86_64-darwin/")))
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2022/bin/x86_64-linux/"))
+  (setq exec-path (append exec-path '("/usr/local/texlive/2022/bin/x86_64-linux/")))
 
   (setq org-agenda-start-with-log-mode nil) ; org agenda 不显示 log
   (setq debug-on-error t)
@@ -229,13 +229,12 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets ws-butler writeroom-mode winum which-key websocket web-mode web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org term-cursor tagedit symon symbol-overlay string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs request rainbow-mode rainbow-identifiers rainbow-delimiters quickrun pug-mode prettier-js pcre2el password-generator paradox overseer orgit org-rich-yank org-ref org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nov nameless multi-line monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum inspector info+ indent-guide impatient-mode hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-git-grep helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-bibtex helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates git-timemachine git-modes git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flymd flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-textobj-line evil-tex evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emmet-mode elisp-slime-nav elisp-def elfeed-org elfeed-goodies editorconfig edit-server dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word company-web company-reftex company-math company-auctex column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bind-map bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+   '(2048-game 0blayout 0x0 yasnippet-snippets ws-butler writeroom-mode winum which-key websocket web-mode web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org term-cursor tagedit symon symbol-overlay spacemacs-purpose-popwin spaceline space-doc solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs request rainbow-mode rainbow-identifiers rainbow-delimiters quickrun pug-mode prettier-js pcre2el paradox overseer orgit org-roam org-rich-yank org-ref org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nov nameless move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum inspector info+ indent-guide impatient-mode hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-git-grep helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-bibtex helm-ag golden-ratio gnuplot gmail-message-mode gitignore-templates git-timemachine git-modes git-messenger git-link gh-md fuzzy flyspell-correct-helm flymd flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-tutor evil-textobj-line evil-tex evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emmet-mode elisp-slime-nav elisp-def elfeed-org elfeed-goodies edit-server dumb-jump dotenv-mode diminish devdocs define-word company-web company-reftex company-math company-auctex column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode bind-map bbdb auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata" :foundry "nil" :slant normal :weight normal :height 241 :width normal))))
  '(calendar-weekend-header ((t (:foreground "#859900"))))
  '(company-tooltip-scrollbar-thumb ((t (:background "#cb4b16"))))
  '(company-tooltip-scrollbar-track ((t (:background "wheat"))))
@@ -245,6 +244,7 @@ This function is called at the very end of Spacemacs initialization."
  '(helm-buffer-directory ((t (:inherit default :foreground "#cb4b16"))))
  '(helm-ff-file-extension ((t (:inherit default :foreground "#cb4b16"))))
  '(helm-match ((t (:inherit default :foreground "#268bd2"))))
+ '(helm-non-file-buffer ((t (:underline nil))))
  '(info-double-quoted-name ((t (:foreground "#268bd2"))))
  '(org-agenda-calendar-event ((t (:foreground "#268bd2"))))
  '(org-agenda-date ((t (:box nil))))
@@ -259,5 +259,6 @@ This function is called at the very end of Spacemacs initialization."
  '(org-link ((t (:foreground "#d33682"))))
  '(org-pomodoro-mode-line ((t (:foreground "#cb4b16"))))
  '(org-pomodoro-mode-line-break ((t (:foreground "#268bd2"))))
+ '(org-roam-header-line ((t (:foreground "#268bd2" :bold t))))
  '(org-verbatim ((t (:foreground "#d33682" :inherit fixed-pitch)))))
 )

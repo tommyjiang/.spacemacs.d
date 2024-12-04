@@ -950,23 +950,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-clock-sound "/usr/local/lib/tngchime.wav")
 
-; Enable habit tracking (and a bunch of other modules)
-(setq org-modules (quote (org-crypt
-                          org-gnus
-                          org-id
-                          org-info
-                          org-jsinfo
-                          org-habit
-                          org-inlinetask
-                          org-irc
-                          org-mew
-                          org-mhe
-                          org-protocol
-                          org-rmail
-                          org-vm
-                          org-wl
-                          org-w3m)))
-
 ; position the habit graph on the agenda to the right of the default
 (setq org-habit-graph-column 50)
 
