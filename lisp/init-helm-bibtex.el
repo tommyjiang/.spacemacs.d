@@ -19,8 +19,6 @@ Optionally call recursively on symlinks."
         ))
     result))
 
-(setq bibtex-completion-library-path (list-dirs-recursively "~/Downloads/Machine Learning"))
-
 ; Org export
 (setq org-latex-pdf-process (list "latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
 
