@@ -180,7 +180,7 @@ before layers configuration."
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
   ; ispell bin 路径和字典
-  (setq ispell-program-name "/usr/local/bin/aspell")
+  (setq ispell-program-name "/opt/homebrew/bin/aspell")
   (setq ispell-dictionary "american")
 
   ; melpa 源地址
