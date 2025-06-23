@@ -405,7 +405,7 @@ See `cal-china-x-solar-term-name' for a list of solar term names ."
   (setq calendar-chinese-celestial-stem cal-china-x-celestial-stem
         calendar-chinese-terrestrial-branch cal-china-x-terrestrial-branch)
 
-  (setq calendar-month-header '(propertize (format "%d年%2d月" year month)
+  (setq calendar-month-header '(propertize (format "%d年%d月" year month)
                                            'font-lock-face
                                            'calendar-month-header))
 
