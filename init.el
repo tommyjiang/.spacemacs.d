@@ -41,7 +41,13 @@
      org-superstar
      org-projectile
      org-rich-yank
+     helm-ag
+     helm-git-grep
+     helm-themes
+     helm-swoop
      evil-unimpaired
+     evil-escape
+     eval-sexp-fu
      forge
      google-translate
      auctex-latexmk
@@ -115,7 +121,7 @@ before layers configuration."
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
    ;; with `:' and Emacs commands are executed with `<leader> :'.
-   dotspacemacs-command-key ":"
+   dotspacemacs-emacs-command-key ";"
    ;; If non nil the paste micro-state is enabled. While enabled pressing `p`
    ;; several times cycle between the kill ring content.
    dotspacemacs-enable-paste-micro-state t
@@ -160,7 +166,7 @@ before layers configuration."
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("ag" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now.
