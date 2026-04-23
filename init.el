@@ -41,6 +41,7 @@
      org-superstar
      org-projectile
      org-rich-yank
+     code-review
      helm-ag
      helm-git-grep
      helm-themes

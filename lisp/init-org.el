@@ -76,7 +76,7 @@
               ("d" "Diary" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\n%T\n")
               ("j" "Journal" entry (file+olp+datetree "~/org/Diary.org")
-               "* %?\n%T\n" :time-prompt t)
+               "* %?\n%T" :time-prompt t :empty-lines 0)
               ("D" "Deadline" entry (file+olp+datetree "~/org/Diary.org")
                "* %?\nDEADLINE: %t\n" :time-prompt t)
               )))
@@ -920,8 +920,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-cycle-separator-lines 0)
 
-(setq org-blank-before-new-entry (quote ((heading)
-                                         (plain-list-item . auto))))
+(setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
 (setq org-insert-heading-respect-content nil)
 

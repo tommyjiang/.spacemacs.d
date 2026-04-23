@@ -129,6 +129,23 @@ composed only of whitespace."
     "Backward line"
     (forward-line -1))
 
+(defun tommy/org-capture-cleanup-blank-lines (&rest _args)
+  "Surgically remove any blank lines before the captured entry."
+  (save-excursion
+    (save-restriction
+      (widen)
+      (let ((pos (or (org-capture-get :begin-marker) (point-marker))))
+        (when pos
+          (goto-char pos)
+          (beginning-of-line)
+          (while (and (not (bobp))
+                      (save-excursion (forward-line -1) (looking-at-p "^[ \t]*$")))
+            (forward-line -1)
+            (delete-region (point) (progn (forward-line 1) (point)))
+            (forward-line -1)))))))
+
+(advice-add 'org-capture-place-template :after #'tommy/org-capture-cleanup-blank-lines)
+
 (defun org-datetree-insert-line-tommy (year &optional month day text)
   (delete-region (save-excursion (skip-chars-backward " \t\n") (point)) (point))
   (insert "\n" (make-string org-datetree-base-level ?*) " \n")
@@ -157,6 +174,7 @@ composed only of whitespace."
   (beginning-of-line))
 
 (advice-add 'org-datetree-insert-line :override #'org-datetree-insert-line-tommy)
+(advice-add 'org-datetree--insert-line :override #'org-datetree-insert-line-tommy)
 
 ; org completion with helm
 (setq org-completion-use-ido nil)
